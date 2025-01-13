@@ -34,9 +34,11 @@
 							  		$cur = $mydb->loadResultList();
 
 									foreach ($cur as $result) { 
-							  		echo '<tr>';
+									$rowClass = ($result->PENDINGAPPLICATION == 1) ? 'style="font-weight: bold;"' : '';
+
+									echo '<tr ' . $rowClass . '>';
 							  		// echo '<td width="5%" align="center"></td>';
-									  echo '<td>'. $result->REGISTRATIONID.'</td>';
+									echo '<td>'. $result->REGISTRATIONID.'</td>';
 							  		echo '<td>'. $result->APPLICANT.'</td>';
 							  		echo '<td>' . $result->OCCUPATIONTITLE.'</a></td>';
 							  		echo '<td>' . $result->COMPANYNAME.'</a></td>'; 

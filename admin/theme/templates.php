@@ -305,7 +305,9 @@
 
 <script>
   $(function () {
-    $("#dash-table").DataTable();
+    $("#dash-table").DataTable({
+      "order": [[0, "desc"]] // Set the first column (index 0) to sort in descending order
+    });
     $('#dash-table2').DataTable({
       "paging": true,
       "lengthChange": false,
