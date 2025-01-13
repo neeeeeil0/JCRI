@@ -53,12 +53,13 @@ if (!isset($_GET['p'])) {
                 <table class="table table-hover table-striped">
                   <tbody>
                     <?php 
-                        $sql = "SELECT * FROM `tblcompany` c,`tbljobregistration` j,`tblfeedback` f  WHERE c.`COMPANYID`=j.`COMPANYID` AND j.`REGISTRATIONID`=f.`REGISTRATIONID` AND `PENDINGAPPLICATION`=0 AND j.`APPLICANTID`='{$_SESSION['APPLICANTID']}'";
+                        $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f WHERE c.`COMPANYID` = j.`COMPANYID` AND j.`REGISTRATIONID` = f.`REGISTRATIONID` AND `PENDINGAPPLICATION` = 0 AND j.`APPLICANTID` = '{$_SESSION['APPLICANTID']}' ORDER BY j.`REGISTRATIONID` DESC";
                         $mydb->setQuery($sql);
                         $cur = $mydb->loadResultList();
                         foreach ($cur as $result) {
+                          $rowStyle = ($result->HVIEW == 0) ? 'font-weight: bold;' : '';
                           # code...
-                          echo '<tr>';
+                          echo '<tr style="' . $rowStyle . '">';
                           echo '<td><input type="checkbox"></td>';
                           // echo '<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>';
                           echo '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->REGISTRATIONID.'">'.$result->COMPANYNAME.'</a></td>';

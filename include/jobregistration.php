@@ -111,7 +111,7 @@ class JobRegistration {
 		  $sql .= " WHERE REGISTRATIONID= '{$id}'";
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
-		  
+		  echo $sql; 
 			if(!$mydb->executeQuery()) return false; 	
 	
 	}	
