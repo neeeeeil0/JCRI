@@ -53,7 +53,7 @@ if (!isset($_GET['p'])) {
                 <table class="table table-hover table-striped">
                   <tbody>
                     <?php 
-                        $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f WHERE c.`COMPANYID` = j.`COMPANYID` AND j.`REGISTRATIONID` = f.`REGISTRATIONID` AND `PENDINGAPPLICATION` = 0 AND j.`APPLICANTID` = '{$_SESSION['APPLICANTID']}' ORDER BY j.`REGISTRATIONID` DESC";
+                        $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f WHERE c.`COMPANYID` = j.`COMPANYID` AND j.`REGISTRATIONID` = f.`REGISTRATIONID` AND `PENDINGAPPLICATION` = 0 AND j.`APPLICANTID` = '{$_SESSION['APPLICANTID']}' ORDER BY j.`DATETIMEAPPROVED` DESC";
                         $mydb->setQuery($sql);
                         $cur = $mydb->loadResultList();
                         foreach ($cur as $result) {
