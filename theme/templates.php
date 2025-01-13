@@ -61,7 +61,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">      
-                <p class="pull-left hidden-xs"><i class="fa fa-phone"></i>Tel No. (+001) 123-456-789</p>
+                <p class="pull-left hidden-xs"><i class="fa fa-phone"></i>0995 785 9809</p>
                 <?php if (isset($_SESSION['APPLICANTID'])) { 
 
                     $sql = "SELECT count(*) as 'COUNTNOTIF' FROM `tbljob` ORDER BY `DATEPOSTED` DESC";
@@ -78,7 +78,7 @@
                     $showMsg = $mydb->loadSingleResult();
                     $msg =isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
 
-                    echo ' <p class="pull-right login"><a title="View Notification(s)" href="'.web_root.'applicant/index.php?view=notification"> <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> | <a title="View Message(s)" href="'.web_root.'applicant/index.php?view=message"> <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> | <a title="View Profile" href="'.web_root.'applicant/"> <i class="fa fa-user"></i> Howdy, '. $appl->FNAME. ' '.$appl->LNAME .' </a> | <a href="'.web_root.'logout.php">  <i class="fa fa-sign-out"> </i>Logout</a> </p>';
+                    echo ' <p class="pull-right login"><a title="View Notification(s)" href="'.web_root.'applicant/index.php?view=notification"> <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> | <a title="View Message(s)" href="'.web_root.'applicant/index.php?view=message"> <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> | <a title="View Profile" href="'.web_root.'applicant/"> <i class="fa fa-user"></i> Hi, '. $appl->FNAME. ' '.$appl->LNAME .' </a> | <a href="'.web_root.'logout.php">  <i class="fa fa-sign-out"> </i>Logout</a> </p>';
 
                     }else{ ?>
                       <p   class="pull-right login"><a data-target="#myModal" data-toggle="modal" href=""> <i class="fa fa-lock"></i> Login </a></p>
@@ -89,7 +89,7 @@
           </div>
         </div> 
         <div style="min-height: 30px;"></div>
-        <div class="navbar navbar-default navbar-static-top" > 
+        <div class="navbar navbar-default navbar-static-top"> 
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -97,7 +97,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo web_root; ?>index.php">Job Connect Resources Inc.<!-- <img src="<?php echo web_root; ?>plugins/home-plugins/img/logo.png" alt="logo"/> --></a>
+                    <a class="navbar-brand" href="<?php echo web_root; ?>index.php"><img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/logo2.png" alt="logo" style="width: 70px; height: auto;"/> &nbsp;Job Connect Resources Inc.</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
@@ -190,11 +190,12 @@
           <h5 class="widgetheading">Our Contact</h5>
           <address>
           <strong>Our Company</strong><br>
-          JC Main Road, Near Silnile tower<br>
-           Pin-21542 NewYork US.</address>
+          Room 529, 531 & 533 5th Floor, J & T Bldg,
+           3894 Magsaysay Blvd, Santa Mesa, Manila, 1008 Metro Manila,
+            Manila, Philippines</address>
           <p>
-            <i class="icon-phone"></i> (123) 456-789 - 1255-12584 <br>
-            <i class="icon-envelope-alt"></i> jannopalacios@gmail.com
+            <i class="icon-phone"></i> 0995 785 9809 <br>
+            <i class="icon-envelope-alt"></i> careers.jobconnect@gmail.com
           </p>
         </div>
       </div>
@@ -245,13 +246,13 @@
         <div class="col-lg-6">
           <div class="copyright">
             <p>
-              <span>&copy; CampCodes 2021 All right reserved.  
+              <span>&copy; JCRI 2025 All right reserved.  
             </p>
           </div>
         </div>
         <div class="col-lg-6">
           <ul class="social-network">
-            <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://web.facebook.com/jobconnect.ph" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
             <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>

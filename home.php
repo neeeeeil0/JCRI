@@ -6,16 +6,16 @@
               <li>
                 <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/1.jpg" alt="" />
                 <div class="flex-caption">
-                    <h3>innovation</h3> 
-          <p>We create the opportunities</p> 
+                    <h3>Passion</h3> 
+          <p>Where Passion Meets Profession</p> 
            
                 </div>
               </li>
               <li>
                 <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/2.jpg" alt="" />
                 <div class="flex-caption">
-                    <h3>Specialize</h3> 
-          <p>Success depends on work</p> 
+                    <h3>Career</h3> 
+          <p>Your Career Starts Here</p> 
            
                 </div>
               </li>
@@ -24,6 +24,7 @@
   <!-- end slider -->
  
   </section> 
+  <!--
   <section id="call-to-action-2">
     <div class="container">
       <div class="row">
@@ -101,6 +102,7 @@
     </div>
   </section>
   -->  
+  <!--
   <section id="content-3-10" class="content-block data-section nopad content-3-10">
   <div class="image-container col-sm-6 col-xs-12 pull-left">
     <div class="background-image-holder">
@@ -132,7 +134,7 @@
             
             <div class="row">
               <div class="col-md-4">
-                <!-- Heading and para -->
+                <!-- 
                 <div class="block-heading-two">
                   <h3><span>Programes</span></h3>
                 </div>
@@ -142,11 +144,11 @@
                 <div class="block-heading-two">
                   <h3><span>Latest News</span></h3>
                 </div>    
-                <!-- Accordion starts -->
+                
                 <div class="panel-group" id="accordion-alt3">
-                 <!-- Panel. Use "panel-XXX" class for different colors. Replace "XXX" with color. -->
+                 
                   <div class="panel"> 
-                  <!-- Panel heading -->
+                 
                    <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseOne-alt3">
@@ -155,7 +157,7 @@
                     </h4>
                    </div>
                    <div id="collapseOne-alt3" class="panel-collapse collapse">
-                    <!-- Panel body -->
+                 
                     <div class="panel-body">
                       Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
                     </div>
@@ -204,7 +206,7 @@
                    </div>
                   </div>
                 </div>
-                <!-- Accordion ends -->
+                
                 
               </div>
               
@@ -225,7 +227,7 @@
                     </div>
                   </div>
               </div>
-              
+              -->
             </div>
             
                         
