@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2025 at 05:04 PM
+-- Generation Time: Jan 14, 2025 at 08:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `erisdb`
+-- Database: `jcridb`
 --
 
 -- --------------------------------------------------------
@@ -55,7 +55,8 @@ INSERT INTO `tblapplicants` (`APPLICANTID`, `FNAME`, `LNAME`, `MNAME`, `ADDRESS`
 (2018013, 'Kim', 'Domingo', 'Enoe', 'Kab City', 'Female', 'none', '1991-01-01', 'Kab Citys', 27, 'kim', 'a6312121e15caec74845b7ba5af23330d52d4ac0', 'kim@y.com', '5415456', 'BSAC', 'photos/RobloxScreenShot20180406_203758793.png', ''),
 (2018014, 'Jake', 'Zyrus', 'Ilmba', 'Kab City', 'Female', 'none', '1993-01-16', 'Kab City', 25, 'jake', 'c8d99c2f7cd5f432c163abcd422672b9f77550bb', 'jake@y.com', '14655623123123', 'BSIT', '', ''),
 (2018015, 'Janry', 'Tan', 'Lim', 'brgy 1 Kab City', 'Female', 'Single', '1992-01-30', 'Kab City', 26, 'janry', '1dd4efc811372cd1efe855981a8863d10ddde1ca', 'jan@gmail.com', '0234234', 'BSIT', '', ''),
-(2025016, 'Neil', 'Neil', 'Neil', 'Neil', 'Male', 'Single', '2000-08-22', '12wrqwe', 24, 'Neilneil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', '12312dafasdas@gmail.com', '13123123', 'College', '', '');
+(2025016, 'Neil Oliver', 'Regondola', 'Jerus', 'Dyan lang samin', 'Female', 'none', '2002-08-09', 'Sampaloc, Manila', 22, 'Neilneil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'neiloliverxxx@gmail.com', '09478251234', 'College', 'photos/zoro1.jpg', ''),
+(2025017, 'Ei', 'Raiden Shogun', '', '1232 fasdfdasfdasf dafafadfedafsdcvjhbZ', 'Female', 'none', '2000-02-29', 'adsfasdf', 24, 'yassan', 'd664747ea9f7f25cc9de3c6cafe1304061aab4b4', 'yass@gmail.com', '13212', 'BSBA', 'photos/__raiden_shogun_genshin_impact_drawn_by_cloba__sample-4f7b30a587f68b638c11dce882941d2e.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,10 @@ CREATE TABLE `tblattachmentfile` (
 
 INSERT INTO `tblattachmentfile` (`ID`, `FILEID`, `JOBID`, `FILE_NAME`, `FILE_LOCATION`, `USERATTACHMENTID`) VALUES
 (2, '2147483647', 2, 'Resume', 'photos/27052018124027PLATENO FE95483.docx', 2018013),
-(3, '20256912529', 2, 'Resume', 'photos/13012025044201JERUS.docx', 2025016);
+(3, '20256912529', 2, 'Resume', 'photos/13012025044201JERUS.docx', 2025016),
+(4, '20256912530', 1, 'Resume', 'photos/140120250638511.docx', 2025016),
+(5, '20256912531', 2, 'Resume', 'photos/140120250656461.docx', 2025016),
+(6, '20256912532', 3, 'Resume', 'photos/14012025073839git.txt', 2025016);
 
 -- --------------------------------------------------------
 
@@ -101,8 +105,8 @@ CREATE TABLE `tblautonumbers` (
 INSERT INTO `tblautonumbers` (`AUTOID`, `AUTOSTART`, `AUTOEND`, `AUTOINC`, `AUTOKEY`) VALUES
 (1, '02983', 8, 1, 'userid'),
 (2, '000', 79, 1, 'employeeid'),
-(3, '0', 17, 1, 'APPLICANT'),
-(4, '69125', 30, 1, 'FILEID');
+(3, '0', 18, 1, 'APPLICANT'),
+(4, '69125', 33, 1, 'FILEID');
 
 -- --------------------------------------------------------
 
@@ -216,7 +220,9 @@ CREATE TABLE `tblfeedback` (
 
 INSERT INTO `tblfeedback` (`FEEDBACKID`, `APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`) VALUES
 (2, 2018015, 2, 'aasd'),
-(3, 2025016, 3, 'AYAW KONGA');
+(3, 2025016, 3, 'AYAW KONGA'),
+(4, 2025016, 4, 'ayaw ko sayo'),
+(5, 2025016, 5, 'AYAW KO');
 
 -- --------------------------------------------------------
 
@@ -245,8 +251,9 @@ CREATE TABLE `tbljob` (
 --
 
 INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `REQ_NO_EMPLOYEES`, `SALARIES`, `DURATION_EMPLOYEMENT`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `SECTOR_VACANCY`, `JOBSTATUS`, `DATEPOSTED`) VALUES
-(1, 2, 'Technology', 'ISD', 6, 15000, 'jan 30', 'Two year Experience', 'We are looking for bachelor of science in information technology.\\r\\nasdasdasd', 'Male/Female', 'yes', '', '2018-05-20 00:00:00'),
-(2, 2, 'Technology', 'Accounting', 1, 15000, 'may 20', 'Two years Experience', 'We are looking for bachelor of science in Acountancy', 'Female', 'yes', '', '2018-05-20 02:33:00');
+(1, 2, 'Technology', 'ISD', 6, 15000, 'jan 30', 'Two year Experience', 'We are looking for bachelor of science in information technology.rnasdasdasd', 'Male/Female', 'yes', '', '2018-05-20 00:00:00'),
+(2, 2, 'Technology', 'Accounting', 1, 15000, 'may 20', 'Two years Experience', 'We are looking for bachelor of science in Acountancy', 'Female', 'yes', '', '2018-05-20 02:33:00'),
+(3, 7, 'IT', 'Washing Machine Repairman', 4, 100000, 'February 21', 'asdasd', 'asdasd', 'Male/Female', 'asdasdasd', '', '2025-01-14 19:00:00');
 
 -- --------------------------------------------------------
 
@@ -275,7 +282,10 @@ CREATE TABLE `tbljobregistration` (
 INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `REMARKS`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`) VALUES
 (1, 2, 2, 2018013, 'Kim Domingo', '2018-05-27', 'Ive seen your work and its really interesting', '2147483647', 0, 1, '2018-05-26 16:13:01'),
 (2, 2, 2, 2018015, 'Janry Tan', '2018-05-26', 'aasd', '2147483647', 0, 0, '2025-01-13 23:32:49'),
-(3, 2, 2, 2025016, 'Neil Neil', '2025-01-13', 'AYAW KONGA', '20256912529', 0, 1, '2025-01-13 23:43:04');
+(3, 2, 2, 2025016, 'Neil Neil', '2025-01-13', 'AYAW KONGA', '20256912529', 0, 1, '2025-01-13 23:43:04'),
+(4, 2, 1, 2025016, 'Neil Oliver Regondola', '2025-01-14', 'ayaw ko sayo', '20256912530', 0, 1, '2025-01-15 01:42:42'),
+(5, 2, 2, 2025016, 'Neil Oliver Regondola', '2025-01-14', 'AYAW KO', '20256912531', 0, 1, '2025-01-15 02:00:49'),
+(6, 7, 3, 2025016, 'Neil Oliver Regondola', '2025-01-14', 'Pending', '20256912532', 1, 1, '2025-01-14 19:38:00');
 
 -- --------------------------------------------------------
 
@@ -297,7 +307,7 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`USERID`, `FULLNAME`, `USERNAME`, `PASS`, `ROLE`, `PICLOCATION`) VALUES
-('00018', 'Campcodes', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'photos/Koala.jpg'),
+('00018', 'HireVantage', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'photos/zoro1.jpg'),
 ('029837', 'Neil', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'Staff', ''),
 ('2018001', 'Chambe Narciso', 'Narciso', 'f3593fd40c55c33d1788309d4137e82f5eab0dea', 'Employee', ''),
 ('234234', 'qweqwe qweqwe', 'qweqwe', '994b579fe9db3e4b8b4642b13f126b407c1d11e2', 'Employee', '');
@@ -375,13 +385,13 @@ ALTER TABLE `tblusers`
 -- AUTO_INCREMENT for table `tblapplicants`
 --
 ALTER TABLE `tblapplicants`
-  MODIFY `APPLICANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025017;
+  MODIFY `APPLICANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025018;
 
 --
 -- AUTO_INCREMENT for table `tblattachmentfile`
 --
 ALTER TABLE `tblattachmentfile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblautonumbers`
@@ -411,19 +421,19 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `tblfeedback`
 --
 ALTER TABLE `tblfeedback`
-  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbljob`
 --
 ALTER TABLE `tbljob`
-  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbljobregistration`
 --
 ALTER TABLE `tbljobregistration`
-  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
