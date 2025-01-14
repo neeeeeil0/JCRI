@@ -15,7 +15,7 @@
       cursor: pointer;
     }
   </style>
-<section id="inner-headline">
+<section id="inner-headline" style="background-color:#3e769b;">
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
@@ -42,7 +42,7 @@
             <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> 2.13.2014</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li> -->
             <li class="list-group-item text-right"><span class="pull-left"><strong>Name</strong></span> 
-             <?php echo ucfirst($applicant->LNAME) .', '.ucfirst($applicant->FNAME).' '.ucfirst(substr($applicant->MNAME, 1,2)); ?> 
+             <?php echo ucfirst($applicant->LNAME) .', '.ucfirst($applicant->FNAME).' '.ucfirst(substr($applicant->MNAME, 0,1)); ?> 
              </li>
             
           </ul> 
