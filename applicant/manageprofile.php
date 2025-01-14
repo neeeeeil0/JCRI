@@ -1,4 +1,5 @@
-  <?php 
+<?php
+  if (!isset($_GET['p'])) {
     $applicant = new Applicants();
     $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);
   ?>
@@ -9,18 +10,17 @@
   </style>
 <form class="form-horizontal" method="POST" action="controller.php?action=edit">  
       <div class="container">  
-            <div class="box-header with-border">
-              <h3 class="box-title">Accounts</h3>
- 
-              <!-- /.box-tools -->
-            </div> 
+            <div class="box-header with-border d-flex justify-content-center">
+                <h3 class="box-title text-center">Manage Profile</h3>
+            </div>
+
               <div class="form-group">
                 <div class="col-md-11">
                 <label class="col-md-4 control-label" for=
                   "FNAME">Firstname:</label>
 
                   <div class="col-md-8">
-                    <input name="JOBID" type="hidden" value="<?php echo $_GET['job'];?>">
+                    <input name="JOBID" type="hidden" value="">
                      <input class="form-control input-sm" id="FNAME" name="FNAME" placeholder=
                         "Firstname" type="text" value="<?php echo $appl->FNAME;?>"  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
                   </div>
@@ -173,10 +173,11 @@
                   "submit"></label>
 
                   <div class="col-md-8">
-                     <button class="btn btn-primary btn-sm" name="submit" type="submit" ><span class="fa fa-save"></span> Submit </button>
+                     <button class="btn btn-primary btn-sm" name="submit" type="submit" ><span class="fa fa-save"></span>  Save</button>
                     </div>
                 </div>
               </div>  
            
           </div>  
  </form>
+ <?php } ?>

@@ -21,7 +21,7 @@ switch ($view) {
 	case 'accounts' : 
 	    $title="Profile";	
         $_SESSION['accounts']	='active' ;
-        $content ='Profile.php';
+        $content ='manageprofile.php';
 		break;
 	 
 	default : 
