@@ -49,14 +49,14 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo web_root;?>/admin/" class="logo">
+    <a href="<?php echo web_root;?>/admin/" class="logo" style="background-color:#034f80;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>JCRI Inc.</b></span>
+      <span class="logo-mini"><b>JCRI.</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>JCR Inc.</b></span>
+      <span class="logo-lg" ><b>JCR Inc.</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" role="navigation">
+    <nav class="navbar navbar-static-top" role="navigation" style="background-color:#034f80;">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>

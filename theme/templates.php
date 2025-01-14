@@ -165,7 +165,7 @@
 
       if (isset($_GET['q'])) {
         # code...
-        echo '<section id="inner-headline">
+        echo '<section id="inner-headline"  style="background-color:#3e769b;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
