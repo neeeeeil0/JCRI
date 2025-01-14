@@ -57,11 +57,11 @@
  
   <!-- start header -->
   <header>
-        <div class="topbar navbar-fixed-top">
+        <div class="topbar navbar-fixed-top" style="background-color:#034f80;">
           <div class="container">
             <div class="row">
               <div class="col-md-12">      
-                <p class="pull-left hidden-xs"><i class="fa fa-phone"></i>0995 785 9809</p>
+                <p class="pull-left hidden-xs"><i class="fa fa-search"></i>HireVantage RMS</p>
                 <?php if (isset($_SESSION['APPLICANTID'])) { 
 
                     $sql = "SELECT count(*) as 'COUNTNOTIF' FROM `tbljob` ORDER BY `DATEPOSTED` DESC";
@@ -246,7 +246,7 @@
         <div class="col-lg-6">
           <div class="copyright">
             <p>
-              <span>&copy; JCRI 2025 All right reserved.  
+              <span>&copy; HireVantage RMS 2025 All right reserved.  
             </p>
           </div>
         </div>
@@ -254,7 +254,7 @@
           <ul class="social-network">
             <li><a href="https://web.facebook.com/jobconnect.ph" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/kimjero-jangayo-20b178249/?originalSubdomain=ph" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
             <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
             <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
           </ul>

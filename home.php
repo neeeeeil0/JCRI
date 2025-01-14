@@ -4,7 +4,7 @@
         <div id="main-slider" class="flexslider">
             <ul class="slides">
               <li>
-                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/1.jpg" alt="" />
+                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/slide7.png" alt="" />
                 <div class="flex-caption">
                     <h3>Passion</h3> 
           <p>Where Passion Meets Profession</p> 
@@ -12,7 +12,7 @@
                 </div>
               </li>
               <li>
-                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/2.jpg" alt="" />
+                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/slide6.png" alt="" />
                 <div class="flex-caption">
                     <h3>Career</h3> 
           <p>Your Career Starts Here</p> 

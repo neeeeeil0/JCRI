@@ -11,14 +11,18 @@
 					<div class="about-text">
 						<h3>Job Connect Resources Inc.</h3>
 						
-						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
-							We’re here to make recruitment simple, efficient, and effective.
-							 Our recruitment management system is designed to help you find,
-							  evaluate, and onboard the best talent with ease. We’ve built a 
-							  platform that streamlines every step of the hiring process, from 
-							  posting job openings to communicating with candidates. By focusing 
-							  on automation and transparency, we ensure that both recruiters and 
-							  applicants have a seamless experience.</p>
+						 <p style="text-align: justify;"><b>Job Connect Resources Inc.</b>., established on 
+						 August 4, 2022, is a DOLE-registered general service contractor (Registration No. 
+						 NCR-QCFO-DO174-78101-080522-043-N) specializing in outsourcing expert professionals nationwide.
+						  The company has steadily grown to provide reliable manpower solutions across various industries,
+						   including IT, manufacturing, real estate, hospitality, merchandising, and more.<br><br>
+						Their services are tailored to meet specific client needs, covering recruitment, training,
+						 performance monitoring, payroll processing, and compliance with government-mandated benefits.
+						  They also offer additional employee perks such as HMO and insurance, ensuring workforce satisfaction
+						   and productivity. <br><br>Dedicated to quality service and professional empowerment, Job Connect Resources Inc. 
+						   takes pride in delivering customized solutions that drive client success. For inquiries or to discuss their 
+						   credentials, they can be reached at 0945-455-7876.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -30,30 +34,28 @@
 			<div class="row showcase-section">
 				<div class="col-md-6">
 					<div class="about-text">
-						<h3>Vision.</h3>
+						<h3>Vision</h3>
 						
-						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
-							We’re here to make recruitment simple, efficient, and effective.
-							 Our recruitment management system is designed to help you find,
-							  evaluate, and onboard the best talent with ease. We’ve built a 
-							  platform that streamlines every step of the hiring process, from 
-							  posting job openings to communicating with candidates. By focusing 
-							  on automation and transparency, we ensure that both recruiters and 
-							  applicants have a seamless experience.</p>
+						 <p style="text-align: justify;">To be the leading provider of innovative and reliable 
+							manpower solutions nationwide, recognized for our commitment to quality, professionalism,
+							 and client satisfaction. We envision fostering long-term partnerships with businesses across
+							  diverse industries, driving their success through our unwavering dedication to service excellence
+							   and workforce empowerment.</p>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="about-text">
 						<h3>Mission</h3>
 						
-						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
-							We’re here to make recruitment simple, efficient, and effective.
-							 Our recruitment management system is designed to help you find,
-							  evaluate, and onboard the best talent with ease. We’ve built a 
-							  platform that streamlines every step of the hiring process, from 
-							  posting job openings to communicating with candidates. By focusing 
-							  on automation and transparency, we ensure that both recruiters and 
-							  applicants have a seamless experience.</p>
+						 <p style="text-align: justify;">Job Connect Resources Inc.
+							 is dedicated to providing exceptional outsourcing and manpower
+							  solutions tailored to meet the unique needs of our clients.
+							   We aim to empower businesses by delivering highly skilled professionals
+							    and comprehensive services, including recruitment, training, performance
+								 monitoring, and payroll processing. Committed to excellence,
+								  we ensure compliance with regulatory standards while offering additional
+								   benefits like HMO and insurance to enhance employee well-being and 
+								   satisfaction.</p>
 					</div>
 				</div>
 			</div>
