@@ -1,14 +1,14 @@
 <section id="content">
   <div class="container content">     
  <?php
-if (isset($_GET['search'])) {
+if (isset($_GET['job'])) {
 # code...
-$jobid = $_GET['search'];
+$jobid = $_GET['job'];
 }else{
 $jobid = '';
 
 }
-$sql = "SELECT * FROM `tblcompany` c,`tbljob` j WHERE c.`COMPANYID`=j.`COMPANYID` AND JOBID LIKE '%" . $jobid ."%' ORDER BY DATEPOSTED DESC" ;
+$sql = "SELECT * FROM `tblcompany` c,`tbljob` j WHERE c.`COMPANYID`=j.`COMPANYID` AND JOBID LIKE '%".$jobid."%' ORDER BY DATEPOSTED DESC" ;
 $mydb->setQuery($sql);
 $result = $mydb->loadSingleResult();
 

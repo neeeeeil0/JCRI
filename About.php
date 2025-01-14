@@ -5,26 +5,70 @@
 		<div class="container">
 			<div class="row showcase-section">
 				<div class="col-md-6">
-					<img src="img/dev1.png" alt="showcase image">
+					<img src="dist/img/photo4.jpg" alt="showcase image" style="width: 550px; height: auto;">
 				</div>
 				<div class="col-md-6">
 					<div class="about-text">
-						<h3>Lorem Ipsum Dolor sit</h3>
-						<p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar.</p>
-						 <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo..</p>
+						<h3>Job Connect Resources Inc.</h3>
+						
+						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
+							We’re here to make recruitment simple, efficient, and effective.
+							 Our recruitment management system is designed to help you find,
+							  evaluate, and onboard the best talent with ease. We’ve built a 
+							  platform that streamlines every step of the hiring process, from 
+							  posting job openings to communicating with candidates. By focusing 
+							  on automation and transparency, we ensure that both recruiters and 
+							  applicants have a seamless experience.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<section class="section-padding">
+		<div class="container">
+			<div class="row showcase-section">
+				<div class="col-md-6">
+					<div class="about-text">
+						<h3>Vision.</h3>
+						
+						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
+							We’re here to make recruitment simple, efficient, and effective.
+							 Our recruitment management system is designed to help you find,
+							  evaluate, and onboard the best talent with ease. We’ve built a 
+							  platform that streamlines every step of the hiring process, from 
+							  posting job openings to communicating with candidates. By focusing 
+							  on automation and transparency, we ensure that both recruiters and 
+							  applicants have a seamless experience.</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="about-text">
+						<h3>Mission</h3>
+						
+						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
+							We’re here to make recruitment simple, efficient, and effective.
+							 Our recruitment management system is designed to help you find,
+							  evaluate, and onboard the best talent with ease. We’ve built a 
+							  platform that streamlines every step of the hiring process, from 
+							  posting job openings to communicating with candidates. By focusing 
+							  on automation and transparency, we ensure that both recruiters and 
+							  applicants have a seamless experience.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<div class="container">
 					
 					<div class="about">
 				
 						
 						<div class="row">
+							<!--
 							<div class="col-md-4">
-								<!-- Heading and para -->
+								
 								<div class="block-heading-two">
 									<h3><span>Why Choose Us?</span></h3>
 								</div>
@@ -34,11 +78,11 @@
 								<div class="block-heading-two">
 									<h3><span>Our Solution</span></h3>
 								</div>		
-								<!-- Accordion starts -->
+								
 								<div class="panel-group" id="accordion-alt3">
-								 <!-- Panel. Use "panel-XXX" class for different colors. Replace "XXX" with color. -->
+								 
 								  <div class="panel">	
-									<!-- Panel heading -->
+									
 									 <div class="panel-heading">
 										<h4 class="panel-title">
 										  <a data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseOne-alt3">
@@ -47,7 +91,7 @@
 										</h4>
 									 </div>
 									 <div id="collapseOne-alt3" class="panel-collapse collapse">
-										<!-- Panel body -->
+										
 										<div class="panel-body">
 										  Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
 										</div>
@@ -96,17 +140,17 @@
 									 </div>
 								  </div>
 								</div>
-								<!-- Accordion ends -->
+								
 								
 							</div>
-							
+						
 							<div class="col-md-4">
 								<div class="block-heading-two">
 									<h3><span>Our Expertise</span></h3>
 								</div>								
 								<h6>Web Development</h6>
 								<div class="progress pb-sm">
-								  <!-- White color (progress-bar-white) -->
+								 - White color (progress-bar-white) -
 								  <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
 									 <span class="sr-only">40% Complete (success)</span>
 								  </div>
@@ -130,6 +174,7 @@
 								  </div>
 								</div>
 							</div>
+							-->
 							
 						</div>
 						
@@ -147,45 +192,56 @@
 						<!-- Our team starts -->
 						
 						<div class="team-six">
-							<div class="row">
-								<div class="col-md-3 col-sm-6">
+							<div class="row" style="padding-left: 200px;">
+								
+								<div class="col-md-2 col-sm-6" >
 									<!-- Team Member -->
 									<div class="team-member">
 										<!-- Image -->
-										<img class="img-responsive" src="img/team1.jpg" alt="">
+										<img class="img-responsive" src="dist/img/avatar5.png" alt="" style="width: 200px; height: auto;">
 										<!-- Name -->
-										<h4>Johne Doe</h4>
-										<span class="deg">Creative</span> 
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="img/team2.jpg" alt="">
-										<!-- Name -->
-										<h4>Jennifer</h4>
+										<h4>Neil Oliver Regondola</h4>
 										<span class="deg">Programmer</span> 
 									</div>
 								</div>
-								<div class="col-md-3 col-sm-6">
+								<div class="col-md-2 col-sm-6">
 									<!-- Team Member -->
 									<div class="team-member">
 										<!-- Image -->
-										<img class="img-responsive" src="img/team3.jpg" alt="">
+										<img class="img-responsive" src="dist/img/avatar3.png" alt="" style="width: 200px; height: auto;">
 										<!-- Name -->
-										<h4>Christean</h4>
-										<span class="deg">CEO</span> 
+										<h4>Julia Nuesca</h4>
+										<span class="deg">Documentation</span> 
 									</div>
 								</div>
-								<div class="col-md-3 col-sm-6">
+								<div class="col-md-2 col-sm-6">
 									<!-- Team Member -->
 									<div class="team-member">
 										<!-- Image -->
-										<img class="img-responsive" src="img/team4.jpg" alt="">
+										<img class="img-responsive" src="dist/img/avatar04.png" alt="" style="width: 200px; height: auto;">
 										<!-- Name -->
-										<h4>Kerinele rase</h4>
-										<span class="deg">Manager</span> 
+										<h4>John Veneracion</h4>
+										<span class="deg">Researcher</span> 
+									</div>
+								</div>
+								<div class="col-md-2 col-sm-6">
+									<!-- Team Member -->
+									<div class="team-member">
+										<!-- Image -->
+										<img class="img-responsive" src="dist/img/avatar2.png" alt="" style="width: 200px; height: auto;">
+										<!-- Name -->
+										<h4>Joyce Abano</h4>
+										<span class="deg">Analyst</span> 
+									</div>
+								</div>
+								<div class="col-md-2 col-sm-6">
+									<!-- Team Member -->
+									<div class="team-member">
+										<!-- Image -->
+										<img class="img-responsive" src="dist/img/avatar.png" alt="" style="width: 200px; height: auto;">
+										<!-- Name -->
+										<h4>Sharence Alas</h4>
+										<span class="deg">Tester</span> 
 									</div>
 								</div>
 							</div>

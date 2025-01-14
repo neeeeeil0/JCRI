@@ -17,6 +17,7 @@
 
 							  <thead>
 							  	<tr>
+								  	<th>Application ID</th>
 									<th>Applicant</th>
 									<th>Job Title</th>
 									<th>Company</th>
@@ -29,12 +30,15 @@
 							  	<?php   
 							  		// $mydb->setQuery("SELECT * 
 											// 			FROM  `tblusers` WHERE TYPE != 'Customer'");
-							  		$mydb->setQuery("SELECT * FROM `tblcompany` c  , `tbljobregistration` j, `tbljob` j2, `tblapplicants` a WHERE c.`COMPANYID`=j.`COMPANYID` AND  j.`JOBID`=j2.`JOBID` AND j.`APPLICANTID`=a.`APPLICANTID` ");
+							  		$mydb->setQuery("SELECT * FROM `tblcompany` c  , `tbljobregistration` j, `tbljob` j2, `tblapplicants` a WHERE c.`COMPANYID`=j.`COMPANYID` AND  j.`JOBID`=j2.`JOBID` AND j.`APPLICANTID`=a.`APPLICANTID`");
 							  		$cur = $mydb->loadResultList();
 
 									foreach ($cur as $result) { 
-							  		echo '<tr>';
+									$rowClass = ($result->PENDINGAPPLICATION == 1) ? 'style="font-weight: bold;"' : '';
+
+									echo '<tr ' . $rowClass . '>';
 							  		// echo '<td width="5%" align="center"></td>';
+									echo '<td>'. $result->REGISTRATIONID.'</td>';
 							  		echo '<td>'. $result->APPLICANT.'</td>';
 							  		echo '<td>' . $result->OCCUPATIONTITLE.'</a></td>';
 							  		echo '<td>' . $result->COMPANYNAME.'</a></td>'; 
@@ -43,7 +47,7 @@
 					  				echo '<td align="center" >    
 					  		             <a title="View" href="index.php?view=view&id='.$result->REGISTRATIONID.'"  class="btn btn-info btn-xs  ">
 					  		             <span class="fa fa-info fw-fa"></span> View</a> 
-					  		             <a title="Remove" href="index.php?view=delete&id='.$result->REGISTRATIONID.'"  class="btn btn-danger btn-xs  ">
+					  		             <a title="Remove" href="controller.php?action=delete&id='.$result->REGISTRATIONID.'"  class="btn btn-danger btn-xs  ">
 					  		             <span class="fa fa-trash-o fw-fa"></span> Remove</a> 
 					  					 </td>';
 							  		echo '</tr>';

@@ -51,9 +51,9 @@
     <!-- Logo -->
     <a href="<?php echo web_root;?>/admin/" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>ERIS</b></span>
+      <span class="logo-mini"><b>JCRI Inc.</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>ERIS</b></span>
+      <span class="logo-lg"><b>JCR Inc.</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -305,7 +305,9 @@
 
 <script>
   $(function () {
-    $("#dash-table").DataTable();
+    $("#dash-table").DataTable({
+      "order": [[0, "desc"]] // Set the first column (index 0) to sort in descending order
+    });
     $('#dash-table2').DataTable({
       "paging": true,
       "lengthChange": false,

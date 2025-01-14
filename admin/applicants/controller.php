@@ -191,19 +191,15 @@ switch ($action) {
 
 		// 	$subj = New Student();
 		// 	$subj->delete($id[$i]);
-
-		
-				$id = 	$_GET['id'];
-
-				$emp = New Employee();
-	 		 	$emp->delete($id);
-			 
-		
 		// }
-			message("Employee(s) already Deleted!","success");
-			redirect('index.php');
+			
 		// }
-
+		$id = 	$_GET['id'];
+		$jobreg = New JobRegistration();
+		$jobreg->delete($id);
+		message("Applicant(s) already Deleted!","success");
+		redirect('index.php');
+		
 		
 	}
 
