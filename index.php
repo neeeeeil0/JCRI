@@ -46,8 +46,11 @@ switch ($view) {
 	case 'advancesearch' :
         $title='Advance Search';	
 		$content='advancesearch.php';		
-		break;	
-
+		break;
+	case 'jobsearch' :
+		$title='Job Search';	
+		$content='jobsearch.php';		
+		break;
 	case 'result' :
         $title='Advance Search';	
 		$content='advancesearchresult.php';		
