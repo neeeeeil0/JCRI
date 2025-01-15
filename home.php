@@ -39,13 +39,13 @@
     </div>
   </section>
   
-  <section id="content">
+  <section id="content" >
   
   
   <div class="container">
         <div class="row">
       <div class="col-md-12">
-        <div class="aligncenter"><h2 class="aligncenter">Company</h2><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus ovident, doloribus omnis minus temporibus perferendis nesciunt.. --></div>
+        <div class="aligncenter"><h2 class="aligncenter">Company</h2></div>
         <br/>
       </div>
     </div>

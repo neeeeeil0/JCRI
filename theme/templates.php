@@ -89,7 +89,7 @@
           </div>
         </div> 
         <div style="min-height: 30px;"></div>
-        <div class="navbar navbar-default navbar-static-top"> 
+        <div class="navbar navbar-default navbar-static-top" style="background-color: #F5F5DC;"> 
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -97,7 +97,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo web_root; ?>index.php"><img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/logo2.png" alt="logo" style="width: 70px; height: auto;"/> &nbsp;Job Connect Resources Inc.</a>
+                    <a class="navbar-brand" href="<?php echo web_root; ?>index.php" style="font-size: 20px;"><img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/logo2.png" alt="logo" style="width: 50px; height: auto; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));"/> &nbsp;Job Connect Resources Inc.</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
