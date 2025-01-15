@@ -33,42 +33,28 @@ require_once("../include/initialize.php");
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-<!--   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
-  </div> -->
-  <!-- /.login-logo -->
-  <div class="login-box-body" style="min-height: 400px;">
-    <h1 class="login-box-msg">Login to JCRI</h1>
-    <hr/>
-    <p><?php check_message(); ?></p>
-
-    <form action="" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="user_email">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="user_pass">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-        <div class="row">
-        <!-- <div class="col-xs-8"> -->
-        <!--   <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>   -->
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" name="btnLogin" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-      </div>
-        <!-- /.col -->
-      </div>
-    </form>
+<body class="hold-transition login-page" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: rgba(0,0,0,0.3);">
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:url('slide3.jpg') center/cover no-repeat;filter:blur(5px);z-index:-1;"></div>
+    <div class="login-box" style="background-color: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); width: 450px; max-width: 90%;">
+        <div style="text-align: center; margin-bottom: 10px;"> <img src="logohire2.png" alt="HireVantage Logo" style="max-width: 100px; height: auto;"> </div>
+        <h2 class="login-box-msg" style="text-align: center; margin-bottom: 30px; color: #333; font-size: 2em; font-weight: 600; margin-top: 0;">Login to HireVantage RMS</h2>
+        <hr style="border-top: 2px solid #eee; margin-bottom: 35px;">
+        <p style="color: #d9534f; text-align: center; margin-bottom: 20px;"><?php check_message(); ?></p>
+        <form action="" method="post">
+            <div class="form-group has-feedback" style="margin-bottom: 25px;">
+                <input type="text" class="form-control" placeholder="Username" name="user_email" style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; width: 100%; font-size: 16px;">
+                <span class="glyphicon glyphicon-user form-control-feedback" style="right: 15px; top: 50%; transform: translateY(-50%); color: #aaa;"></span>
+            </div>
+            <div class="form-group has-feedback" style="margin-bottom: 30px;">
+                <input type="password" class="form-control" placeholder="Password" name="user_pass" style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; width: 100%; font-size: 16px;">
+                <span class="glyphicon glyphicon-lock form-control-feedback" style="right: 15px; top: 50%; transform: translateY(-50%); color: #aaa;"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                    <button type="submit" name="btnLogin" class="btn btn-primary btn-block btn-flat" style="background-color: #007bff; border-color: #007bff; padding: 12px 25px; border-radius: 5px; width: auto; display: inline-block; font-size: 16px; font-weight: 500; transition: background-color 0.3s ease;">Sign In</button>
+                </div>
+            </div>
+        </form>
 
    <!--  <div class="social-auth-links text-center">
       <p>- OR -</p>
@@ -104,7 +90,7 @@ if(isset($_POST['btnLogin'])){
     //make use of the static function, and we passed to parameters
     $res = $user->userAuthentication($email, $h_upass);
     if ($res==true) { 
-       message("You logon as ".$_SESSION['ROLE'].".","success");
+       message("You login as ".$_SESSION['ROLE'].".","success");
       // if ($_SESSION['ROLE']=='Administrator' || $_SESSION['ROLE']=='Cashier'){
 
         $_SESSION['ADMIN_USERID'] = $_SESSION['USERID'];

@@ -49,53 +49,56 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo web_root;?>/admin/" class="logo" style="background-color:#034f80;">
+    <a href="" class="logo" data-toggle="offcanvas" role="button" style="background-color:#034f80;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>JCRI.</b></span>
+      <span class="logo-mini"><b><img src="../admin/logohire2.png" width="25px"/></b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" ><b>JCR Inc.</b></span>
+      <span class="logo-lg" ><b> JCR Inc.</b>&nbsp;<img src="../admin/logohire2.png" width="25px"/></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation" style="background-color:#034f80;">
-      <!-- Sidebar toggle button-->
+      <!-- Sidebar toggle button
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+        <span class="sr-only ">Toggle navigation</span>
+      </a>-->
 
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
- 
-          <?php
-              $user = New User();
-              $singleuser = $user->single_user($_SESSION['ADMIN_USERID']);
+    <ul class="nav navbar-nav">
+        <?php
+            $user = New User();
+            $singleuser = $user->single_user($_SESSION['ADMIN_USERID']);
 
-          ?>
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu" style="padding-right: 15px;"  >
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo web_root.'admin/user/'. $singleuser->PICLOCATION;?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $singleuser->FULLNAME; ?></span>
+            if ($singleuser && isset($singleuser->PICLOCATION) && isset($singleuser->FULLNAME)) {
+        ?>
+        <li class="dropdown user user-menu" style="padding-right: 20px;">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display: flex; align-items: center; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s ease;">
+                <img src="<?php echo web_root.'admin/user/'. $singleuser->PICLOCATION;?>" class="user-image" alt="User Image" style="margin-right: 10px; border-radius: 50%; width: 30px; height: 30px; object-fit: cover; border: 1px solid #ddd;">
+                <span class="hidden-xs" style="font-weight: 500; "><?php echo $singleuser->FULLNAME; ?></span>
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header"> 
-                <img data-target="#menuModal"  data-toggle="modal"  src="<?php echo web_root.'admin/user/'. $singleuser->PICLOCATION;?>" class="img-circle" alt="User Image" />  
-              </li> 
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?php echo web_root.'admin/user/index.php?view=view&id='.$_SESSION['ADMIN_USERID'] ;?>" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?php echo web_root ;?>admin/logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
+            <ul class="dropdown-menu" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); border: none;">
+                <li class="user-header" style="background-color: #F5F5DC; padding: 20px; text-align: center; border-bottom: 1px solid #eee;">
+                    <img data-target="#menuModal" data-toggle="modal" src="<?php echo web_root.'admin/user/'. $singleuser->PICLOCATION;?>" class="img-circle" alt="User Image" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1)">
+                    <p style="margin-top: 10px; font-weight: 600; color: #333; font-size: 1.2em;"><?php echo $singleuser->FULLNAME; ?>
+                        <?php if (isset($singleuser->POSITION)): ?>
+                            <small style="display: block; color: #777;"><?php echo $singleuser->POSITION; ?></small>
+                        <?php endif; ?>
+                    </p>
+                </li>
+                <li class="user-footer" style="background-color: #F5F5DC; padding: 10px; display: flex; justify-content: space-between;">
+                    <div class="pull-left">
+                        <a href="<?php echo web_root.'admin/user/index.php?view=view&id='.$_SESSION['ADMIN_USERID'] ;?>" class="btn btn-default btn-flat" style="padding: 10px 15px; border-radius: 5px; background-color: #007bff; border: none; color: white; transition: background-color 0.3s, color 0.3s; text-decoration:none; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Profile</a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="<?php echo web_root ;?>admin/logout.php" class="btn btn-default btn-flat" style="padding: 10px 15px; border-radius: 5px; background-color: #dc3545; border: none; color: white; transition: background-color 0.3s, color 0.3s; text-decoration:none; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Sign out</a>
+                    </div>
+                </li>
             </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          
-        </ul>
-      </div>
+        </li>
+        <?php
+            }
+        ?>
+    </ul>
+</div>
     </nav>
   </header>
 
