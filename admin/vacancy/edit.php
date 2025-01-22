@@ -8,6 +8,13 @@
   $job = New Jobs();
   $res = $job->single_job($jobid);
 
+  $publisherid = $res->PUBLISHERID;
+  $sql = "SELECT * FROM tblusers where USERID = $publisherid";
+  $mydb->setQuery($sql);
+  $cur = $mydb->loadSingleResult();
+
+  
+
 ?> 
 <form class="form-horizontal span6" action="controller.php?action=edit" method="POST">
 
@@ -16,7 +23,20 @@
                       <h1 class="page-header">Update Job Vacancy</h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                 </div> 
+                 </div>
+
+                 <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "COMPANYNAME">Publisher:</label>
+
+                      <div class="col-md-8">
+                        <input type="hidden" name="PUBLISHERID" value="<?php echo $res->PUBLISHERID;?>">
+                        <input class="form-control input-sm" placeholder=""   autocomplete="none" value="<?php echo $cur->FULLNAME;?>" disabled/> 
+                        </select>
+                      </div>
+                    </div>
+                  </div> 
 
                  <div class="form-group">
                     <div class="col-md-8">
@@ -35,7 +55,7 @@
                               # code...
                               echo '<option SELECTED value='.$row->COMPANYID.'>'.$row->COMPANYNAME.'</option>';
                             }
-                            $sql ="Select * From tblcompany WHERE COMPANYID!=".$res->COMPANYID;
+                            $sql ="Select * From tblcompany WHERE COMPANYID!=$res->COMPANYID ORDER BY COMPANYNAME";
                             $mydb->setQuery($sql);
                             $result  = $mydb->loadResultList();
                             foreach ($result as $row) {
@@ -64,7 +84,7 @@
                               # code...
                               echo '<option SELECTED value='.$result->CATEGORYID.'>'.$result->CATEGORY.'</option>';
                             }
-                            $sql ="SELECT * FROM `tblcategory` WHERE CATEGORY!='".$res->CATEGORY."'";
+                            $sql ="SELECT * FROM `tblcategory` WHERE CATEGORY!='".$res->CATEGORY."' ORDER BY CATEGORY";
                             $mydb->setQuery($sql);
                             $cur  = $mydb->loadResultList();
                             foreach ($cur as $result) {
