@@ -94,12 +94,20 @@ switch ($action) {
 
 		// 	$user = New User();
 		// 	$user->delete($id[$i]);
-
+		//$user = $_SESSION['ADMIN_USERID'];
 		
 				$id = 	$_GET['id'];
+				$mydb = new Database();
+				$sql = "SELECT * FROM tblusers WHERE USERID = $id";
+				$mydb->setQuery($sql);
+ 				$res = $mydb->loadSingleResult();
 
-				$user = New User();
-	 		 	$user->delete($id);
+				if ($_SESSION['ADMIN_ROLE'] == 'Administrator'){
+					if($res->DELETEABLE == true){
+						$user = New User();
+						$user->delete($id);
+					}
+				}
 			 
 			message("User has been deleted!","info");
 			redirect('index.php');

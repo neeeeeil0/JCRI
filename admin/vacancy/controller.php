@@ -48,7 +48,7 @@ switch ($action) {
 				$job->JOBDESCRIPTION					= $_POST['JOBDESCRIPTION'];
 				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
 				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
-				$job->DATEPOSTED						= date('Y-m-d H:i');
+				$job->DATEPOSTED						= date('Y-m-d H:i:s');
 				$job->PUBLISHERID 						= $publisher;
 				$job->JOBSTATUS							= $_POST['JOBSTATUS'];
 				$job->create();
@@ -97,6 +97,7 @@ switch ($action) {
 				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
 				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY'];
 				$job->JOBSTATUS							= $_POST['JOBSTATUS'];
+				$job->DATEUPDATED						= date('Y-m-d H:i:s');
 				$job->update($_POST['JOBID']);
 
 
