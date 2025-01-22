@@ -57,7 +57,7 @@
  
   <!-- start header -->
   <header>
-        <div class="topbar navbar-fixed-top" style="background-color:#034f80;">
+        <div class="topbar navbar-fixed-top" style="background-color:#073763;">
           <div class="container">
             <div class="row">
               <div class="col-md-12">      
@@ -119,7 +119,7 @@
           </div>
         </div> 
         <div style="min-height: 30px;"></div>
-        <div class="navbar navbar-default navbar-static-top" style="background-color: #F5F5DC;"> 
+        <div class="navbar navbar-default navbar-static-top"> 
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -195,7 +195,7 @@
 
       if (isset($_GET['q'])) {
         # code...
-        echo '<section id="inner-headline"  style="background-color:#3e769b;">
+        echo '<section id="inner-headline"  style="background-color:#085394;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
