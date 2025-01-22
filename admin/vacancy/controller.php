@@ -50,16 +50,19 @@ switch ($action) {
 				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
 				$job->DATEPOSTED						= date('Y-m-d H:i');
 				$job->PUBLISHERID 						= $publisher;
+				$job->JOBSTATUS							= $_POST['JOBSTATUS'];
 				$job->create();
 
 				$jobID = $mydb->insert_id();
 
             	// Insert notifications for all applicants
-				$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
-						SELECT APPLICANTID, $jobID, 0, NOW()
-						FROM tblapplicants";
-				$mydb->setQuery($sql);
-				$mydb->executeQuery();
+				if ($_POST['JOBSTATUS'] == 'Open' ) {
+					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
+							SELECT APPLICANTID, $jobID, 0, NOW()
+							FROM tblapplicants";
+					$mydb->setQuery($sql);
+					$mydb->executeQuery();
+				}
 
 				message("New Job Vacancy created successfully!", "success");
 				redirect("index.php");
@@ -81,6 +84,7 @@ switch ($action) {
 				$mydb->setQuery($sql);
 				$cat = $mydb->loadSingleResult();
 				$_POST['CATEGORY']=$cat->CATEGORY;
+				$jobID = $_POST['JOBID'];
 				$job = New Jobs();
 				$job->COMPANYID							= $_POST['COMPANYID']; 
 				$job->CATEGORY							= $_POST['CATEGORY']; 
@@ -91,9 +95,19 @@ switch ($action) {
 				$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
 				$job->JOBDESCRIPTION					= $_POST['JOBDESCRIPTION'];
 				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
-				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
+				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY'];
+				$job->JOBSTATUS							= $_POST['JOBSTATUS'];
 				$job->update($_POST['JOBID']);
 
+
+				if ($_POST['JOBSTATUS'] == 'Open' ) {
+					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
+							SELECT APPLICANTID, $jobID, 0, NOW()
+							FROM tblapplicants";
+					$mydb->setQuery($sql);
+					$mydb->executeQuery();
+				}
+				
 				message("Job Vacancy has been updated!", "success");
 				redirect("index.php");
 			}

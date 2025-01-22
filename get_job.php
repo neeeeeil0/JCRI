@@ -45,23 +45,24 @@ else if (isset($_GET['find'])) {
 
     // If search term is empty, fetch all jobs
     if (empty($searchQuery)) {
-        $sql = "SELECT * FROM tbljob j INNER JOIN tblcompany c ON j.COMPANYID = c.COMPANYID ORDER BY j.JOBID DESC;";
+        $sql = "SELECT * FROM tbljob j INNER JOIN tblcompany c ON j.COMPANYID = c.COMPANYID WHERE j.JOBSTATUS = 'Open' ORDER BY j.JOBID DESC;";
     } else {
         // If search term is provided, filter by OCCUPATIONTITLE, COMPANYNAME, and COMPANYADDRESS
         $sql = "SELECT * 
                 FROM tbljob j 
                 INNER JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
-                WHERE j.OCCUPATIONTITLE LIKE '%$searchQuery%' 
-                OR c.COMPANYNAME LIKE '%$searchQuery%' 
-                OR c.COMPANYADDRESS LIKE '%$searchQuery%' 
-                OR j.QUALIFICATION_WORKEXPERIENCE LIKE '%$searchQuery%'
+                WHERE (j.OCCUPATIONTITLE LIKE '%$searchQuery%' 
+                    OR c.COMPANYNAME LIKE '%$searchQuery%' 
+                    OR c.COMPANYADDRESS LIKE '%$searchQuery%' 
+                    OR j.QUALIFICATION_WORKEXPERIENCE LIKE '%$searchQuery%')
+                    AND j.JOBSTATUS = 'Open'
                 ORDER BY 
-                CASE 
-                    WHEN j.OCCUPATIONTITLE LIKE '$searchQuery%' THEN 1  -- Prefix match
-                    WHEN j.OCCUPATIONTITLE LIKE '%$searchQuery%' THEN 2  -- Anywhere match
-                    ELSE 3 
-                END,
-                j.OCCUPATIONTITLE ASC;";
+                    CASE 
+                        WHEN j.OCCUPATIONTITLE LIKE '$searchQuery%' THEN 1  -- Prefix match
+                        WHEN j.OCCUPATIONTITLE LIKE '%$searchQuery%' THEN 2  -- Anywhere match
+                        ELSE 3 
+                    END,
+                    j.OCCUPATIONTITLE ASC;";
     }
 
     $result = $mydb2->query($sql);
