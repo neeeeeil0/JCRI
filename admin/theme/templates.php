@@ -50,11 +50,15 @@
   <header class="main-header">
     <!-- Logo -->
     <a href="" class="logo" data-toggle="offcanvas" role="button" style="background-color:#034f80;">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b><img src="../admin/logohire2.png" width="25px"/></b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" ><b> JCR Inc.</b>&nbsp;<img src="../admin/logohire2.png" width="25px"/></span>
-    </a>
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b><img src="<?php echo web_root; ?>admin/logohire2.png" width="25px" alt="Logo"/></b></span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg">
+        <b>JCR Inc.</b>&nbsp;
+        <img src="<?php echo web_root; ?>admin/logohire2.png" width="25px" alt="Logo"/>
+    </span>
+</a>
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation" style="background-color:#034f80;">
       <!-- Sidebar toggle button
