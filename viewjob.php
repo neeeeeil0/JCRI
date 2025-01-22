@@ -45,8 +45,13 @@
                                         <a href="#"><span class="fa fa-building-o" style="font-size: 50px"></span><!-- <img src="img/room-1.png" alt="" class="img-responsive"> --></a>
                                     </div>
                                     <div class="col-sm-10">
-                                        <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;"><?php echo $result->OCCUPATIONTITLE ;?> 
-                                        </div> 
+                                        <div style="border-bottom: 1px solid #ddd;padding: 10px;"><p style="font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;"><?php echo $result->OCCUPATIONTITLE ;?> </p> 
+                                        
+                                                <p><?php echo  $result->COMPANYNAME; ?>
+                                                , <?php echo  $result->COMPANYADDRESS; ?></p>
+                                            
+                                    </div> 
+                                        <br>
                                         <div class="row contentbody">
                                             <div class="col-sm-6">
                                                 <ul>
@@ -63,23 +68,28 @@
                                                 </ul>
                                             </div>
                                             <div class="col-sm-12">
-                                                <p>Qualification/Work Experience :</p>
+                                                <p style="text-indent: 10px;">Qualification/Work Experience :</p>
                                                  <ul style="list-style: none;"> 
                                                     <li><?php echo $result->QUALIFICATION_WORKEXPERIENCE ;?></li> 
                                                 </ul> 
                                             </div>
                                             <div class="col-sm-12"> 
-                                                <p>Job Description:</p>
+                                                <p style="text-indent: 10px;">Job Description:</p>
                                                 <ul style="list-style: none;"> 
                                                      <li><?php echo $result->JOBDESCRIPTION ;?></li> 
                                                 </ul> 
                                             </div>
-                                            <div class="col-sm-12">
-                                                <p>Employer :  <?php echo  $result->COMPANYNAME; ?></p> 
-                                                <p>Location :  <?php echo  $result->COMPANYADDRESS; ?></p>
-                                            </div>
+                                            
                                         </div>
-                                          <a href="<?php echo web_root; ?>index.php?q=apply&job=<?php echo $result->JOBID;?>" class="btn btn-main btn-next-tab">Apply Now !</a>
+                                        <a href="<?php echo web_root; ?>index.php?q=apply&job=<?php echo $result->JOBID;?>" 
+   style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3498db; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center; transition: background-color 0.3s ease;" 
+   onmouseover="this.style.backgroundColor='#2980b9'" 
+   onmouseout="this.style.backgroundColor='#3498db'">
+   Apply Now!
+</a>
+
+
+
                                     </div>
                                 </div>
                             </div> 
