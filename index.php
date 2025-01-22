@@ -1,5 +1,6 @@
-<?php 
-require_once("include/initialize.php"); 
+<?php
+require_once("include/initialize.php");
+define("ABSPATH", __DIR__);
 $content='home.php';
 $view = (isset($_GET['q']) && $_GET['q'] != '') ? $_GET['q'] : '';
 switch ($view) { 
@@ -66,7 +67,11 @@ switch ($view) {
 	case 'search-jobtitle' :
         $title='Search by Job Title';	
 		$content='searchbytitle.php';		
-		break;						
+		break;
+	case 'notif' :
+		$title='Job Details';	
+		$content='applicant/viewjob.php';		
+		break;
 	default :
 	    $active_home='active';
 	    $title="Home";	

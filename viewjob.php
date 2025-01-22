@@ -3,6 +3,19 @@
         <div class="container content">      
      
  <?php
+ $red_id = isset($_GET['id']) ? $_GET['id'] : '';
+
+ // Check if a notification ID is passed in the query string
+ if (isset($_GET['notifID'])) {
+     $notifID = $_GET['notifID'];
+     // Update the IsViewed status to 1 (viewed) for the specific notification
+     $updateSql = "UPDATE tblnotification 
+                 SET ISVIEWED = 1 
+                 WHERE NOTIFICATIONID = $notifID";
+     $mydb->setQuery($updateSql);
+     $mydb->executeQuery();
+ }
+
  if (isset($_GET['search'])) {
      # code...
     $jobid = $_GET['search'];
@@ -10,6 +23,8 @@
      $jobid = '';
 
  }
+
+
     $sql = "SELECT * FROM `tblcompany` c,`tbljob` j WHERE c.`COMPANYID`=j.`COMPANYID` AND JOBID LIKE '%" . $jobid ."%' ORDER BY DATEPOSTED DESC" ;
     $mydb->setQuery($sql);
     $cur = $mydb->loadResultList();
@@ -58,7 +73,7 @@
                                                 <ul style="list-style: none;"> 
                                                      <li><?php echo $result->JOBDESCRIPTION ;?></li> 
                                                 </ul> 
-                                             </div>
+                                            </div>
                                             <div class="col-sm-12">
                                                 <p>Employer :  <?php echo  $result->COMPANYNAME; ?></p> 
                                                 <p>Location :  <?php echo  $result->COMPANYADDRESS; ?></p>

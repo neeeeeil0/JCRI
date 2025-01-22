@@ -27,7 +27,7 @@
 				  		<th>Prefered Sex</th> 
 				  		<th>Sector of Vacancy</th> 
 				  		<th>Job Status</th> 
-				  		 <th width="10%" align="center">Action</th>
+				  		<th width="10%" align="center">Action</th>
 				  	</tr>	
 				  </thead> 
 				  <tbody>
