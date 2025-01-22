@@ -23,7 +23,7 @@
                         <select class="form-control input-sm" id="COMPANYID" name="COMPANYID">
                           <option value="None">Select</option>
                           <?php 
-                            $sql ="Select * From tblcompany";
+                            $sql ="Select * From tblcompany order by COMPANYNAME";
                             $mydb->setQuery($sql);
                             $res  = $mydb->loadResultList();
                             foreach ($res as $row) {
@@ -46,7 +46,7 @@
                         <select class="form-control input-sm" id="CATEGORY" name="CATEGORY">
                           <option value="None">Select</option>
                           <?php 
-                            $sql ="Select * From tblcategory";
+                            $sql ="Select * From tblcategory ORDER BY CATEGORY";
                             $mydb->setQuery($sql);
                             $res  = $mydb->loadResultList();
                             foreach ($res as $row) {

@@ -19,21 +19,25 @@
 				  		<!-- <th>No.</th> -->
 				  		<th>Company Name</th> 
 				  		<th>Occupation Title</th> 
-				  		<th>Require no. of Employees</th> 
-				  		<th>Salaries</th> 
-				  		<th>Duration of Employment</th> 
+				  		<!-- <th>Require no. of Employees</th> -->
+				  		<th>Salary</th> 
+				  		<!-- <th>Duration of Employment</th> 
 				  		<th>Qualification/Work experience</th> 
 				  		<th>Job Description</th> 
 				  		<th>Prefered Sex</th> 
-				  		<th>Sector of Vacancy</th> 
-				  		<th>Job Status</th> 
+				  		<th>Sector of Vacancy</th> -->
+						<th>Publisher</th>
+				  		<th>Job Status</th>
 				  		<th width="10%" align="center">Action</th>
 				  	</tr>	
 				  </thead> 
 				  <tbody>
 				  	<?php 
 				  	 // `COMPANYID`, `OCCUPATIONTITLE`, `REQ_NO_EMPLOYEES`, `SALARIES`, `DURATION_EMPLOYEMENT`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `SECTOR_VACANCY`, `JOBSTATUS`
-				  		$mydb->setQuery("SELECT * FROM `tbljob` j, `tblcompany` c WHERE j.COMPANYID=c.COMPANYID");
+				  		$mydb->setQuery("SELECT j.*, c.COMPANYNAME, u.FULLNAME
+												FROM tbljob j
+												LEFT JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
+												LEFT JOIN tblusers u ON j.PUBLISHERID = u.USERID;");
 				  		$cur = $mydb->loadResultList(); 
 						foreach ($cur as $result) {
 				  		echo '<tr>';
@@ -43,18 +47,19 @@
 				  		// 		' . $result->CATEGORIES.'</a></td>';
 				  			echo '<td>' . $result->COMPANYNAME.'</td>';
 				  			echo '<td>' . $result->OCCUPATIONTITLE.'</td>';
-				  			echo '<td>' . $result->REQ_NO_EMPLOYEES.'</td>';
+				  			//echo '<td>' . $result->REQ_NO_EMPLOYEES.'</td>';
 				  			echo '<td>' . $result->SALARIES.'</td>';
-				  			echo '<td>' . $result->DURATION_EMPLOYEMENT.'</td>';
-				  			echo '<td>' . $result->QUALIFICATION_WORKEXPERIENCE.'</td>';
-				  			echo '<td>' . $result->JOBDESCRIPTION.'</td>';
-				  			echo '<td>' . $result->PREFEREDSEX.'</td>';
-				  			echo '<td>' . $result->SECTOR_VACANCY.'</td>';
+				  			//echo '<td>' . $result->DURATION_EMPLOYEMENT.'</td>';
+				  			//echo '<td>' . $result->QUALIFICATION_WORKEXPERIENCE.'</td>';
+				  			//echo '<td>' . $result->JOBDESCRIPTION.'</td>';
+				  			//echo '<td>' . $result->PREFEREDSEX.'</td>';
+				  			//echo '<td>' . $result->SECTOR_VACANCY.'</td>';
+							echo '<td>' . $result->FULLNAME.'</td>';
 				  			echo '<td>' . $result->JOBSTATUS.'</td>';
-				  		echo '<td align="center"><a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
+				  			echo '<td align="center"><a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'" class="btn btn-primary btn-xs">  <span class="fa fa-edit fw-fa"></a>
 				  		     <a title="Delete" href="controller.php?action=delete&id='.$result->JOBID.'" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
 				  		// echo '<td></td>';
-				  		echo '</tr>';
+				  			echo '</tr>';
 				  	} 
 				  	?>
 				  </tbody>

@@ -36,6 +36,7 @@ switch ($action) {
 				$mydb->setQuery($sql);
 				$cat = $mydb->loadSingleResult();
 				$_POST['CATEGORY']=$cat->CATEGORY;
+				$publisher = $_SESSION['ADMIN_USERID'];
 				$job = New Jobs();
 				$job->COMPANYID							= $_POST['COMPANYID']; 
 				$job->CATEGORY							= $_POST['CATEGORY']; 
@@ -48,6 +49,7 @@ switch ($action) {
 				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
 				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
 				$job->DATEPOSTED						= date('Y-m-d H:i');
+				$job->PUBLISHERID 						= $publisher;
 				$job->create();
 
 				$jobID = $mydb->insert_id();
