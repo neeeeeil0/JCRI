@@ -137,6 +137,20 @@
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
+                      "JOBSTATUS">Status:</label> 
+                      <div class="col-md-8">
+                          <select class="form-control input-sm" id="JOBSTATUS" name="JOBSTATUS">
+                          <option value="Closed">Select</option>
+                           <option>Open</option>
+                           <option>Closed</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>  
+
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
                       "SECTOR_VACANCY">Sector of Vacancy:</label> 
                       <div class="col-md-8">
                         <textarea class="form-control input-sm" id="SECTOR_VACANCY" name="SECTOR_VACANCY" placeholder="Sector of Vacancy"   autocomplete="none"></textarea> 

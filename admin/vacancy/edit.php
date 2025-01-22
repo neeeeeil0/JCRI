@@ -170,6 +170,20 @@
                         </select>
                       </div>
                     </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "JOBSTATUS">Status:</label> 
+                      <div class="col-md-8">
+                          <select class="form-control input-sm" id="JOBSTATUS" name="JOBSTATUS">
+                          <option value="Closed">Select</option>
+                           <option <?php echo ($res->JOBSTATUS=='Open') ? "SELECTED" :"" ?>>Open</option>
+                           <option <?php echo ($res->JOBSTATUS=='Closed') ? "SELECTED" :"" ?>>Closed</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>  
 
                   <div class="form-group">
