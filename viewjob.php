@@ -80,7 +80,7 @@
                                             
                                         </div>
                                         <a href="<?php echo web_root; ?>index.php?q=apply&job=<?php echo $result->JOBID;?>" 
-   style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3498db; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center; transition: background-color 0.3s ease;" 
+   style="display: inline-block; margin-top: 10px; margin-left: 10px; padding: 10px 20px; background-color: #3498db; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center; transition: background-color 0.3s ease;" 
    onmouseover="this.style.backgroundColor='#2980b9'" 
    onmouseout="this.style.backgroundColor='#3498db'">
    Apply Now!

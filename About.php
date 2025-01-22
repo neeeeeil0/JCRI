@@ -186,69 +186,65 @@
 						<!-- Our Team starts -->
 				
 						<!-- Heading -->
-						<div class="block-heading-six">
-							<h4 class="bg-color">Our Team</h4>
-						</div>
-						<br>
-						
-						<!-- Our team starts -->
-						
-						<div class="team-six">
-							<div class="row" style="padding-left: 200px;">
-								
-								<div class="col-md-2 col-sm-6" >
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar5.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Neil Oliver Regondola</h4>
-										<span class="deg">Programmer</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar3.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Julia Nuesca</h4>
-										<span class="deg">Documentation</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar04.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>John Veneracion</h4>
-										<span class="deg">Researcher</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar2.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Joyce Abano</h4>
-										<span class="deg">Analyst</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Sharence Alas</h4>
-										<span class="deg">Tester</span> 
-									</div>
-								</div>
-							</div>
-						</div>
-						
+						<div class="block-heading-six" style="text-align: center; margin-bottom: 20px;">
+    <h4 class="bg-color" style="font-size: 2rem; font-weight: bold;">Our Team</h4>
+</div>
+
+<!-- Our team starts -->
+<div class="team-six" 
+     style="display: flex; justify-content: center; gap: 20px; padding: 0 20px;">
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/avatar5.png" 
+             alt="Neil Oliver Regondola" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Neil Oliver Regondola</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Programmer</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/avatar3.png" 
+             alt="Julia Nuesca" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Julia Nuesca</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Documentation</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/avatar04.png" 
+             alt="John Veneracion" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">John Veneracion</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Researcher</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/avatar2.png" 
+             alt="Joyce Abano" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Joyce Abano</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Analyst</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/avatar.png" 
+             alt="Sharence Alas" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Sharence Alas</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Tester</span>
+    </div>
+</div>
+		<br><br>				
 						<!-- Our team ends -->
 					  
 						
