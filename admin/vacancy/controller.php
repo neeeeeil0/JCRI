@@ -56,11 +56,13 @@ switch ($action) {
 				$jobID = $mydb->insert_id();
 
             	// Insert notifications for all applicants
-				$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
-						SELECT APPLICANTID, $jobID, 0, NOW()
-						FROM tblapplicants";
-				$mydb->setQuery($sql);
-				$mydb->executeQuery();
+				if ($_POST['JOBSTATUS'] == 'Open' ) {
+					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
+							SELECT APPLICANTID, $jobID, 0, NOW()
+							FROM tblapplicants";
+					$mydb->setQuery($sql);
+					$mydb->executeQuery();
+				}
 
 				message("New Job Vacancy created successfully!", "success");
 				redirect("index.php");
@@ -82,6 +84,7 @@ switch ($action) {
 				$mydb->setQuery($sql);
 				$cat = $mydb->loadSingleResult();
 				$_POST['CATEGORY']=$cat->CATEGORY;
+				$jobID = $_POST['JOBID'];
 				$job = New Jobs();
 				$job->COMPANYID							= $_POST['COMPANYID']; 
 				$job->CATEGORY							= $_POST['CATEGORY']; 
@@ -96,6 +99,15 @@ switch ($action) {
 				$job->JOBSTATUS							= $_POST['JOBSTATUS'];
 				$job->update($_POST['JOBID']);
 
+
+				if ($_POST['JOBSTATUS'] == 'Open' ) {
+					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
+							SELECT APPLICANTID, $jobID, 0, NOW()
+							FROM tblapplicants";
+					$mydb->setQuery($sql);
+					$mydb->executeQuery();
+				}
+				
 				message("Job Vacancy has been updated!", "success");
 				redirect("index.php");
 			}
