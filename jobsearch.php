@@ -1,4 +1,5 @@
 <style>
+	
 	#content {
 		font-family: Arial, sans-serif;
 		display: flex;
@@ -7,35 +8,37 @@
 		
 	}
 	.search-container {
-		margin: 20px 0;
-		width: 80%;
-		max-width: 800px;
-		display: flex;
-		gap: 10px;
-	}
+        margin: 20px 0;
+        width: 80%;
+        max-width: 800px;
+        display: flex;
+        gap: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px; /* Slight curve */
+        padding: 5px; /* Adding slight padding */
+    }
 
-	.search-bar {
-		flex: 2;
-		padding: 10px;
-		font-size: 16px;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-	}
+    .searchbar {
+        flex: 2;
+        padding: 10px;
+        font-size: 16px;
+        border: none; /* Remove individual border */
+        border-radius: 5px; /* Slight curve for the search bar */
+    }
 
-	.find-btn {
-		padding: 10px 20px;
-		font-size: 16px;
-		background-color: #007BFF;
-		color: white;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-	}
+    .find-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 8px; /* More curve for the button */
+        cursor: pointer;
+    }
 
-	.find-btn:hover {
-		background-color: #0056b3;
-	}
-
+    .find-btn:hover {
+        background-color: #0056b3;
+    }
 	.results-container {
 		display: flex;
 		flex-direction: column;
@@ -166,7 +169,7 @@
 		margin-right: 20px;
 	}
 	.table-filter .media .pagado {
-		color: #5cb85c;
+		color: #7f8c8d;
 		font-size: 14px;
 		font-weight: bold;
 		line-height: normal;
@@ -184,12 +187,86 @@
 	.selected-row {
         background-color: #f0f8ff; /* Light blue background */
     }
+	.result-title h4 a {
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-weight: bold;
+	}
+
+        .result-title h5 {
+            color: #7f8c8d;
+            margin: 5px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Divider */
+        .divider {
+            border: 0;
+            height: 1px;
+            background:rgb(27, 41, 44);
+            margin: 20px 0;
+        }
+
+        /* Detail Sections */
+        .result-detail {
+            margin: 10px 0;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .no-style {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .icon {
+            margin-right: 8px;
+            color: #16a085;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
 
 </style>
 
 <section id="content">
     <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search..." name="find" id="search-bar" value="<?php echo isset($_GET['find']) ? htmlspecialchars($_GET['find']) : ''; ?>">
+        <input type="text" class="searchbar" placeholder="Search a keyword..." name="find" id="search-bar" value="<?php echo isset($_GET['find']) ? htmlspecialchars($_GET['find']) : ''; ?>">
         <button class="find-btn" type="button" id="find-btn">Find</button>
     </div>
 
@@ -198,13 +275,15 @@
             <div class="results-list">
                 <table class="table table-filter" id="job-results-table">
                     <tbody>
-                        <!-- Job results will be displayed here -->
+                        <!-- Job List results will be displayed here -->
                     </tbody>
                 </table>
             </div>
 
             <div class="result-details">
-                <div id="details-text">Click on a row to view details.</div>
+                <div id="details-text">
+					 <!-- Job details results here -->
+				</div>
             </div>
         </div>
     </div>
@@ -238,32 +317,38 @@
 					resultDetailsDiv.innerHTML = `<p>${data.error}</p>`;
 				} else {
 					resultDetailsDiv.innerHTML = `
-						<div>
-							<h4><a href="index.php?q=viewjob&search=${data.JOBID}">${data.OCCUPATIONTITLE}</a></h4>
-							<h5>${data.COMPANYNAME}</h5>
-							<h5>${data.COMPANYADDRESS}</h5>
-							<a href="index.php?q=apply&job=${data.JOBID}" class="btn btn-main btn-next-tab">Apply Now!</a>
-						</div>
-						<div>
-							<p>Job Details:</p>
-							<ul>
-								<li><i class="fp-ht-food"></i>Salary: ${data.SALARIES}</li>
-								<li><i class="fa fa-sun-"></i>Duration of Employment: ${data.DURATION_EMPLOYEMENT}</li>
-								<li><i class="fp-ht-tv"></i>Preferred Sex: ${data.PREFEREDSEX}</li>
-							</ul>
-						</div>
-						<div>
-							<p>Qualification/Work Experience:</p>
-							<ul style="list-style: none;">
-								<li>${data.QUALIFICATION_WORKEXPERIENCE}</li>
-							</ul>
-						</div>
-						<div>
-							<p>Job Description:</p>
-							<ul style="list-style: none;">
-								<li>${data.JOBDESCRIPTION}</li>
-							</ul>
-						</div>
+						
+		<div class="result-title">
+        	<h4><a href="index.php?q=viewjob&search=${data.JOBID}">${data.OCCUPATIONTITLE}</a></h4>
+        	<h5>${data.COMPANYNAME}</h5>
+        	<h5>${data.COMPANYADDRESS}</h5>
+        	<a href="index.php?q=apply&job=${data.JOBID}" class="btn">Apply Now!</a>
+    	</div>
+    	
+		<hr class="divider">
+    	<div class="result-detail">
+			<p class="section-title">Job Details:</p>
+			<ul>
+				<li><i class="icon"></i> Salary: ${data.SALARIES}</li>
+				<li><i class="icon"></i> Duration of Employment: ${data.DURATION_EMPLOYEMENT}</li>
+				<li><i class="icon"></i> Preferred Sex: ${data.PREFEREDSEX}</li>
+			</ul>
+    	</div>
+    	<hr class="divider">
+
+		<div class="result-detail">
+			<p class="section-title">Qualification/Work Experience:</p>
+			<ul class="no-style">
+				<li>${data.QUALIFICATION_WORKEXPERIENCE}</li>
+			</ul>
+		</div>
+		<hr class="divider">
+		<div class="result-detail">
+			<p class="section-title">Job Description:</p>
+			<ul class="no-style">
+				<li>${data.JOBDESCRIPTION}</li>
+			</ul>
+		</div>
 					`;
 				}
 			})
