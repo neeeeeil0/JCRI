@@ -68,11 +68,10 @@ switch ($view) {
         $title='Search by Job Title';	
 		$content='searchbytitle.php';		
 		break;
-	case 'ajax' :
-		$title='ajax';	
-		$content='ajax.php';
-		redirect(location: "index.php");
-		break;				
+	case 'notif' :
+		$title='Job Details';	
+		$content='applicant/viewjob.php';		
+		break;
 	default :
 	    $active_home='active';
 	    $title="Home";	

@@ -154,7 +154,7 @@
                                     <button class="close" data-dismiss="modal" type=
                                     "button">×</button>
 
-                                    <h4 class="modal-title" id="myModalLabel">Choose Image.</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Change Profile.</h4>
                                 </div>
 
                                 <form action="controller.php?action=photos" enctype="multipart/form-data" method=

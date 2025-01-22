@@ -64,25 +64,55 @@
                 <p class="pull-left hidden-xs"><i class="fa fa-search"></i>HireVantage RMS</p>
                 <?php if (isset($_SESSION['APPLICANTID'])) { 
 
-                    $sql = "SELECT count(*) as 'COUNTNOTIF' FROM `tbljob` ORDER BY `DATEPOSTED` DESC";
-                    $mydb->setQuery($sql);
-                    $showNotif = $mydb->loadSingleResult();
-                    $notif =isset($showNotif->COUNTNOTIF) ? $showNotif->COUNTNOTIF : 0;
+                  // Count unread notifications for the applicant
+                  $sql = "SELECT count(*) as 'COUNTNOTIF' 
+                          FROM `tblnotification` n 
+                          WHERE n.APPLICANTID = {$_SESSION['APPLICANTID']} 
+                          AND n.ISVIEWED = 0";
+                  $mydb->setQuery($sql);
+                  $showNotif = $mydb->loadSingleResult();
+                  $notif = isset($showNotif->COUNTNOTIF) ? $showNotif->COUNTNOTIF : 0;
 
+                  // Get applicant details
+                  $applicant = new Applicants();
+                  $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);
 
-                    $applicant = new Applicants();
-                    $appl  = $applicant->single_applicant($_SESSION['APPLICANTID']);
+                  // Count unread job registration messages for the applicant
+                  $sql = "SELECT count(*) as 'COUNT' 
+                          FROM `tbljobregistration` 
+                          WHERE `PENDINGAPPLICATION` = 0 
+                          AND `HVIEW` = 0 
+                          AND `APPLICANTID` = '{$appl->APPLICANTID}'";
+                  $mydb->setQuery($sql);
+                  $showMsg = $mydb->loadSingleResult();
+                  $msg = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
 
-                    $sql ="SELECT count(*) as 'COUNT' FROM `tbljobregistration` WHERE `PENDINGAPPLICATION`=0 AND `HVIEW`=0 AND `APPLICANTID`='{$appl->APPLICANTID}'";
-                    $mydb->setQuery($sql);
-                    $showMsg = $mydb->loadSingleResult();
-                    $msg =isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
+                  // Display the notification and message counts
+                  echo '<p class="pull-right login">
+                          <a title="View Notification(s)" href="' . web_root . 'applicant/index.php?view=notification">
+                              <i class="fa fa-bell-o"></i> 
+                              <span class="label label-success">' . $notif . '</span>
+                          </a> | 
+                          <a title="View Message(s)" href="' . web_root . 'applicant/index.php?view=message">
+                              <i class="fa fa-envelope-o"></i> 
+                              <span class="label label-success">' . $msg . '</span>
+                          </a> | 
+                          <a title="View Profile" href="' . web_root . 'applicant/"> 
+                              <i class="fa fa-user"></i> Hi, ' . $appl->FNAME . ' ' . $appl->LNAME . '
+                          </a> | 
+                          <a href="' . web_root . 'logout.php">  
+                              <i class="fa fa-sign-out"></i>Logout
+                          </a>
+                      </p>';
 
-                    echo ' <p class="pull-right login"><a title="View Notification(s)" href="'.web_root.'applicant/index.php?view=notification"> <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> | <a title="View Message(s)" href="'.web_root.'applicant/index.php?view=message"> <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> | <a title="View Profile" href="'.web_root.'applicant/"> <i class="fa fa-user"></i> Hi, '. $appl->FNAME. ' '.$appl->LNAME .' </a> | <a href="'.web_root.'logout.php">  <i class="fa fa-sign-out"> </i>Logout</a> </p>';
+                  } else { ?>
+                  <p class="pull-right login">
+                      <a data-target="#myModal" data-toggle="modal" href=""> 
+                          <i class="fa fa-lock"></i> Login 
+                      </a>
+                  </p>
+                  <?php } ?>
 
-                    }else{ ?>
-                      <p   class="pull-right login"><a data-target="#myModal" data-toggle="modal" href=""> <i class="fa fa-lock"></i> Login </a></p>
-                <?php } ?>
               
               </div>
             </div>
@@ -204,8 +234,9 @@
           <h5 class="widgetheading">Quick Links</h5>
           <ul class="link-list">
             <li><a href="<?php echo web_root; ?>index.php">Home</a></li>
+            <li><a href="<?php echo web_root; ?>index.php?q=jobsearch">Job Search</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=company">Company</a></li>
-            <li><a href="<?php echo web_root; ?>index.php?q=hiring">Hiring</a></li>
+            <li><a href="<?php echo web_root; ?>index.php?q=hiring">Hiring Now</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=About">About us</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=Contact">Contact us</a></li>
           </ul>
@@ -222,7 +253,7 @@
 
 
                   foreach ($cur as $result) {
-                    echo ' <li><a href="'.web_root.'index.php?q=viewjob&search='.$result->JOBID.'">'.$result->COMPANYNAME . '/ '. $result->OCCUPATIONTITLE .'</a></li>';
+                    echo ' <li><a href="'.web_root.'index.php?q=viewjob&search='.$result->JOBID.'">'.$result->OCCUPATIONTITLE. ' - '. $result->COMPANYNAME .'</a></li>';
                   } 
               ?> 
           </ul>

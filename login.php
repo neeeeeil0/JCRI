@@ -2,7 +2,7 @@
     <div class="modal-dialog" style="max-width: 450px;">
         <div class="modal-content" style="background-color: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);">
             <div class="modal-header" style="border-bottom: none; padding-bottom: 0; text-align: center;">
-            <img src="plugins/home-plugins/img/slides/logo2.png" alt="Login Logo" style="width: 200px; margin-bottom: 10px; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));">s
+            <img src="plugins/home-plugins/img/slides/logo2.png" alt="Login Logo" style="width: 200px; margin-bottom: 10px; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));">
                 <hr style="border-top: 2px solid #eee; margin-bottom: 35px;">
             </div>
             <div class="modal-body" style="padding-top: 0;">

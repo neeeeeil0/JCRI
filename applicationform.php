@@ -18,7 +18,23 @@ $result = $mydb->loadSingleResult();
 
  <p> <?php check_message();?></p>     
 <?php 
+$userApplied = false;
+$uploadedFileName = '';
+
 if (isset($_SESSION['APPLICANTID'])) {
+    $applicantId = $_SESSION['APPLICANTID'];
+    $jobId = $result->JOBID;
+
+    // Query to check if application exists and get file name
+    $checkApplicationQuery = "SELECT `FILE_NAME` FROM `tblattachmentfile` WHERE `USERATTACHMENTID` = '$applicantId' AND `JOBID` = '$jobId'";
+    $mydb->setQuery($checkApplicationQuery);
+    $resultSet = $mydb->executeQuery();
+    
+    if ($mydb->num_rows($resultSet) > 0) {
+        $userApplied = true;
+        $row = $mydb->fetch_array($resultSet); // Fetch the first matching row
+        $uploadedFileName = $row['FILE_NAME']; // Get the file name
+    }
 ?>
     <div class="col-sm-12">
                    <div class="row">
@@ -74,25 +90,38 @@ if (isset($_SESSION['APPLICANTID'])) {
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-header">
-                            <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">Attach your Resume here.
-                                <input name="JOBID" type="hidden" value="<?php echo $_GET['job'];?>">
+                            <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">
+                                <?php if ($userApplied): ?>
+                                    Attached File: <strong><?php echo htmlspecialchars($uploadedFileName); ?></strong>
+                                <?php else: ?>
+                                    Attach your Resume here.
+                                    <input name="JOBID" type="hidden" value="<?php echo $_GET['job']; ?>">
+                                <?php endif; ?>
                             </div>
                         </div>
+                        <?php if (!$userApplied): ?>
                         <div class="panel-body"> 
-                            <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Attachtment File:</label> 
+                            <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Attachment File:</label> 
                             <div class="col-md-10" style="padding: 0;margin: 0;">
                                 <input id="picture" name="picture" type="file">
                                 <input name="MAX_FILE_SIZE" type="hidden" value="1000000"> 
                             </div> 
                         </div>
+                        <?php endif; ?>
                     </div> 
                 </div> 
             </div>
            <div class="form-group">
-            <div class="col-md-12"> 
-                 <button class="btn btn-primary btn-sm pull-right" name="submit" type="submit" >Submit <span class="fa fa-arrow-right"></span></button>
-              <a href="index.php" class="btn btn-info"><span class="fa fa-arrow-left"></span>&nbsp;<strong>Back</strong></a> 
-            </div>
+                <div class="col-md-12">
+                    <?php if ($userApplied): ?>
+                        <button class="btn btn-secondary btn-sm pull-right" disabled><strong>Applied</strong></button>
+                    <?php else: ?>
+                        <button class="btn btn-primary btn-sm pull-right" name="submit" type="submit"><strong>Submit <span class="fa fa-arrow-right"></span></strong></button>
+                    <?php endif; ?>
+                    <a href="#" onclick="window.history.go(-1); return false;" class="btn btn-info">
+                        <span class="fa fa-arrow-left"></span><strong> Back</strong>
+                    </a>
+                </div>
            </div> 
         </form>
 <?php }else{ ?>
@@ -160,7 +189,7 @@ if (isset($_SESSION['APPLICANTID'])) {
                             </div>
                         </div>
                         <div class="panel-body"> 
-                            <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Attachtment File:</label> 
+                            <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Attachment File:</label> 
                             <div class="col-md-10" style="padding: 0;margin: 0;">
                                 <input id="picture" name="picture" type="file">
                                 <input name="MAX_FILE_SIZE" type="hidden" value="1000000"> 

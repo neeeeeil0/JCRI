@@ -194,12 +194,6 @@
 <body>
     <div class="search-container">
         <input type="text" class="search-bar" placeholder="Search...">
-        <select class="dropdown-list">
-            <option value="">Company</option>
-        </select>
-        <select class="dropdown-list">
-            <option value="">Classification</option>
-        </select>
         <button class="find-btn">Find</button>
     </div>
 
@@ -244,80 +238,59 @@
 
         <div class="result-details">
         <div class="container">
-    <div class="mg-available-rooms">
-        <h5 class="mg-sec-left-title">Date Posted: May 20, 2025</h5>
-        <div class="mg-avl-rooms">
-            <div class="mg-avl-room">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <!-- Optional Placeholder -->
-                    </div>
-                    <div class="col-sm-10">
-                        <div style="border-bottom: 1px solid #ddd; padding: 10px; font-size: 25px; font-weight: bold; color: #000; margin-bottom: 5px;">
-                            Accounting
-                        </div>
-                        <div class="row contentbody">
-                            <div class="col-sm-6">
-                                <br>
-                                <p><strong>Job Details:</strong></p>
-                                <br>
-                                <ul style="text-indent: 30px;"><t>
-                                    <li>Required No. of Employees: 3</li>
-                                    <li>Salary: 200,000</li>
-                                    <li>Duration of Employment: February 21</li>
-                                    <li>Preferred Sex: Female</li>
-                                    <li>Sector of Vacancy: Yes</li></t>
-                                </ul>
-                            </div><br>
-                            <div class="col-sm-12">
-                                <p><strong>Qualification/Work Experience:</strong></p><br>
-                                <ul>
-                                    <li style="text-indent: 30px;">Two years of experience</li>
-                                </ul>
-                            </div><br>
-                            <div class="col-sm-12">
-                                <p><strong>Job Description:</strong></p><br>
-                                <ul>
-                                    <li style="text-indent: 30px;"> We are looking for you</li>
-                                </ul>
-                            </div><br>
-                            <div class="col-sm-12">
-                                <p><strong>Employer:</strong> URC</p><br>
-                                <p><strong>Location:</strong> Sta Mesa</p>
+            <div class="mg-available-rooms">
+                <h5 class="mg-sec-left-title">Date Posted: May 20, 2025</h5>
+                <div class="mg-avl-rooms">
+                    <div class="mg-avl-room">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <!-- Optional Placeholder -->
                             </div>
-                        </div><br><br>
-                        <form action="apply.html" method="post">
-                            <button type="submit" class="btn btn-main btn-next-tab" style=" display: grid; place-items: center; padding: 10px 20px; font-size: 16px;">Apply Now!</button>
-                        </form>
+                            <div class="col-sm-10">
+                                <div style="border-bottom: 1px solid #ddd; padding: 10px; font-size: 25px; font-weight: bold; color: #000; margin-bottom: 5px;">
+                                    Accounting
+                                </div>
+                                <div class="row contentbody">
+                                    <div class="col-sm-6">
+                                        <br>
+                                        <p><strong>Job Details:</strong></p>
+                                        <br>
+                                        <ul style="text-indent: 30px;"><t>
+                                            <li>Required No. of Employees: 3</li>
+                                            <li>Salary: 200,000</li>
+                                            <li>Duration of Employment: February 21</li>
+                                            <li>Preferred Sex: Female</li>
+                                            <li>Sector of Vacancy: Yes</li></t>
+                                        </ul>
+                                    </div><br>
+                                    <div class="col-sm-12">
+                                        <p><strong>Qualification/Work Experience:</strong></p><br>
+                                        <ul>
+                                            <li style="text-indent: 30px;">Two years of experience</li>
+                                        </ul>
+                                    </div><br>
+                                    <div class="col-sm-12">
+                                        <p><strong>Job Description:</strong></p><br>
+                                        <ul>
+                                            <li style="text-indent: 30px;"> We are looking for you</li>
+                                        </ul>
+                                    </div><br>
+                                    <div class="col-sm-12">
+                                        <p><strong>Employer:</strong> URC</p><br>
+                                        <p><strong>Location:</strong> Sta Mesa</p>
+                                    </div>
+                                </div><br><br>
+                                <form action="apply.html" method="post">
+                                    <button type="submit" class="btn btn-main btn-next-tab" style=" display: grid; place-items: center; padding: 10px 20px; font-size: 16px;">Apply Now!</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div> 
         </div>
     </div>
-</div> 
-        </div>
-    </div>
-<!--
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const resultsList = document.querySelectorAll('.results-list tr');
-            const detailsText = document.getElementById('details-text');
-
-            // Set default details to the first result
-            const defaultDetails = resultsList[0]?.getAttribute('data-id');
-            if (defaultDetails) {
-                detailsText.textContent = defaultDetails;
-            }
-
-            resultsList.forEach(item => {
-                item.addEventListener('click', () => {
-                    const details = item.getAttribute('data-id');
-                    detailsText.textContent = details;
-                });
-            });
-        });
-    </script>
-    -->
     
 </body>
 </html>
