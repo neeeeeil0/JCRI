@@ -124,9 +124,26 @@
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
+                      "EDUCATION">Educational Attainment:</label> 
+                      <div class="col-md-8">
+                          <select class="form-control input-sm" id="EDUCATION" name="EDUCATION">
+                          <option value="None">Select</option>
+                           <option>Doctorate</option>
+                           <option>Masteral</option>
+                           <option>College</option>
+                           <option>Senior High School</option>
+                           <option>High School</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div> 
+
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
                       "QUALIFICATION_WORKEXPERIENCE">Qualification/Experience:</label> 
                       <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="QUALIFICATION_WORKEXPERIENCE" name="QUALIFICATION_WORKEXPERIENCE" placeholder="Qualification/Experience:"   autocomplete="none"></textarea> 
+                        <textarea class="form-control input-sm" id="QUALIFICATION_WORKEXPERIENCE" name="QUALIFICATION_WORKEXPERIENCE" placeholder="Qualification/Experience"   autocomplete="none"></textarea> 
                       </div>
                     </div>
                   </div> 
