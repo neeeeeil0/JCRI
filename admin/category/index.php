@@ -7,7 +7,7 @@ require_once("../../include/initialize.php");
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 $header=$view;
-$title="Category";
+$title="Classification";
 switch ($view) {
 	case 'list' :
 		$content    = 'list.php';		
@@ -27,6 +27,6 @@ switch ($view) {
 	default :
 		$content    = 'list.php';		
 }
-require_once ("../theme/templates.php");
+require_once ("../theme/admin.php");
 ?>
   

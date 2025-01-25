@@ -102,15 +102,18 @@ switch ($action) {
 				$mydb->setQuery($sql);
  				$res = $mydb->loadSingleResult();
 
-				if ($_SESSION['ADMIN_ROLE'] == 'Administrator'){
+				if ($_SESSION['ADMIN_ROLE'] != 'Administrator'){
+					message("Only Administrator Can Delete!","info");
+				}else{
 					if($res->DELETEABLE == true){
 						$user = New User();
 						$user->delete($id);
+						message("User has been deleted!","info");
+						
 					}
 				}
-			 
-			message("User has been deleted!","info");
-			redirect('index.php');
+				redirect('index.php');
+			
 		// }
 		// }
 

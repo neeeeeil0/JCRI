@@ -8,6 +8,7 @@
                 // $viewTitle = mysql_fetch_assoc($res);
                 // echo $viewTitle['Title'];
             ?>
+            JCRI | Admin Portal
         </title>
        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -36,12 +37,9 @@
 
         <link rel="stylesheet" href="<?php echo web_root;?>plugins/dataTables/jquery.dataTables.min.css">  
 
-        <!-- <link rel="stylesheet" href="<?php echo web_root;?>plugins/datepicker/datepicker3.css"> -->
-        <!-- Daterange picker -->
-        <!-- <link rel="stylesheet" href="<?php echo web_root;?>plugins/daterangepicker/daterangepicker-bs3.css"> -->
-        <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="<?php echo web_root;?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
- 
+        
+        <script src="<?php echo web_root; ?>plugins/jQuery/jQuery-3.7.1.min.js"></script>
     </head>
 
  <body class="hold-transition skin-blue fixed sidebar-mini">
@@ -169,16 +167,16 @@
             <i class="fa fa-building"></i> <span>Company</span> 
           </a>
         </li>
+        <li class="<?php echo (currentpage() == 'category') ? "active" : false;?>" > 
+          <a href="<?php echo web_root ;?>admin/category/">
+            <i class="fa fa-list"></i> <span>Classification</span>  
+          </a>
+        </li> 
         <li class="<?php echo (currentpage() == 'vacancy') ? "active" : false;?>" >
           <a href="<?php echo web_root ;?>admin/vacancy/">
             <i class="fa fa-suitcase"></i> <span>Vacancy</span> 
           </a>
         </li>
-        <li class="<?php echo (currentpage() == 'employee') ? "active" : false;?>" >
-          <a href="<?php echo web_root ;?>admin/employee/">
-            <i class="fa fa-users"></i> <span>Employee</span> 
-          </a>
-        </li> 
         <li class="<?php echo (currentpage() == 'applicants') ? "active" : false;?>" > 
           <a href="<?php echo web_root ;?>admin/applicants/">
             <i class="fa fa-users"></i> <span>Applicants</span> 
@@ -192,26 +190,13 @@
             </span>
           </a>
         </li> 
-        <li class="<?php echo (currentpage() == 'category') ? "active" : false;?>" > 
-          <a href="<?php echo web_root ;?>admin/category/">
-            <i class="fa fa-list"></i> <span>Category</span>  
+        <li class="<?php echo (currentpage() == 'employee') ? "active" : false;?>" >
+          <a href="<?php echo web_root ;?>admin/employee/">
+            <i class="fa fa-users"></i> <span>Employees</span> 
           </a>
         </li> 
-       <!--  <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo web_root ;?>pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="<?php echo web_root ;?>pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="<?php echo web_root ;?>pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="<?php echo web_root ;?>pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="<?php echo web_root ;?>pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="<?php echo web_root ;?>pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
+        
+        
          
          <li class="<?php echo (currentpage() == 'user') ? "active" : false;?>">
           <a href="<?php echo web_root; ?>admin/user/">
@@ -268,13 +253,7 @@
          </div>
          </section>
  </div>
-  <!-- /.content-wrapper -->
-
-
   <footer class="main-footer">
-    <!--<div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.2
-    </div>-->
     <strong>Copyright &copy; 2025 <a href="#">HireVantage RMS</a>.</strong> All rights
     reserved.
   </footer>
@@ -282,7 +261,7 @@
   
 
     </body>
-      <script type="text/javascript" src="<?php echo web_root; ?>plugins/jQuery/jQuery-2.1.4.min.js"> </script>
+      
       <script type="text/javascript" src="<?php echo web_root; ?>bootstrap/js/bootstrap.min.js" ></script>
       <script src="<?php echo web_root;?>dist/js/app.min.js"></script> 
 
@@ -299,31 +278,21 @@
       <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script> 
       <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>plugins/input-mask/jquery.inputmask.extensions.js"></script> 
 
-   <!--      <script src="<?php echo web_root; ?>admin/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo web_root; ?>admin/js/dataTables.bootstrap.min.js"></script>
- <script type="text/javascript" src="<?php echo web_root; ?>js/jquery-1.10.2.js"></script>       
-        <script type="text/javascript" src="<?php echo web_root; ?>js/jquery.mixitup.min.js" ></script>
-        <script type="text/javascript" src="<?php echo web_root; ?>js/main.js" ></script> 
-        <script type="text/javascript" src="<?php echo web_root; ?>js/janobe.js" ></script> 
-        <script src="<?php echo web_root; ?>admin/js/ekko-lightbox.js"></script>
-        <script src="<?php echo web_root; ?>admin/js/lightboxfunction.js"></script> 
-  -->
-<!-- jQuery 2.1.4 --> 
 
 <script>
-  $(function () {
-    $("#dash-table").DataTable({
-      "order": [[0, "desc"]] // Set the first column (index 0) to sort in descending order
-    });
-    $('#dash-table2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
+$(function () {
+  $("#dash-table").DataTable({
+    "order": [[0, "desc"]] // Set the first column (index 0) to sort in descending order
   });
+  $('#dash-table2').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false
+  });
+});
 
 $('input[data-mask]').each(function() {
   var input = $(this);

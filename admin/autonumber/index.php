@@ -27,6 +27,6 @@ switch ($view) {
 	default :
 		$content    = 'list.php';		
 }
-require_once ("../theme/templates.php");
+require_once ("../theme/admin.php");
 ?>
   

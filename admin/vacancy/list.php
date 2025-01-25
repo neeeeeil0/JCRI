@@ -11,7 +11,7 @@
    		 </div>
 	 		    <form action="controller.php?action=delete" Method="POST">  	
 			     <div class="table-responsive">					
-				<table id="dash-table" class="table table-striped table-bordered table-hover"  style="font-size:12px" cellspacing="0">
+				<table id="dash-table2" class="table table-striped table-bordered table-hover"  style="font-size:12px" cellspacing="0">
 				
 				  <thead>
 				  	<tr>
@@ -37,7 +37,8 @@
 				  		$mydb->setQuery("SELECT j.*, c.COMPANYNAME, u.FULLNAME
 												FROM tbljob j
 												LEFT JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
-												LEFT JOIN tblusers u ON j.PUBLISHERID = u.USERID;");
+												LEFT JOIN tblusers u ON j.PUBLISHERID = u.USERID
+												ORDER BY j.OCCUPATIONTITLE;");
 				  		$cur = $mydb->loadResultList(); 
 						foreach ($cur as $result) {
 				  		echo '<tr>';

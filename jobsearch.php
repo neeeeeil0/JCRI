@@ -300,7 +300,7 @@
 
 		// Function to fetch job details
 		function fetchJobDetails(jobId) {
-			console.log("Fetching job details for job ID:", jobId);
+			//console.log("Fetching job details for job ID:", jobId);
 
 			fetch('get_job.php', {
 				method: 'POST', // POST method
@@ -311,7 +311,7 @@
 			})
 			.then(response => response.json())
 			.then(data => {
-				console.log("Job Details Data:", data);
+				//console.log("Job Details Data:", data);
 
 				if (data.error) {
 					resultDetailsDiv.innerHTML = `<p>${data.error}</p>`;
@@ -370,7 +370,7 @@
 			})
 			.then(response => response.json())
 			.then(data => {
-				console.log("Search Results Data:", data);
+				//console.log("Search Results Data:", data);
 
 				if (data.error) {
 					jobResultsTable.querySelector('tbody').innerHTML = `<tr><td colspan="5">${data.error}</td></tr>`;
