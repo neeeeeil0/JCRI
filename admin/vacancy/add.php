@@ -37,10 +37,21 @@
                     </div>
                   </div>  
 
-                     <div class="form-group">
+                     
+                  <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
-                      "CATEGORY">Category :</label>
+                      "OCCUPATIONTITLE">Job Title:</label> 
+                      <div class="col-md-8">
+                         <input class="form-control input-sm" id="OCCUPATIONTITLE" name="OCCUPATIONTITLE" placeholder="Occupation Title"   autocomplete="none"/> 
+                      </div>
+                    </div>
+                  </div> 
+
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "CATEGORY">Classification:</label>
 
                       <div class="col-md-8">
                         <select class="form-control input-sm" id="CATEGORY" name="CATEGORY" required>
@@ -59,25 +70,6 @@
                       </div>
                     </div>
                   </div>  
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="col-md-4 control-label" for=
-                      "OCCUPATIONTITLE">Occupation Title:</label> 
-                      <div class="col-md-8">
-                         <input class="form-control input-sm" id="OCCUPATIONTITLE" name="OCCUPATIONTITLE" placeholder="Occupation Title"   autocomplete="none"/> 
-                      </div>
-                    </div>
-                  </div>  
-
-                    <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="col-md-4 control-label" for=
-                      "REQ_NO_EMPLOYEES">Required no. of Employees:</label> 
-                      <div class="col-md-8">
-                         <input class="form-control input-sm" id="REQ_NO_EMPLOYEES" name="REQ_NO_EMPLOYEES" placeholder="Required no. of Employees"   autocomplete="none"/> 
-                      </div>
-                    </div>
-                  </div>  
 
                   <div class="form-group">
                     <div class="col-md-8">
@@ -92,19 +84,14 @@
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
-                      "DURATION_EMPLOYEMENT">Duration of Employment:</label> 
+                      "JOBTYPE">Job Type:</label> 
                       <div class="col-md-8">
-                         <input class="form-control input-sm" id="DURATION_EMPLOYEMENT" name="DURATION_EMPLOYEMENT" placeholder="Duration of Employment"   autocomplete="none"/> 
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="col-md-4 control-label" for=
-                      "QUALIFICATION_WORKEXPERIENCE">Qualification/Work Experience:</label> 
-                      <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="QUALIFICATION_WORKEXPERIENCE" name="QUALIFICATION_WORKEXPERIENCE" placeholder="Qualification/Work Experience"   autocomplete="none"></textarea> 
+                          <select class="form-control input-sm" id="JOBTYPE" name="JOBTYPE">
+                          <option value="None">Select</option>
+                           <option>Hybrid</option>
+                           <option>Work from Home</option>
+                           <option>On-Site</option>
+                        </select>
                       </div>
                     </div>
                   </div> 
@@ -132,7 +119,17 @@
                         </select>
                       </div>
                     </div>
-                  </div>  
+                  </div> 
+
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "QUALIFICATION_WORKEXPERIENCE">Qualification/Experience:</label> 
+                      <div class="col-md-8">
+                        <textarea class="form-control input-sm" id="QUALIFICATION_WORKEXPERIENCE" name="QUALIFICATION_WORKEXPERIENCE" placeholder="Qualification/Experience:"   autocomplete="none"></textarea> 
+                      </div>
+                    </div>
+                  </div> 
 
                   <div class="form-group">
                     <div class="col-md-8">
@@ -148,16 +145,6 @@
                     </div>
                   </div>  
 
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="col-md-4 control-label" for=
-                      "SECTOR_VACANCY">Sector of Vacancy:</label> 
-                      <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="SECTOR_VACANCY" name="SECTOR_VACANCY" placeholder="Sector of Vacancy"   autocomplete="none"></textarea> 
-                      </div>
-                    </div>
-                  </div>   
-                  
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
