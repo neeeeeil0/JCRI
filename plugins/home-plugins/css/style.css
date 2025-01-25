@@ -678,7 +678,13 @@ section.hero-text h1{
 /* page headline
 ==================================== */
 
-#inner-headline{background: #00bcd4;position: relative;margin: 0;padding: 0;}
+#inner-headline {
+    background: #00bcd4;
+    position: relative;
+    margin: 0;
+    padding: 0; /* Remove padding to rely solely on the height */
+    height: 40px; /* Set a specific height */
+}
 
 
 #inner-headline h2.pageTitle{
