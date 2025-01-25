@@ -8,7 +8,7 @@ $jobid = $_GET['job'];
 $jobid = '';
 
 }
-$sql = "SELECT * FROM `tblcompany` c,`tbljob` j WHERE c.`COMPANYID`=j.`COMPANYID` AND JOBID LIKE '%".$jobid."%' ORDER BY DATEPOSTED DESC" ;
+$sql = "SELECT * FROM `tblcompany` c,`tbljob` j WHERE c.`COMPANYID`=j.`COMPANYID` AND JOBID = $jobid ORDER BY DATEPOSTED DESC" ;
 $mydb->setQuery($sql);
 $result = $mydb->loadSingleResult();
 

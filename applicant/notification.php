@@ -83,7 +83,7 @@
                                   </a>
                                 </td>';
                           echo '<td class="mailbox-subject">' . $result->JOBDESCRIPTION . '</td>';
-                          echo '<td class="mailbox-date">' . $result->DATEPOSTED . '</td>';
+                          echo '<td class="mailbox-date">' . $result->DATECREATED . '</td>';
                           echo '<td class="mailbox-unread">Unread</td>';
                           echo '</tr> </tbody>';
                       }
@@ -100,7 +100,7 @@
                                   </a>
                                 </td>';
                           echo '<td class="mailbox-subject">' . $result->JOBDESCRIPTION . '</td>';
-                          echo '<td class="mailbox-date">' . $result->DATEPOSTED . '</td>';
+                          echo '<td class="mailbox-date">' . $result->DATECREATED . '</td>';
                           echo '<td class="mailbox-read">Read</td>';
                           echo '</tr>';
                       }

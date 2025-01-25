@@ -29,9 +29,8 @@
 
 
     foreach ($cur as $result) {
-        # code...
- 
- // `OCCUPATIONTITLE`, `REQ_NO_EMPLOYEES`, `SALARIES`, `DURATION_EMPLOYEMENT`, `QUALIFICATION_WORKEXPERIENCE`, `PREFEREDSEX`, `SECTOR_VACANCY`, `DATEPOSTED`
+        
+        
   ?> 
            <div class="container">
              <div class="mg-available-rooms">
@@ -43,8 +42,12 @@
                                         <a href="#"><span class="fa fa-building-o" style="font-size: 50px"></span><!-- <img src="img/room-1.png" alt="" class="img-responsive"> --></a>
                                     </div>
                                     <div class="col-sm-10">
-                                        <div style="border-bottom: 1px solid #ddd;padding: 10px;"><p style="font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;"><?php echo $result->OCCUPATIONTITLE ;?> </p> 
-                                        
+                                        <div style="border-bottom: 1px solid #ddd;padding: 10px;">
+                                        <p style="font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">
+                                            <?php echo $result->OCCUPATIONTITLE ;?>
+                                            <?php if ($result->JOBSTATUS != 'Open') { ?>
+                                                <small style="font-size: 15px; ;color:#f66e6e;margin-bottom: 5px;">(<?php echo $result->JOBSTATUS; ?>)</small>
+                                            <?php } ?>  
                                                 <p><?php echo  $result->COMPANYNAME; ?>
                                                 , <?php echo  $result->COMPANYADDRESS; ?></p>
                                             
@@ -79,15 +82,17 @@
                                             </div>
                                             
                                         </div>
+                                        <?php
+                                        if ($result->JOBSTATUS == 'Open') {
+                                        ?>
                                         <a href="<?php echo web_root; ?>index.php?q=apply&job=<?php echo $result->JOBID;?>" 
-   style="display: inline-block; margin-top: 10px; margin-left: 10px; padding: 10px 20px; background-color: #3498db; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center; transition: background-color 0.3s ease;" 
-   onmouseover="this.style.backgroundColor='#2980b9'" 
-   onmouseout="this.style.backgroundColor='#3498db'">
-   Apply Now!
-</a>
+                                            style="display: inline-block; margin-top: 10px; margin-left: 10px; padding: 10px 20px; background-color: #3498db; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center; transition: background-color 0.3s ease;" 
+                                            onmouseover="this.style.backgroundColor='#2980b9'" 
+                                            onmouseout="this.style.backgroundColor='#3498db'">
+                                            Apply Now!
+                                        </a>
 
-
-
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div> 
