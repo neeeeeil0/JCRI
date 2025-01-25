@@ -1,5 +1,3 @@
- 
-
 <section id="content">
 	<section class="section-padding">
 		<div class="container">
