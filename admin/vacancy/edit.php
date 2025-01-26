@@ -126,7 +126,7 @@
         <select class="form-control input-sm" id="JOBTYPE" name="JOBTYPE">
           <option value="">Select</option>
           <option value="On-Site">On-Site</option>
-          <option value="Work from Home">Work from Home</option>
+          <option value="Work From Home">Work From Home</option>
           <option value="Hybrid">Hybrid</option>
         </select>
       </div>
