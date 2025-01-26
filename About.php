@@ -3,29 +3,30 @@
 		<div class="container">
 			<div class="row showcase-section">
 				<div class="col-md-6">
-					<img src="dist/img/photo4.jpg" alt="showcase image" style="width: 550px; height: auto;">
+					<img src="plugins/home-plugins/img/slides/logo1.jpg" alt="showcase image" style="width: 350px; height: auto; margin-left: 80px;">
 				</div>
 				<div class="col-md-6">
 					<div class="about-text">
 						<h3>Job Connect Resources Inc.</h3>
 						
-						 <p style="text-align: justify;"><b>Job Connect Resources Inc.</b>., established on 
-						 August 4, 2022, is a DOLE-registered general service contractor (Registration No. 
-						 NCR-QCFO-DO174-78101-080522-043-N) specializing in outsourcing expert professionals nationwide.
-						  The company has steadily grown to provide reliable manpower solutions across various industries,
-						   including IT, manufacturing, real estate, hospitality, merchandising, and more.<br><br>
+						<p style="text-align: justify;"><b>Job Connect Resources Inc.</b>, established on 
+						August 4, 2022, is a DOLE-registered general service contractor (Registration No. 
+						NCR-QCFO-DO174-78101-080522-043-N) specializing in outsourcing expert professionals nationwide.
+						The company has steadily grown to provide reliable manpower solutions across various industries,
+						including IT, manufacturing, real estate, hospitality, merchandising, and more.<br><br>
 						Their services are tailored to meet specific client needs, covering recruitment, training,
-						 performance monitoring, payroll processing, and compliance with government-mandated benefits.
-						  They also offer additional employee perks such as HMO and insurance, ensuring workforce satisfaction
-						   and productivity. <br><br>Dedicated to quality service and professional empowerment, Job Connect Resources Inc. 
-						   takes pride in delivering customized solutions that drive client success. For inquiries or to discuss their 
-						   credentials, they can be reached at 0945-455-7876.
+						performance monitoring, payroll processing, and compliance with government-mandated benefits.
+						They also offer additional employee perks such as HMO and insurance, ensuring workforce satisfaction
+						and productivity. <br><br>Dedicated to quality service and professional empowerment, Job Connect Resources Inc. 
+						takes pride in delivering customized solutions that drive client success. For inquiries or to discuss their 
+						credentials, they can be reached at 0945-455-7876.
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
 
 	<section class="section-padding">
 		<div class="container">
@@ -195,7 +196,7 @@
     <div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/avatar5.png" 
+             src="dist/img/aboutneil.jpg" 
              alt="Neil Oliver Regondola" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
         <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Neil Oliver Regondola</h4>
@@ -205,7 +206,7 @@
     <div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/avatar3.png" 
+             src="dist/img//aboutley1.jpg" 
              alt="Julia Nuesca" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
         <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Julia Nuesca</h4>
@@ -215,7 +216,7 @@
     <div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/avatar04.png" 
+             src="dist/img/aboutjohn.jpg" 
              alt="John Veneracion" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
         <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">John Veneracion</h4>
@@ -225,7 +226,7 @@
     <div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/avatar2.png" 
+             src="dist/img//aboutjoyce.jpg" 
              alt="Joyce Abano" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
         <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Joyce Abano</h4>
@@ -235,7 +236,7 @@
     <div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/avatar.png" 
+             src="dist/img/aboutsheng.jpg" 
              alt="Sharence Alas" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
         <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Sharence Alas</h4>

@@ -20,39 +20,45 @@
 									
 								  	
 		   <!-- Form itself -->
-        <form name="sentMessage" id="contactForm"  novalidate>
-	       		<h3>Contact me</h3>
+		   <form name="sentMessage" id="contactForm" novalidate class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-2xl space-y-4">
+				<h3 class="text-2xl font-bold text-gray-800 ">Contact Me</h3>
+				
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control" 
-							placeholder="Full Name" id="name" required
-								data-validation-required-message="Please enter your name" />
-						<p class="help-block"></p>
+						<label for="name" class="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
+						<input type="text" class="form-control w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+							placeholder="Enter your full name" id="name" required
+							data-validation-required-message="Please enter your name" />
+						<p class="help-block text-sm text-red-500 mt-1"></p>
 					</div>
-				</div> 	
+				</div> 
 
 				<div class="control-group">
 					<div class="controls">
-						<input type="email" class="form-control" placeholder="Email" 
-								id="email" required
-								data-validation-required-message="Please enter your email" />
+						<label for="email" class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+						<input type="email" class="form-control w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+							placeholder="Enter your email" id="email" required
+							data-validation-required-message="Please enter your email" />
+						<p class="help-block text-sm text-red-500 mt-1"></p>
 					</div>
-				</div> 	
-			  
-               <div class="control-group">
-                	<div class="controls">
-						<textarea rows="10" cols="100" class="form-control" 
-							placeholder="Message" id="message" required
-								data-validation-required-message="Please enter your message" minlength="5" 
-							data-validation-minlength-message="Min 5 characters" 
-								maxlength="999" style="resize:none">
-						</textarea>
+				</div> 
+				
+				<div class="control-group">
+					<div class="controls">
+						<label for="message" class="block text-sm font-medium text-gray-600 mb-1">Message</label>
+						<textarea rows="5" class="form-control w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+							placeholder="Enter your message" id="message" required
+							data-validation-required-message="Please enter your message" minlength="5" 
+							data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
+						<p class="help-block text-sm text-red-500 mt-1"></p>
 					</div>
-               </div> 
+				</div> 
 
-			<div id="success"> </div> <!-- For success/fail messages -->
-			<button type="submit" class="btn btn-primary pull-right">Send</button><br />
-        </form>
+				<div id="success" class="text-center text-green-500 text-sm"></div> <!-- For success/fail messages -->
+				
+				<button type="submit" class="btn btn-primary w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">Send</button>
+			</form>
+
 
 
 								</div>
