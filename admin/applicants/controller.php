@@ -6,6 +6,35 @@ require_once ("../../include/initialize.php");
 
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
 
+if (isset($_GET['action']) && $_GET['action'] == 'fetchApplicants') {
+    // Your query to fetch the data
+    $mydb->setQuery("SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tbljob` j2, `tblapplicants` a 
+						WHERE c.`COMPANYID`=j.`COMPANYID` AND j.`JOBID`=j2.`JOBID` AND j.`APPLICANTID`=a.`APPLICANTID`");
+    $cur = $mydb->loadResultList();
+
+    // Output the table rows
+    foreach ($cur as $result) {
+        $rowClass = ($result->PENDINGAPPLICATION == 1) ? 'style="font-weight: bold;"' : '';
+
+        echo '<tr ' . $rowClass . '>';
+        echo '<td>' . $result->REGISTRATIONID . '</td>';
+        echo '<td>' . $result->APPLICANT . '</td>';
+        echo '<td>' . $result->OCCUPATIONTITLE . '</td>';
+        echo '<td>' . $result->COMPANYNAME . '</td>';
+        echo '<td>' . $result->REGISTRATIONDATE . '</td>';
+        echo '<td>' . $result->REMARKS . '</td>';
+        echo '<td align="center">
+                <a title="View" href="index.php?view=view&id=' . $result->REGISTRATIONID . '" class="btn btn-info btn-xs">
+                <span class="fa fa-info fw-fa"></span> View</a>
+                <a title="Remove" href="controller.php?action=delete&id=' . $result->REGISTRATIONID . '" class="btn btn-danger btn-xs">
+                <span class="fa fa-trash-o fw-fa"></span> Remove</a>
+                </td>';
+        echo '</tr>';
+    }
+    exit();  // Make sure to stop further execution
+}
+
+
 switch ($action) {
 	case 'add' :
 	doInsert();

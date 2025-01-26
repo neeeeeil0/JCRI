@@ -1,59 +1,60 @@
- 
-
 <section id="content">
 	<section class="section-padding">
 		<div class="container">
 			<div class="row showcase-section">
 				<div class="col-md-6">
-					<img src="dist/img/photo4.jpg" alt="showcase image" style="width: 550px; height: auto;">
+					<img src="plugins/home-plugins/img/slides/logo1.jpg" alt="showcase image" style="width: 350px; height: auto; margin-left: 80px;">
 				</div>
 				<div class="col-md-6">
 					<div class="about-text">
 						<h3>Job Connect Resources Inc.</h3>
 						
-						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
-							We’re here to make recruitment simple, efficient, and effective.
-							 Our recruitment management system is designed to help you find,
-							  evaluate, and onboard the best talent with ease. We’ve built a 
-							  platform that streamlines every step of the hiring process, from 
-							  posting job openings to communicating with candidates. By focusing 
-							  on automation and transparency, we ensure that both recruiters and 
-							  applicants have a seamless experience.</p>
+						<p style="text-align: justify;"><b>Job Connect Resources Inc.</b>, established on 
+						August 4, 2022, is a DOLE-registered general service contractor (Registration No. 
+						NCR-QCFO-DO174-78101-080522-043-N) specializing in outsourcing expert professionals nationwide.
+						The company has steadily grown to provide reliable manpower solutions across various industries,
+						including IT, manufacturing, real estate, hospitality, merchandising, and more.<br><br>
+						Their services are tailored to meet specific client needs, covering recruitment, training,
+						performance monitoring, payroll processing, and compliance with government-mandated benefits.
+						They also offer additional employee perks such as HMO and insurance, ensuring workforce satisfaction
+						and productivity. <br><br>Dedicated to quality service and professional empowerment, Job Connect Resources Inc. 
+						takes pride in delivering customized solutions that drive client success. For inquiries or to discuss their 
+						credentials, they can be reached at 0945-455-7876.
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
+
 	<section class="section-padding">
 		<div class="container">
 			<div class="row showcase-section">
 				<div class="col-md-6">
 					<div class="about-text">
-						<h3>Vision.</h3>
+						<h3>Vision</h3>
 						
-						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
-							We’re here to make recruitment simple, efficient, and effective.
-							 Our recruitment management system is designed to help you find,
-							  evaluate, and onboard the best talent with ease. We’ve built a 
-							  platform that streamlines every step of the hiring process, from 
-							  posting job openings to communicating with candidates. By focusing 
-							  on automation and transparency, we ensure that both recruiters and 
-							  applicants have a seamless experience.</p>
+						 <p style="text-align: justify;">To be the leading provider of innovative and reliable 
+							manpower solutions nationwide, recognized for our commitment to quality, professionalism,
+							 and client satisfaction. We envision fostering long-term partnerships with businesses across
+							  diverse industries, driving their success through our unwavering dedication to service excellence
+							   and workforce empowerment.</p>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="about-text">
 						<h3>Mission</h3>
 						
-						 <p style="text-align: justify;">Welcome to Job Connect Resources Inc.! 
-							We’re here to make recruitment simple, efficient, and effective.
-							 Our recruitment management system is designed to help you find,
-							  evaluate, and onboard the best talent with ease. We’ve built a 
-							  platform that streamlines every step of the hiring process, from 
-							  posting job openings to communicating with candidates. By focusing 
-							  on automation and transparency, we ensure that both recruiters and 
-							  applicants have a seamless experience.</p>
+						 <p style="text-align: justify;">Job Connect Resources Inc.
+							 is dedicated to providing exceptional outsourcing and manpower
+							  solutions tailored to meet the unique needs of our clients.
+							   We aim to empower businesses by delivering highly skilled professionals
+							    and comprehensive services, including recruitment, training, performance
+								 monitoring, and payroll processing. Committed to excellence,
+								  we ensure compliance with regulatory standards while offering additional
+								   benefits like HMO and insurance to enhance employee well-being and 
+								   satisfaction.</p>
 					</div>
 				</div>
 			</div>
@@ -184,69 +185,65 @@
 						<!-- Our Team starts -->
 				
 						<!-- Heading -->
-						<div class="block-heading-six">
-							<h4 class="bg-color">Our Team</h4>
-						</div>
-						<br>
-						
-						<!-- Our team starts -->
-						
-						<div class="team-six">
-							<div class="row" style="padding-left: 200px;">
-								
-								<div class="col-md-2 col-sm-6" >
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar5.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Neil Oliver Regondola</h4>
-										<span class="deg">Programmer</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar3.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Julia Nuesca</h4>
-										<span class="deg">Documentation</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar04.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>John Veneracion</h4>
-										<span class="deg">Researcher</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar2.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Joyce Abano</h4>
-										<span class="deg">Analyst</span> 
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="dist/img/avatar.png" alt="" style="width: 200px; height: auto;">
-										<!-- Name -->
-										<h4>Sharence Alas</h4>
-										<span class="deg">Tester</span> 
-									</div>
-								</div>
-							</div>
-						</div>
-						
+						<div class="block-heading-six" style="text-align: center; margin-bottom: 20px;">
+    <h4 class="bg-color" style="font-size: 2rem; font-weight: bold;">Our Team</h4>
+</div>
+
+<!-- Our team starts -->
+<div class="team-six" 
+     style="display: flex; justify-content: center; gap: 20px; padding: 0 20px;">
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/aboutneil.jpg" 
+             alt="Neil Oliver Regondola" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Neil Oliver Regondola</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Programmer</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img//aboutley1.jpg" 
+             alt="Julia Nuesca" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Julia Nuesca</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Documentation</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/aboutjohn.jpg" 
+             alt="John Veneracion" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">John Veneracion</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Researcher</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img//aboutjoyce.jpg" 
+             alt="Joyce Abano" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Joyce Abaño</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Analyst</span>
+    </div>
+
+    <div class="team-member" 
+         style="text-align: center; width: 180px;">
+        <img class="img-responsive" 
+             src="dist/img/aboutsheng.jpg" 
+             alt="Sharence Alas" 
+             style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Sharence Alas</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Tester</span>
+    </div>
+</div>
+		<br><br>				
 						<!-- Our team ends -->
 					  
 						

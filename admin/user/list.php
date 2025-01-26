@@ -9,11 +9,11 @@
        		</div>
         	<!-- /.col-lg-12 --> 
    		 	<div class="col-lg-12"> 
-				<table id="dash-table" class="table  table-bordered table-hover table-responsive" style="font-size:12px;" cellspacing="0"> 
+				<table id="dash-table2" class="table  table-bordered table-hover table-responsive" style="font-size:12px;" cellspacing="0"> 
 				  <thead>
 				  	<tr>
 				  		<th>Account ID</th>
-				  		<th> Account Name</th>
+				  		<th>Account Name</th>
 				  		<th>Username</th>
 				  		<th>Role</th>
 				  		<th width="10%" >Action</th>

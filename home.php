@@ -4,7 +4,7 @@
         <div id="main-slider" class="flexslider">
             <ul class="slides">
               <li>
-                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/1.jpg" alt="" />
+                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/slide7.png" alt="" />
                 <div class="flex-caption">
                     <h3>Passion</h3> 
           <p>Where Passion Meets Profession</p> 
@@ -12,7 +12,7 @@
                 </div>
               </li>
               <li>
-                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/2.jpg" alt="" />
+                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/slide6.png" alt="" />
                 <div class="flex-caption">
                     <h3>Career</h3> 
           <p>Your Career Starts Here</p> 
@@ -39,13 +39,13 @@
     </div>
   </section>
   
-  <section id="content">
+  <section id="content" >
   
   
   <div class="container">
         <div class="row">
       <div class="col-md-12">
-        <div class="aligncenter"><h2 class="aligncenter">Company</h2><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus ovident, doloribus omnis minus temporibus perferendis nesciunt.. --></div>
+        <div class="aligncenter"><h2 class="aligncenter">Company</h2></div>
         <br/>
       </div>
     </div>

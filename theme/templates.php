@@ -57,32 +57,62 @@
  
   <!-- start header -->
   <header>
-        <div class="topbar navbar-fixed-top">
+        <div class="topbar navbar-fixed-top" style="background-color:#073763;">
           <div class="container">
             <div class="row">
               <div class="col-md-12">      
-                <p class="pull-left hidden-xs"><i class="fa fa-phone"></i>0995 785 9809</p>
+                <p class="pull-left hidden-xs"><i class="fa fa-search"></i>HireVantage RMS</p>
                 <?php if (isset($_SESSION['APPLICANTID'])) { 
 
-                    $sql = "SELECT count(*) as 'COUNTNOTIF' FROM `tbljob` ORDER BY `DATEPOSTED` DESC";
-                    $mydb->setQuery($sql);
-                    $showNotif = $mydb->loadSingleResult();
-                    $notif =isset($showNotif->COUNTNOTIF) ? $showNotif->COUNTNOTIF : 0;
+                  // Count unread notifications for the applicant
+                  $sql = "SELECT count(*) as 'COUNTNOTIF' 
+                          FROM `tblnotification` n 
+                          WHERE n.APPLICANTID = {$_SESSION['APPLICANTID']} 
+                          AND n.ISVIEWED = 0";
+                  $mydb->setQuery($sql);
+                  $showNotif = $mydb->loadSingleResult();
+                  $notif = isset($showNotif->COUNTNOTIF) ? $showNotif->COUNTNOTIF : 0;
 
+                  // Get applicant details
+                  $applicant = new Applicants();
+                  $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);
 
-                    $applicant = new Applicants();
-                    $appl  = $applicant->single_applicant($_SESSION['APPLICANTID']);
+                  // Count unread job registration messages for the applicant
+                  $sql = "SELECT count(*) as 'COUNT' 
+                          FROM `tbljobregistration` 
+                          WHERE `PENDINGAPPLICATION` = 0 
+                          AND `HVIEW` = 0 
+                          AND `APPLICANTID` = '{$appl->APPLICANTID}'";
+                  $mydb->setQuery($sql);
+                  $showMsg = $mydb->loadSingleResult();
+                  $msg = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
 
-                    $sql ="SELECT count(*) as 'COUNT' FROM `tbljobregistration` WHERE `PENDINGAPPLICATION`=0 AND `HVIEW`=0 AND `APPLICANTID`='{$appl->APPLICANTID}'";
-                    $mydb->setQuery($sql);
-                    $showMsg = $mydb->loadSingleResult();
-                    $msg =isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
+                  // Display the notification and message counts
+                  echo '<p class="pull-right login">
+                          <a title="View Notification(s)" href="' . web_root . 'applicant/index.php?view=notification">
+                              <i class="fa fa-bell-o"></i> 
+                              <span class="label label-success">' . $notif . '</span>
+                          </a> | 
+                          <a title="View Message(s)" href="' . web_root . 'applicant/index.php?view=message">
+                              <i class="fa fa-envelope-o"></i> 
+                              <span class="label label-success">' . $msg . '</span>
+                          </a> | 
+                          <a title="View Profile" href="' . web_root . 'applicant/"> 
+                              <i class="fa fa-user"></i> Hi, ' . $appl->FNAME . ' ' . $appl->LNAME . '
+                          </a> | 
+                          <a href="' . web_root . 'logout.php">  
+                              <i class="fa fa-sign-out"></i>Logout
+                          </a>
+                      </p>';
 
-                    echo ' <p class="pull-right login"><a title="View Notification(s)" href="'.web_root.'applicant/index.php?view=notification"> <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> | <a title="View Message(s)" href="'.web_root.'applicant/index.php?view=message"> <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> | <a title="View Profile" href="'.web_root.'applicant/"> <i class="fa fa-user"></i> Hi, '. $appl->FNAME. ' '.$appl->LNAME .' </a> | <a href="'.web_root.'logout.php">  <i class="fa fa-sign-out"> </i>Logout</a> </p>';
+                  } else { ?>
+                  <p class="pull-right login">
+                      <a data-target="#myModal" data-toggle="modal" href=""> 
+                          <i class="fa fa-lock"></i> Login 
+                      </a>
+                  </p>
+                  <?php } ?>
 
-                    }else{ ?>
-                      <p   class="pull-right login"><a data-target="#myModal" data-toggle="modal" href=""> <i class="fa fa-lock"></i> Login </a></p>
-                <?php } ?>
               
               </div>
             </div>
@@ -97,11 +127,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo web_root; ?>index.php"><img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/logo2.png" alt="logo" style="width: 70px; height: auto;"/> &nbsp;Job Connect Resources Inc.</a>
+                    <a class="navbar-brand" href="<?php echo web_root; ?>index.php" style="font-size: 20px;"><img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/logo2.png" alt="logo" style="width: 50px; height: auto; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));"/> &nbsp;Job Connect Resources Inc.</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="<?php echo !isset($_GET['q'])? 'active' :''?>"><a href="<?php echo web_root; ?>index.php">Home</a></li> 
+                        <li class="<?php echo !isset($_GET['q'])? 'active' :''?>"><a href="<?php echo web_root; ?>index.php">Home</a></li>
+                        <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='jobsearch'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=jobsearch">Job Search</a></li>
+                        <!--
                         <li class="dropdown">
                           <a href="#" data-toggle="dropdown" class="dropdown-toggle">Job Search <b class="caret"></b></a>
                           <ul class="dropdown-menu">
@@ -109,10 +141,8 @@
                               <li><a href="<?php echo web_root; ?>index.php?q=search-company">Job By Company</a></li>
                               <li><a href="<?php echo web_root; ?>index.php?q=search-function">Job By Function</a></li>
                               <li><a href="<?php echo web_root; ?>index.php?q=search-jobtitle">Job By Title</a></li>
-                         <!--      <li><a href="#">Job for Women</a></li>
-                              <li><a href="#">Job for Men</a></li> -->
                           </ul>
-                       </li>
+                       </li> -->
                       <!--
                       <li class="dropdown <?php  if(isset($_GET['q'])) { if($_GET['q']=='category'){ echo 'active'; }else{ echo ''; }}  ?>">
                           <a href="#" data-toggle="dropdown" class="dropdown-toggle">Popular Jobs <b class="caret"></b></a>
@@ -146,7 +176,7 @@
                        </li>
                             -->
                         <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='company'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=company">Company</a></li>
-                        <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='hiring'){ echo 'active'; }else{ echo ''; }} ?>"><a href="<?php echo web_root; ?>index.php?q=hiring">Hiring Now</a></li>
+
                         <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='About'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=About">About Us</a></li>
                         <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='Contact'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=Contact">Contact</a></li>
                     </ul>
@@ -165,7 +195,7 @@
 
       if (isset($_GET['q'])) {
         # code...
-        echo '<section id="inner-headline">
+        echo '<section id="inner-headline" style="background-color:#085394; height: 100px; padding: 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -189,7 +219,7 @@
         <div class="widget">
           <h5 class="widgetheading">Our Contact</h5>
           <address>
-          <strong>Our Company</strong><br>
+
           Room 529, 531 & 533 5th Floor, J & T Bldg,
            3894 Magsaysay Blvd, Santa Mesa, Manila, 1008 Metro Manila,
             Manila, Philippines</address>
@@ -204,8 +234,9 @@
           <h5 class="widgetheading">Quick Links</h5>
           <ul class="link-list">
             <li><a href="<?php echo web_root; ?>index.php">Home</a></li>
+            <li><a href="<?php echo web_root; ?>index.php?q=jobsearch">Job Search</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=company">Company</a></li>
-            <li><a href="<?php echo web_root; ?>index.php?q=hiring">Hiring</a></li>
+
             <li><a href="<?php echo web_root; ?>index.php?q=About">About us</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=Contact">Contact us</a></li>
           </ul>
@@ -222,7 +253,7 @@
 
 
                   foreach ($cur as $result) {
-                    echo ' <li><a href="'.web_root.'index.php?q=viewjob&search='.$result->JOBID.'">'.$result->COMPANYNAME . '/ '. $result->OCCUPATIONTITLE .'</a></li>';
+                    echo ' <li><a href="'.web_root.'index.php?q=viewjob&search='.$result->JOBID.'">'.$result->OCCUPATIONTITLE. ' - '. $result->COMPANYNAME .'</a></li>';
                   } 
               ?> 
           </ul>
@@ -246,17 +277,17 @@
         <div class="col-lg-6">
           <div class="copyright">
             <p>
-              <span>&copy; JCRI 2025 All right reserved.  
+              <span>&copy; HireVantage RMS 2025 All right reserved.  
             </p>
           </div>
         </div>
         <div class="col-lg-6">
           <ul class="social-network">
             <li><a href="https://web.facebook.com/jobconnect.ph" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/kimjero-jangayo-20b178249/?originalSubdomain=ph" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            <!--<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
             <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-            <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>-->
           </ul>
         </div>
       </div>

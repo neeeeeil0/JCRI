@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2025 at 05:04 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jan 27, 2025 at 04:07 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `erisdb`
+-- Database: `jcridb`
 --
 
 -- --------------------------------------------------------
@@ -52,10 +52,7 @@ CREATE TABLE `tblapplicants` (
 --
 
 INSERT INTO `tblapplicants` (`APPLICANTID`, `FNAME`, `LNAME`, `MNAME`, `ADDRESS`, `SEX`, `CIVILSTATUS`, `BIRTHDATE`, `BIRTHPLACE`, `AGE`, `USERNAME`, `PASS`, `EMAILADDRESS`, `CONTACTNO`, `DEGREE`, `APPLICANTPHOTO`, `NATIONALID`) VALUES
-(2018013, 'Kim', 'Domingo', 'Enoe', 'Kab City', 'Female', 'none', '1991-01-01', 'Kab Citys', 27, 'kim', 'a6312121e15caec74845b7ba5af23330d52d4ac0', 'kim@y.com', '5415456', 'BSAC', 'photos/RobloxScreenShot20180406_203758793.png', ''),
-(2018014, 'Jake', 'Zyrus', 'Ilmba', 'Kab City', 'Female', 'none', '1993-01-16', 'Kab City', 25, 'jake', 'c8d99c2f7cd5f432c163abcd422672b9f77550bb', 'jake@y.com', '14655623123123', 'BSIT', '', ''),
-(2018015, 'Janry', 'Tan', 'Lim', 'brgy 1 Kab City', 'Female', 'Single', '1992-01-30', 'Kab City', 26, 'janry', '1dd4efc811372cd1efe855981a8863d10ddde1ca', 'jan@gmail.com', '0234234', 'BSIT', '', ''),
-(2025016, 'Neil', 'Neil', 'Neil', 'Neil', 'Male', 'Single', '2000-08-22', '12wrqwe', 24, 'Neilneil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', '12312dafasdas@gmail.com', '13123123', 'College', '', '');
+(2025027, 'Neil Oliver ', 'Regondola', 'Jerus', '116 Santol QC', 'Male', 'Single', '2002-08-09', 'Sampaloc Manila', 22, 'neilneil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'neiloliverxxx@gmail.com', '09478251234', 'College', 'photos/aboutneil.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -71,14 +68,6 @@ CREATE TABLE `tblattachmentfile` (
   `FILE_LOCATION` varchar(255) NOT NULL,
   `USERATTACHMENTID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `tblattachmentfile`
---
-
-INSERT INTO `tblattachmentfile` (`ID`, `FILEID`, `JOBID`, `FILE_NAME`, `FILE_LOCATION`, `USERATTACHMENTID`) VALUES
-(2, '2147483647', 2, 'Resume', 'photos/27052018124027PLATENO FE95483.docx', 2018013),
-(3, '20256912529', 2, 'Resume', 'photos/13012025044201JERUS.docx', 2025016);
 
 -- --------------------------------------------------------
 
@@ -101,8 +90,8 @@ CREATE TABLE `tblautonumbers` (
 INSERT INTO `tblautonumbers` (`AUTOID`, `AUTOSTART`, `AUTOEND`, `AUTOINC`, `AUTOKEY`) VALUES
 (1, '02983', 8, 1, 'userid'),
 (2, '000', 79, 1, 'employeeid'),
-(3, '0', 17, 1, 'APPLICANT'),
-(4, '69125', 30, 1, 'FILEID');
+(3, '0', 28, 1, 'APPLICANT'),
+(4, '69125', 47, 1, 'FILEID');
 
 -- --------------------------------------------------------
 
@@ -131,7 +120,8 @@ INSERT INTO `tblcategory` (`CATEGORYID`, `CATEGORY`) VALUES
 (25, 'Finance'),
 (26, 'BPO'),
 (27, 'Degital Marketing'),
-(28, 'Shipping');
+(28, 'Shipping'),
+(29, 'Services');
 
 -- --------------------------------------------------------
 
@@ -153,11 +143,12 @@ CREATE TABLE `tblcompany` (
 --
 
 INSERT INTO `tblcompany` (`COMPANYID`, `COMPANYNAME`, `COMPANYADDRESS`, `COMPANYCONTACTNO`, `COMPANYSTATUS`, `COMPANYMISSION`) VALUES
-(2, 'URC', 'Bry Camugao', '023654', '', 'weqwe'),
-(3, 'Copreros', 'Mabinay\'s', '035656', '', ''),
-(4, 'Quest', 'Kabankalan City', '23165', '', ''),
-(6, 'Palacios Company', 'Kabankalan City', '0625656899', '', ''),
-(7, 'IT Company', 'Kabankalan City', '04564123', '', '');
+(8, 'Accenture Philippines', 'Mandaluyong City', '+63 2 580 5888', '', ''),
+(9, 'IBM Philippines', 'Taguig City', '+63 2 858 3000', '', ''),
+(10, 'San Miguel Corporation', 'Mandaluyong City', '+63 2 8632 3000', '', ''),
+(11, 'Ayala Corporation', 'Makati City', '+63 2 7908 3000', '', ''),
+(12, 'Jollibee Foods Corporation', 'Pasig City', '+63 2 8706 2809', '', ''),
+(13, 'Microsoft Philippines', 'Makati City', '+63 2 859 0500', '', '');
 
 -- --------------------------------------------------------
 
@@ -189,14 +180,6 @@ CREATE TABLE `tblemployees` (
   `COMPANYID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `tblemployees`
---
-
-INSERT INTO `tblemployees` (`INCID`, `EMPLOYEEID`, `FNAME`, `LNAME`, `MNAME`, `ADDRESS`, `BIRTHDATE`, `BIRTHPLACE`, `AGE`, `SEX`, `CIVILSTATUS`, `TELNO`, `EMP_EMAILADDRESS`, `CELLNO`, `POSITION`, `WORKSTATS`, `EMPPHOTO`, `EMPUSERNAME`, `EMPPASSWORD`, `DATEHIRED`, `COMPANYID`) VALUES
-(76, '2018001', 'Chambe', 'Narciso', 'Captain', 'mabinay', '1992-01-23', 'Mabinay', 32, 'Male', 'Married', '032656', 'chambe@yahoo.com', '', 'Fuel Tender', '', '', '2018001', 'f3593fd40c55c33d1788309d4137e82f5eab0dea', '2018-05-23', 2),
-(77, '234234', 'qweqwe', 'qweqwe', 'qweqw', 'eqwe', '1991-02-28', 'qweqwe', 33, 'Male', 'Single', '123213', '3424@DFSFSF', '', '69', '', '', '234234', '994b579fe9db3e4b8b4642b13f126b407c1d11e2', '2025-01-17', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -210,14 +193,6 @@ CREATE TABLE `tblfeedback` (
   `FEEDBACK` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `tblfeedback`
---
-
-INSERT INTO `tblfeedback` (`FEEDBACKID`, `APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`) VALUES
-(2, 2018015, 2, 'aasd'),
-(3, 2025016, 3, 'AYAW KONGA');
-
 -- --------------------------------------------------------
 
 --
@@ -229,24 +204,30 @@ CREATE TABLE `tbljob` (
   `COMPANYID` int(11) NOT NULL,
   `CATEGORY` varchar(250) NOT NULL,
   `OCCUPATIONTITLE` varchar(90) NOT NULL,
-  `REQ_NO_EMPLOYEES` int(11) NOT NULL,
   `SALARIES` double NOT NULL,
-  `DURATION_EMPLOYEMENT` varchar(90) NOT NULL,
+  `JOBSETTING` varchar(30) NOT NULL,
   `QUALIFICATION_WORKEXPERIENCE` text NOT NULL,
   `JOBDESCRIPTION` text NOT NULL,
   `PREFEREDSEX` varchar(30) NOT NULL,
-  `SECTOR_VACANCY` text NOT NULL,
   `JOBSTATUS` varchar(90) NOT NULL,
-  `DATEPOSTED` datetime NOT NULL
+  `PUBLISHERID` varchar(30) NOT NULL,
+  `DATEPOSTED` datetime NOT NULL,
+  `DATEUPDATED` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbljob`
 --
 
-INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `REQ_NO_EMPLOYEES`, `SALARIES`, `DURATION_EMPLOYEMENT`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `SECTOR_VACANCY`, `JOBSTATUS`, `DATEPOSTED`) VALUES
-(1, 2, 'Technology', 'ISD', 6, 15000, 'jan 30', 'Two year Experience', 'We are looking for bachelor of science in information technology.\\r\\nasdasdasd', 'Male/Female', 'yes', '', '2018-05-20 00:00:00'),
-(2, 2, 'Technology', 'Accounting', 1, 15000, 'may 20', 'Two years Experience', 'We are looking for bachelor of science in Acountancy', 'Female', 'yes', '', '2018-05-20 02:33:00');
+INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALARIES`, `JOBSETTING`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `JOBSTATUS`, `PUBLISHERID`, `DATEPOSTED`, `DATEUPDATED`) VALUES
+(4, 8, 'Technology', 'IT Support Specialist', 80000, '', 'At least 1 year of experience in IT support.', 'Provide technical support for hardware, software, and network-related issues.', 'Male/Female', 'Open', '029837', '2025-01-15 19:22:00', NULL),
+(5, 9, 'Technology', 'Cloud Consultant', 100000, '', 'Experience in cloud platforms (IBM Cloud, AWS, Azure).', 'Design and implement cloud solutions for clients using IBM Cloud technologies', 'Male/Female', 'Open', '029837', '2025-01-15 19:23:00', NULL),
+(6, 10, 'Sales', 'Key Account Manager', 55000, '', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-23 04:49:14'),
+(7, 11, 'Managerial', 'Project Manager', 65000, '', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Open', '029837', '2025-01-15 19:26:00', NULL),
+(8, 12, 'Managerial', 'Restaurant Manager', 30000, '', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Open', '029837', '2025-01-15 19:27:00', NULL),
+(9, 13, 'IT', 'Solutions Architect', 90000, '', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', '2025-01-26 20:52:22'),
+(16, 14, 'Services', 'Customer Service Representative', 0, '', 'At least a high school diploma (College graduates are preferred). Excellent communication skills in English and Filipino. Strong problem-solving skills. Ability to work in a fast-paced environment. Previous customer service experience is an advantage but not required.', 'We are seeking a highly motivated and customer-oriented individual to join our growing team as a Customer Service Representative. The ideal candidate will provide excellent service to our clients, ensuring their inquiries and concerns are addressed promptly and professionally.', 'Male/Female', 'Closed', '029837', '2025-01-21 22:26:00', NULL),
+(34, 12, 'Managerial', 'Manager', 0, 'On-Site', '', '', 'Male', 'Open', '029837', '2025-01-26 20:52:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -268,14 +249,28 @@ CREATE TABLE `tbljobregistration` (
   `DATETIMEAPPROVED` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbljobregistration`
+-- Table structure for table `tblnotification`
 --
 
-INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `REMARKS`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`) VALUES
-(1, 2, 2, 2018013, 'Kim Domingo', '2018-05-27', 'Ive seen your work and its really interesting', '2147483647', 0, 1, '2018-05-26 16:13:01'),
-(2, 2, 2, 2018015, 'Janry Tan', '2018-05-26', 'aasd', '2147483647', 0, 0, '2025-01-13 23:32:49'),
-(3, 2, 2, 2025016, 'Neil Neil', '2025-01-13', 'AYAW KONGA', '20256912529', 0, 1, '2025-01-13 23:43:04');
+CREATE TABLE `tblnotification` (
+  `NOTIFICATIONID` int(11) NOT NULL,
+  `APPLICANTID` int(11) NOT NULL,
+  `JOBID` int(11) NOT NULL,
+  `ISVIEWED` tinyint(1) NOT NULL,
+  `DATECREATED` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblnotification`
+--
+
+INSERT INTO `tblnotification` (`NOTIFICATIONID`, `APPLICANTID`, `JOBID`, `ISVIEWED`, `DATECREATED`) VALUES
+(170, 2025027, 5, 1, '2025-01-27 03:00:10'),
+(171, 2025027, 34, 0, '2025-01-27 03:52:00'),
+(172, 2025027, 9, 0, '2025-01-27 03:52:12');
 
 -- --------------------------------------------------------
 
@@ -297,10 +292,8 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`USERID`, `FULLNAME`, `USERNAME`, `PASS`, `ROLE`, `PICLOCATION`) VALUES
-('00018', 'Campcodes', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'photos/Koala.jpg'),
-('029837', 'Neil', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'Staff', ''),
-('2018001', 'Chambe Narciso', 'Narciso', 'f3593fd40c55c33d1788309d4137e82f5eab0dea', 'Employee', ''),
-('234234', 'qweqwe qweqwe', 'qweqwe', '994b579fe9db3e4b8b4642b13f126b407c1d11e2', 'Employee', '');
+('00018', 'HireVantage', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'photos/zoro1.jpg'),
+('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'Administrator', 'photos/pic2.jpg');
 
 --
 -- Indexes for dumped tables
@@ -362,6 +355,12 @@ ALTER TABLE `tbljobregistration`
   ADD PRIMARY KEY (`REGISTRATIONID`);
 
 --
+-- Indexes for table `tblnotification`
+--
+ALTER TABLE `tblnotification`
+  ADD PRIMARY KEY (`NOTIFICATIONID`);
+
+--
 -- Indexes for table `tblusers`
 --
 ALTER TABLE `tblusers`
@@ -375,13 +374,13 @@ ALTER TABLE `tblusers`
 -- AUTO_INCREMENT for table `tblapplicants`
 --
 ALTER TABLE `tblapplicants`
-  MODIFY `APPLICANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025017;
+  MODIFY `APPLICANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025028;
 
 --
 -- AUTO_INCREMENT for table `tblattachmentfile`
 --
 ALTER TABLE `tblattachmentfile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tblautonumbers`
@@ -393,13 +392,13 @@ ALTER TABLE `tblautonumbers`
 -- AUTO_INCREMENT for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-  MODIFY `CATEGORYID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `CATEGORYID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tblcompany`
 --
 ALTER TABLE `tblcompany`
-  MODIFY `COMPANYID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `COMPANYID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tblemployees`
@@ -411,19 +410,25 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `tblfeedback`
 --
 ALTER TABLE `tblfeedback`
-  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbljob`
 --
 ALTER TABLE `tbljob`
-  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbljobregistration`
 --
 ALTER TABLE `tbljobregistration`
-  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tblnotification`
+--
+ALTER TABLE `tblnotification`
+  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

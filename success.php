@@ -7,3 +7,10 @@
 		</div>
 	</div>
 </section>
+
+<script>
+        // Redirect to another page after 5 seconds
+        setTimeout(function() {
+            window.location.href = "applicant/index.php?view=appliedjobs";  // Replace with your target URL
+        }, 3000); // 1000 milliseconds = 1 second
+</script>
