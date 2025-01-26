@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2025 at 08:50 PM
+-- Generation Time: Jan 26, 2025 at 08:52 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -225,9 +225,9 @@ INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALA
 (6, 10, 'Sales', 'Key Account Manager', 55000, '', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-23 04:49:14'),
 (7, 11, 'Managerial', 'Project Manager', 65000, '', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Open', '029837', '2025-01-15 19:26:00', NULL),
 (8, 12, 'Managerial', 'Restaurant Manager', 30000, '', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Open', '029837', '2025-01-15 19:27:00', NULL),
-(9, 13, 'IT', 'Solutions Architect', 90000, '', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', NULL),
+(9, 13, 'IT', 'Solutions Architect', 90000, '', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', '2025-01-26 20:52:22'),
 (16, 14, 'Services', 'Customer Service Representative', 0, '', 'At least a high school diploma (College graduates are preferred). Excellent communication skills in English and Filipino. Strong problem-solving skills. Ability to work in a fast-paced environment. Previous customer service experience is an advantage but not required.', 'We are seeking a highly motivated and customer-oriented individual to join our growing team as a Customer Service Representative. The ideal candidate will provide excellent service to our clients, ensuring their inquiries and concerns are addressed promptly and professionally.', 'Male/Female', 'Closed', '029837', '2025-01-21 22:26:00', NULL),
-(33, 12, 'Service Crew', 'Crew', 0, 'On-Site', '', 'service', 'Male/Female', 'Open', '029837', '2025-01-27 01:35:23', '2025-01-27 01:36:06');
+(34, 12, 'Managerial', 'Manager', 0, 'On-Site', '', '', 'Male', 'Open', '029837', '2025-01-26 20:52:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -268,7 +268,9 @@ CREATE TABLE `tblnotification` (
 --
 
 INSERT INTO `tblnotification` (`NOTIFICATIONID`, `APPLICANTID`, `JOBID`, `ISVIEWED`, `DATECREATED`) VALUES
-(170, 2025027, 5, 1, '2025-01-27 03:00:10');
+(170, 2025027, 5, 1, '2025-01-27 03:00:10'),
+(171, 2025027, 34, 0, '2025-01-27 03:52:00'),
+(172, 2025027, 9, 0, '2025-01-27 03:52:12');
 
 -- --------------------------------------------------------
 
@@ -414,7 +416,7 @@ ALTER TABLE `tblfeedback`
 -- AUTO_INCREMENT for table `tbljob`
 --
 ALTER TABLE `tbljob`
-  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbljobregistration`
@@ -426,7 +428,7 @@ ALTER TABLE `tbljobregistration`
 -- AUTO_INCREMENT for table `tblnotification`
 --
 ALTER TABLE `tblnotification`
-  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
