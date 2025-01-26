@@ -329,8 +329,8 @@
     	<div class="result-detail">
 			<p class="section-title">Job Details:</p>
 			<ul>
-				<li><i class="icon"></i> Salary: ${data.SALARIES}</li>
-				<li><i class="icon"></i> Duration of Employment: ${data.DURATION_EMPLOYEMENT}</li>
+				<li><i class="icon"></i> Job Setting: ${data.JOBSETTING}</li>
+				<li><i class="icon"></i> Salary: ₱ ${Number(data.SALARIES).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</li>
 				<li><i class="icon"></i> Preferred Sex: ${data.PREFEREDSEX}</li>
 			</ul>
     	</div>

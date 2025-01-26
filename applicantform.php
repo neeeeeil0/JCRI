@@ -229,7 +229,7 @@
     <div class="col-md-8">
       <input name="deptid" type="hidden" value="">
       <input  class="form-control input-sm" id="DEGREE" name="DEGREE" placeholder=
-          "Educational Attainment"    onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+          "E.g. Bachelor of ..."    onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
       </div>
   </div>
 </div> 

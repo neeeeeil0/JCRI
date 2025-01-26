@@ -29,7 +29,7 @@ global $mydb;
 .content-header {
 	min-height: 50px;
 	border-bottom: 1px solid #ddd;
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 }
 .content-body {
@@ -64,21 +64,23 @@ global $mydb;
 }
 </style>
 <form action="controller.php?action=approve" method="POST">
-<div class="col-sm-12 content-header" style="">View Details</div>
-<div class="col-sm-6 content-body" > 
-	<p>Job Details</p> 
-	<h3><?php echo $job->OCCUPATIONTITLE; ?></h3>
+<div class="col-sm-12 content-header" style="margin-bottom:20px"><h3><?php echo $job->OCCUPATIONTITLE; ?></h3></div>
+<div class="col-sm-12 content-body">
 	<input type="hidden" name="JOBREGID" value="<?php echo $jobreg->REGISTRATIONID;?>">
-	<input type="hidden" name="APPLICANTID" value="<?php echo $appl->APPLICANTID;?>">
 
 	<div class="col-sm-6">
-		<p>Job Details : </p>  
+        <p>Job Details : </p>   
 		<ul>
-			<li><i class="fp-ht-tv"></i>Job Setting : <?php echo $job->JOBSETTING; ?></li>
-            <li><i class="fp-ht-food"></i>Salary : ₱ <?php echo number_format($job->SALARIES,2);  ?></li>
+            <li><i class="fp-ht-food"></i>Job Setting : <?php echo $job->JOBSETTING;  ?></li>
+            <li><i class="fp-ht-food"></i>Salary : <?php echo number_format($job->SALARIES,2);  ?></li>
             <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $job->PREFEREDSEX; ?></li>
         </ul>
 	</div> 
+	<div class="col-sm-6">
+        <p>Employeer : </p>
+		<p style="margin-left: 15px;"><?php echo $comp->COMPANYNAME ; ?></p> 
+		<p style="margin-left: 15px;">@ <?php echo $comp->COMPANYADDRESS ; ?></p>
+	</div>
 	<div class="col-sm-12">
 		<p>Job Description : </p>   
 		<p style="margin-left: 15px;"><?php echo $job->JOBDESCRIPTION;?></p>
@@ -87,41 +89,19 @@ global $mydb;
 		<p>Qualification/Work Experience : </p>
 		<p style="margin-left: 15px;"><?php echo $job->QUALIFICATION_WORKEXPERIENCE; ?></p>
 	</div>
-	<div class="col-sm-12"> 
-		<p>Employeer : </p>
-		<p style="margin-left: 15px;"><?php echo $comp->COMPANYNAME ; ?></p> 
-		<p style="margin-left: 15px;">@ <?php echo $comp->COMPANYADDRESS ; ?></p>
-	</div>
 </div>
-<div class="col-sm-6 content-body" >
-	<p>Applicant Infomation</p> 
-	<h3> <?php echo $appl->LNAME. ', ' .$appl->FNAME . ' ' . $appl->MNAME;?></h3>
-	<ul> 
-		<li>Address : <?php echo $appl->ADDRESS; ?></li>
-		<li>Contact No. : <?php echo $appl->CONTACTNO;?></li>
-		<li>Email Address. : <?php echo $appl->EMAILADDRESS;?></li>
-		<li>Sex: <?php echo $appl->SEX;?></li>
-		<li>Age : <?php echo $appl->AGE;?></li> 
-	</ul>
-	<div class="col-sm-12"> 
-		<p>Educational Attainment : </p>
-		<p style="margin-left: 15px;"><?php echo $appl->DEGREE;?></p>
-	</div>
-
-
-</div> 
+ 
 <div class="col-sm-12 content-footer">
 <p><i class="fa fa-paperclip"></i>  Attachment Files</p>
 	<div class="col-sm-12 slider">
-		 <h4>Download Resume: <a href="<?php echo web_root.'applicant/'.$attachmentfile->FILE_LOCATION; ?>"><?php echo $attachmentfile->FILE_NAME?></a></h4>
-	</div> 
-
+		 <h3>Download Resume <a href="<?php echo web_root.'applicant/'.$attachmentfile->FILE_LOCATION; ?>"><?php echo $attachmentfile->FILE_NAME?></a></h3>
+	</div>  
 	<div class="col-sm-12">
 		<p>Feedback</p>
-		<textarea class="input-group" name="REMARKS"><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></textarea>
+		<p><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></p>
 	</div>
 	<div class="col-sm-12  submitbutton "> 
-		<button type="submit" name="submit" class="btn btn-primary">Send</button>
+		<a href="index.php?view=appliedjobs" class="btn btn-primary fa fa-arrow-left">Back</a>
 	</div> 
 </div>
 </form>

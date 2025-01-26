@@ -64,7 +64,7 @@
       <label class="col-md-4 control-label" for=
       "OCCUPATIONTITLE">Job Title:</label> 
       <div class="col-md-8">
-          <input class="form-control input-sm" id="OCCUPATIONTITLE" name="OCCUPATIONTITLE" placeholder="Job Title"   autocomplete="off"/> 
+          <input class="form-control input-sm" id="OCCUPATIONTITLE" name="OCCUPATIONTITLE" placeholder="Job Title"   autocomplete="off" required/> 
       </div>
     </div>
   </div>
@@ -84,7 +84,7 @@
       <label class="col-md-4 control-label" for=
       "JOBSETTING">Job Setting:</label> 
       <div class="col-md-8">
-        <select class="form-control input-sm" id="JOBSETTING" name="JOBSETTING">
+        <select class="form-control input-sm" id="JOBSETTING" name="JOBSETTING" required>
           <option value="">Select</option>
           <option value="On-Site">On-Site</option>
           <option value="Work From Home">Work From Home</option>

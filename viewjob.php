@@ -55,17 +55,16 @@
                                         <br>
                                         <div class="row contentbody">
                                             <div class="col-sm-6">
+                                            <p style="text-indent: 10px;">Job Details:</p>
                                                 <ul>
-                                                    <li><i class="fp-ht-bed"></i>Required No. of Employee's : <?php echo $result->REQ_NO_EMPLOYEES; ?></li>
-                                                    <li><i class="fp-ht-food"></i>Salary : <?php echo number_format($result->SALARIES,2);  ?></li>
-                                                    <li><i class="fa fa-sun-"></i>Duration of Employment : <?php echo $result->DURATION_EMPLOYEMENT; ?></li>
+                                                    <li><i class="fp-ht-food"></i>Job Setting : <?php echo $result->JOBSETTING;  ?></li>
+                                                    <li><i class="fp-ht-food"></i>Salary : ₱ <?php echo number_format($result->SALARIES,2);  ?></li>
+                                                    <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $result->PREFEREDSEX; ?></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-6">
                                                 <ul>
                                                     <!-- <li><i class="fp-ht-dumbbell"></i>Qualification/Work Experience : <?php echo $result->QUALIFICATION_WORKEXPERIENCE; ?></li> -->
-                                                    <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $result->PREFEREDSEX; ?></li>
-                                                    <li><i class="fp-ht-computer"></i>Sector of Vacancy : <?php echo $result->SECTOR_VACANCY; ?></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-12">

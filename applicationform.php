@@ -26,13 +26,14 @@ if (isset($_SESSION['APPLICANTID'])) {
     $jobId = $result->JOBID;
 
     // Query to check if application exists and get file name
-    $checkApplicationQuery = "SELECT `FILE_NAME` FROM `tblattachmentfile` WHERE `USERATTACHMENTID` = '$applicantId' AND `JOBID` = '$jobId'";
+    $checkApplicationQuery = "SELECT * FROM `tblattachmentfile` WHERE `USERATTACHMENTID` = '$applicantId' AND `JOBID` = '$jobId'";
     $mydb->setQuery($checkApplicationQuery);
     $resultSet = $mydb->executeQuery();
     
     if ($mydb->num_rows($resultSet) > 0) {
         $userApplied = true;
         $row = $mydb->fetch_array($resultSet); // Fetch the first matching row
+        $filelocation = $row['FILE_LOCATION'];
         $uploadedFileName = $row['FILE_NAME']; // Get the file name
     }
 ?>
@@ -47,17 +48,16 @@ if (isset($_SESSION['APPLICANTID'])) {
                          <div class="panel-body">
                                   <div class="row contentbody">
                                         <div class="col-sm-6">
+                                        <p>Job Details:</p>
                                             <ul>
-                                                <li><i class="fp-ht-bed"></i>Required No. of Employee's : <?php echo $result->REQ_NO_EMPLOYEES; ?></li>
+                                                <li><i class="fp-ht-food"></i>Job Setting : <?php echo $result->JOBSETTING;  ?></li>
                                                 <li><i class="fp-ht-food"></i>Salary : <?php echo number_format($result->SALARIES,2);  ?></li>
-                                                <li><i class="fa fa-sun-"></i>Duration of Employment : <?php echo $result->DURATION_EMPLOYEMENT; ?></li>
+                                                <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $result->PREFEREDSEX; ?></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-6">
-                                            <ul> 
-                                                <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $result->PREFEREDSEX; ?></li>
-                                                <li><i class="fp-ht-computer"></i>Sector of Vacancy : <?php echo $result->SECTOR_VACANCY; ?></li>
-                                            </ul>
+                                            <p>Employer :  <?php echo  $result->COMPANYNAME; ?></p> 
+                                            <p>Location :  <?php echo  $result->COMPANYADDRESS; ?></p>
                                         </div>
                                         <div class="col-sm-12">
                                             <p>Qualification/Work Experience :</p>
@@ -72,8 +72,7 @@ if (isset($_SESSION['APPLICANTID'])) {
                                             </ul> 
                                          </div>
                                         <div class="col-sm-12">
-                                            <p>Employer :  <?php echo  $result->COMPANYNAME; ?></p> 
-                                            <p>Location :  <?php echo  $result->COMPANYADDRESS; ?></p>
+                                            
                                         </div>
                                     </div>
                          </div>
@@ -92,7 +91,8 @@ if (isset($_SESSION['APPLICANTID'])) {
                         <div class="panel-header">
                             <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">
                                 <?php if ($userApplied): ?>
-                                    Attached File: <strong><?php echo htmlspecialchars($uploadedFileName); ?></strong>
+                                    Attached File: <strong><a href="<?php echo web_root.'applicant/'.$filelocation; ?>">
+                                                    <?php echo htmlspecialchars($uploadedFileName); ?></a></strong>
                                 <?php else: ?>
                                     Attach your Resume here.
                                     <input name="JOBID" type="hidden" value="<?php echo $_GET['job']; ?>">
@@ -142,17 +142,12 @@ if (isset($_SESSION['APPLICANTID'])) {
                          </div>
                          <div class="panel-body">
                                   <div class="row contentbody">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
+                                            <p>Job Details :</p>
                                             <ul>
-                                                <li><i class="fp-ht-bed"></i>Required No. of Employee's : <?php echo $result->REQ_NO_EMPLOYEES; ?></li>
-                                                <li><i class="fp-ht-food"></i>Salary : <?php echo number_format($result->SALARIES,2);  ?></li>
-                                                <li><i class="fa fa-sun-"></i>Duration of Employment : <?php echo $result->DURATION_EMPLOYEMENT; ?></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ul> 
+                                                <li><i class="fp-ht-tv"></i>Job Setting : <?php echo $result->JOBSETTING; ?></li>
+                                                <li><i class="fp-ht-food"></i>Salary : ₱ <?php echo number_format($result->SALARIES,2);  ?></li>
                                                 <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $result->PREFEREDSEX; ?></li>
-                                                <li><i class="fp-ht-computer"></i>Sector of Vacancy : <?php echo $result->SECTOR_VACANCY; ?></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-12">

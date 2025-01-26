@@ -52,8 +52,9 @@ else if (isset($_GET['find'])) {
                 FROM tbljob j 
                 INNER JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
                 WHERE (j.OCCUPATIONTITLE LIKE '%$searchQuery%' 
+                    OR j.JOBSETTING LIKE '%$searchQuery%' 
                     OR c.COMPANYNAME LIKE '%$searchQuery%' 
-                    OR c.COMPANYADDRESS LIKE '%$searchQuery%' 
+                    OR c.COMPANYADDRESS LIKE '%$searchQuery%'
                     OR j.QUALIFICATION_WORKEXPERIENCE LIKE '%$searchQuery%')
                     AND j.JOBSTATUS = 'Open'
                 ORDER BY 

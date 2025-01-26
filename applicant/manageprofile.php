@@ -163,7 +163,7 @@
 
                   <div class="col-md-8"> 
                     <input  class="form-control input-sm" id="DEGREE" name="DEGREE" placeholder=
-                        "Educational Attainment"    onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off" value="<?php echo $appl->DEGREE;?>">
+                        "E.g. Bachelor of ..."    onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off" value="<?php echo $appl->DEGREE;?>">
                     </div>
                 </div>
               </div>  
