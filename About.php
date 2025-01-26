@@ -229,7 +229,7 @@
              src="dist/img//aboutjoyce.jpg" 
              alt="Joyce Abano" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
-        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Joyce Abano</h4>
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Joyce Abaño</h4>
         <span class="deg" style="color: #777; font-size: 1.3rem;">Analyst</span>
     </div>
 
