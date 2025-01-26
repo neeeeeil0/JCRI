@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2025 at 08:42 PM
+-- Generation Time: Jan 26, 2025 at 08:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -204,29 +204,30 @@ CREATE TABLE `tbljob` (
   `COMPANYID` int(11) NOT NULL,
   `CATEGORY` varchar(250) NOT NULL,
   `OCCUPATIONTITLE` varchar(90) NOT NULL,
-  `REQ_NO_EMPLOYEES` int(11) NOT NULL,
   `SALARIES` double NOT NULL,
-  `DURATION_EMPLOYEMENT` varchar(90) NOT NULL,
+  `JOBTYPE` varchar(30) NOT NULL,
   `QUALIFICATION_WORKEXPERIENCE` text NOT NULL,
   `JOBDESCRIPTION` text NOT NULL,
   `PREFEREDSEX` varchar(30) NOT NULL,
-  `SECTOR_VACANCY` text NOT NULL,
   `JOBSTATUS` varchar(90) NOT NULL,
   `PUBLISHERID` varchar(30) NOT NULL,
-  `DATEPOSTED` datetime NOT NULL
+  `DATEPOSTED` datetime NOT NULL,
+  `DATEUPDATED` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbljob`
 --
 
-INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `REQ_NO_EMPLOYEES`, `SALARIES`, `DURATION_EMPLOYEMENT`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `SECTOR_VACANCY`, `JOBSTATUS`, `PUBLISHERID`, `DATEPOSTED`) VALUES
-(4, 8, 'Technology', 'IT Support Specialist', 3, 80000, 'March 27', 'At least 1 year of experience in IT support.', 'Provide technical support for hardware, software, and network-related issues.', 'Male/Female', 'Yes', 'Open', '029837', '2025-01-15 19:22:00'),
-(5, 9, 'Technology', 'Cloud Consultant', 0, 100000, 'April 22', 'Experience in cloud platforms (IBM Cloud, AWS, Azure).', 'Design and implement cloud solutions for clients using IBM Cloud technologies', 'Male/Female', 'Yes', 'Open', '029837', '2025-01-15 19:23:00'),
-(6, 10, 'Sales', 'Key Account Manager', 10, 55000, 'September 7', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Yes', 'Closed', '029837', '2025-01-15 19:25:00'),
-(7, 11, 'Managerial', 'Project Manager', 4, 65000, 'August 17', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Yes', 'Open', '029837', '2025-01-15 19:26:00'),
-(8, 12, 'Managerial', 'Restaurant Manager', 12, 30000, '', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Yes', 'Open', '029837', '2025-01-15 19:27:00'),
-(9, 13, 'IT', 'Solutions Architect', 2, 90000, 'July 13', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Yes', 'Open', '029837', '2025-01-15 19:28:00');
+INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALARIES`, `JOBTYPE`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `JOBSTATUS`, `PUBLISHERID`, `DATEPOSTED`, `DATEUPDATED`) VALUES
+(4, 8, 'Technology', 'IT Support Specialist', 80000, '', 'At least 1 year of experience in IT support.', 'Provide technical support for hardware, software, and network-related issues.', 'Male/Female', 'Open', '029837', '2025-01-15 19:22:00', NULL),
+(5, 9, 'Technology', 'Cloud Consultant', 100000, '', 'Experience in cloud platforms (IBM Cloud, AWS, Azure).', 'Design and implement cloud solutions for clients using IBM Cloud technologies', 'Male/Female', 'Open', '029837', '2025-01-15 19:23:00', NULL),
+(6, 10, 'Sales', 'Key Account Manager', 55000, '', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-23 04:49:14'),
+(7, 11, 'Managerial', 'Project Manager', 65000, '', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Open', '029837', '2025-01-15 19:26:00', NULL),
+(8, 12, 'Managerial', 'Restaurant Manager', 30000, '', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Open', '029837', '2025-01-15 19:27:00', NULL),
+(9, 13, 'IT', 'Solutions Architect', 90000, '', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', NULL),
+(16, 14, 'Services', 'Customer Service Representative', 0, '', 'At least a high school diploma (College graduates are preferred). Excellent communication skills in English and Filipino. Strong problem-solving skills. Ability to work in a fast-paced environment. Previous customer service experience is an advantage but not required.', 'We are seeking a highly motivated and customer-oriented individual to join our growing team as a Customer Service Representative. The ideal candidate will provide excellent service to our clients, ensuring their inquiries and concerns are addressed promptly and professionally.', 'Male/Female', 'Closed', '029837', '2025-01-21 22:26:00', NULL),
+(33, 12, 'Service Crew', 'Crew', 0, 'On-Site', '', 'service', 'Male/Female', 'Open', '029837', '2025-01-27 01:35:23', '2025-01-27 01:36:06');
 
 -- --------------------------------------------------------
 
@@ -413,7 +414,7 @@ ALTER TABLE `tblfeedback`
 -- AUTO_INCREMENT for table `tbljob`
 --
 ALTER TABLE `tbljob`
-  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tbljobregistration`
