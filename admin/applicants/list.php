@@ -119,21 +119,12 @@ $(document).ready(function () {
     // Initialize DataTable
     load_data();
 
-    // Handle dropdown change
-    $(document).on('change', '#jobtitle', function () {
-        var job_title = $(this).val();
-        var company = $('#company').val(); // Get selected company
-        load_data(company, job_title);
-    });
-
-
-    $(document).on('change', '#company', function () {
-        var company = $(this).val();
-        if (company != '') {
-            load_data(company);
-        } else {
-            load_data();
-        }
+    // Handle dropdown changes
+    $('#jobtitle, #company').on('change', function () {
+        var job_title = $('#jobtitle').val();
+        var company = $('#company').val();
+        dataTable.destroy(); // Destroy existing table instance
+        load_data(company, job_title); // Reload with new filters
     });
 
     setInterval(function () {
