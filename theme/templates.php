@@ -176,7 +176,7 @@
                        </li>
                             -->
                         <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='company'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=company">Company</a></li>
-                        <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='hiring'){ echo 'active'; }else{ echo ''; }} ?>"><a href="<?php echo web_root; ?>index.php?q=hiring">Hiring Now</a></li>
+
                         <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='About'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=About">About Us</a></li>
                         <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='Contact'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=Contact">Contact</a></li>
                     </ul>
@@ -219,7 +219,7 @@
         <div class="widget">
           <h5 class="widgetheading">Our Contact</h5>
           <address>
-          <strong>Our Company</strong><br>
+
           Room 529, 531 & 533 5th Floor, J & T Bldg,
            3894 Magsaysay Blvd, Santa Mesa, Manila, 1008 Metro Manila,
             Manila, Philippines</address>
@@ -236,7 +236,7 @@
             <li><a href="<?php echo web_root; ?>index.php">Home</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=jobsearch">Job Search</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=company">Company</a></li>
-            <li><a href="<?php echo web_root; ?>index.php?q=hiring">Hiring Now</a></li>
+
             <li><a href="<?php echo web_root; ?>index.php?q=About">About us</a></li>
             <li><a href="<?php echo web_root; ?>index.php?q=Contact">Contact us</a></li>
           </ul>
@@ -284,10 +284,10 @@
         <div class="col-lg-6">
           <ul class="social-network">
             <li><a href="https://web.facebook.com/jobconnect.ph" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://www.linkedin.com/in/kimjero-jangayo-20b178249/?originalSubdomain=ph" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-            <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+            <!--<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>-->
           </ul>
         </div>
       </div>
