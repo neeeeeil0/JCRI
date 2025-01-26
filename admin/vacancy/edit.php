@@ -121,9 +121,9 @@
   <div class="form-group">
     <div class="col-md-8">
       <label class="col-md-4 control-label" for=
-      "JOBTYPE">Job Type:</label> 
+      "JOBSETTING">Job Setting:</label> 
       <div class="col-md-8">
-        <select class="form-control input-sm" id="JOBTYPE" name="JOBTYPE">
+        <select class="form-control input-sm" id="JOBSETTING" name="JOBSETTING">
           <option value="">Select</option>
           <option value="On-Site">On-Site</option>
           <option value="Work From Home">Work From Home</option>

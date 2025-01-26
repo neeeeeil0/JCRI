@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2025 at 08:52 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jan 27, 2025 at 04:07 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -205,7 +205,7 @@ CREATE TABLE `tbljob` (
   `CATEGORY` varchar(250) NOT NULL,
   `OCCUPATIONTITLE` varchar(90) NOT NULL,
   `SALARIES` double NOT NULL,
-  `JOBTYPE` varchar(30) NOT NULL,
+  `JOBSETTING` varchar(30) NOT NULL,
   `QUALIFICATION_WORKEXPERIENCE` text NOT NULL,
   `JOBDESCRIPTION` text NOT NULL,
   `PREFEREDSEX` varchar(30) NOT NULL,
@@ -219,7 +219,7 @@ CREATE TABLE `tbljob` (
 -- Dumping data for table `tbljob`
 --
 
-INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALARIES`, `JOBTYPE`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `JOBSTATUS`, `PUBLISHERID`, `DATEPOSTED`, `DATEUPDATED`) VALUES
+INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALARIES`, `JOBSETTING`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `JOBSTATUS`, `PUBLISHERID`, `DATEPOSTED`, `DATEUPDATED`) VALUES
 (4, 8, 'Technology', 'IT Support Specialist', 80000, '', 'At least 1 year of experience in IT support.', 'Provide technical support for hardware, software, and network-related issues.', 'Male/Female', 'Open', '029837', '2025-01-15 19:22:00', NULL),
 (5, 9, 'Technology', 'Cloud Consultant', 100000, '', 'Experience in cloud platforms (IBM Cloud, AWS, Azure).', 'Design and implement cloud solutions for clients using IBM Cloud technologies', 'Male/Female', 'Open', '029837', '2025-01-15 19:23:00', NULL),
 (6, 10, 'Sales', 'Key Account Manager', 55000, '', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-23 04:49:14'),

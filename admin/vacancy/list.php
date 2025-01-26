@@ -38,8 +38,8 @@
 				  		<th>Prefered Sex</th> 
 				  		<th>Sector of Vacancy</th> -->
 						<th width="10%">
-							<select name="jobtype" id="jobtype" style="border:none;width:100%;">
-								<option value="">Job Type</option>
+							<select name="jobsetting" id="jobsetting" style="border:none;width:100%;">
+								<option value="">Job Setting</option>
 								<option value="On-Site">On-Site</option>
 								<option value="Work From Home">Work From Home</option>
 								<option value="Hybrid">Hybrid</option>
@@ -102,7 +102,7 @@
 $(document).ready(function () {
     var dataTable;
 
-    function load_data(is_company = '', job_type = '') {
+    function load_data(is_company = '', job_setting = '') {
         dataTable = $('#job-list').DataTable({
             "processing": false,
             "serverSide": true,
@@ -112,7 +112,7 @@ $(document).ready(function () {
                 type: "POST",
                 data: {
                     is_company: is_company, // Pass the selected company
-                    job_type: job_type     // Pass the selected job type
+                    job_setting: job_setting     // Pass the selected job type
                 }
             },
             "columnDefs": [
@@ -131,17 +131,17 @@ $(document).ready(function () {
     // Handle company dropdown changes
     $('#company').on('change', function () {
         var company = $('#company').val();
-        var job_type = $('#jobtype').val(); // Get the current job type filter
+        var job_setting = $('#jobsetting').val(); // Get the current job type filter
         dataTable.destroy(); // Destroy existing table instance
-        load_data(company, job_type); // Reload with new filters
+        load_data(company, job_setting); // Reload with new filters
     });
 
     // Handle job type dropdown changes
-    $('#jobtype').on('change', function () {
+    $('#jobsetting').on('change', function () {
         var company = $('#company').val(); // Get the current company filter
-        var job_type = $('#jobtype').val(); // Get the selected job type
+        var job_setting = $('#jobsetting').val(); // Get the selected job type
         dataTable.destroy(); // Destroy existing table instance
-        load_data(company, job_type); // Reload with new filters
+        load_data(company, job_setting); // Reload with new filters
     });
 
     // Periodically reload the table without resetting paging

@@ -3,7 +3,7 @@ require_once ("../../include/initialize.php");
 //ajax.php
 $mydb = new Database(); // Replace with your actual database connection class
 
-$column = array("j.OCCUPATIONTITLE", "c.COMPANYNAME", "j.JOBTYPE", "u.FULLNAME", "j.JOBSTATUS");
+$column = array("j.OCCUPATIONTITLE", "c.COMPANYNAME", "j.JOBSETTING", "u.FULLNAME", "j.JOBSTATUS");
 
 $query = "
     SELECT j.*, c.COMPANYNAME, u.FULLNAME
@@ -19,10 +19,10 @@ if (!empty($_POST["is_company"])) {
     $query .= " AND j.COMPANYID = $company_id";
 }
 
-// Job Type filter
-if (!empty($_POST["job_type"])) {
-    $job_type = htmlspecialchars($_POST["job_type"], ENT_QUOTES);
-    $query .= " AND j.JOBTYPE = '$job_type'";
+// Job Setting filter
+if (!empty($_POST["job_setting"])) {
+    $job_setting = htmlspecialchars($_POST["job_setting"], ENT_QUOTES);
+    $query .= " AND j.JOBSETTING = '$job_setting'";
 }
 
 // Search filter
@@ -31,7 +31,7 @@ if (!empty($_POST["search"]["value"])) {
     $query .= " AND (
         j.OCCUPATIONTITLE LIKE '%$search%' OR
         c.COMPANYNAME LIKE '%$search%' OR
-        j.JOBTYPE LIKE '%$search%' OR
+        j.JOBSETTING LIKE '%$search%' OR
         u.FULLNAME LIKE '%$search%' OR
         j.JOBSTATUS LIKE '%$search%'
     )";
@@ -64,14 +64,14 @@ $filteredCountQuery = "
 if (!empty($_POST["is_company"])) {
     $filteredCountQuery .= " AND j.COMPANYID = $company_id";
 }
-if (!empty($_POST["job_type"])) {
-    $filteredCountQuery .= " AND j.JOBTYPE = '$job_type'";
+if (!empty($_POST["job_setting"])) {
+    $filteredCountQuery .= " AND j.JOBSETTING = '$job_setting'";
 }
 if (!empty($_POST["search"]["value"])) {
     $filteredCountQuery .= " AND (
         j.OCCUPATIONTITLE LIKE '%$search%' OR
         c.COMPANYNAME LIKE '%$search%' OR
-        j.JOBTYPE LIKE '%$search%' OR
+        j.JOBSETTING LIKE '%$search%' OR
         u.FULLNAME LIKE '%$search%' OR
         j.JOBSTATUS LIKE '%$search%'
     )";
@@ -95,7 +95,7 @@ foreach ($cur as $result) {
     $row = [];
     $row[] = $result->OCCUPATIONTITLE;
     $row[] = $result->COMPANYNAME;
-    $row[] = $result->JOBTYPE;
+    $row[] = $result->JOBSETTING;
     $row[] = $result->FULLNAME;
     $row[] = $result->JOBSTATUS;
     $row[] = '<a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'" class="btn btn-primary btn-xs">  <span class="fa fa-edit fw-fa"></span></a>
