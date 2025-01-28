@@ -201,7 +201,7 @@ function doRegister(){
 
 			$applicant->applicantAuthentication($email,$h_upass);
 
-            message("You are successfully registered and logged in!", "success");
+            message("You have successfully registered and logged in!", "success");
             redirect(web_root . "applicant/");
         }
     }

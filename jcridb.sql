@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2025 at 04:07 AM
+-- Generation Time: Jan 29, 2025 at 01:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,7 +52,8 @@ CREATE TABLE `tblapplicants` (
 --
 
 INSERT INTO `tblapplicants` (`APPLICANTID`, `FNAME`, `LNAME`, `MNAME`, `ADDRESS`, `SEX`, `CIVILSTATUS`, `BIRTHDATE`, `BIRTHPLACE`, `AGE`, `USERNAME`, `PASS`, `EMAILADDRESS`, `CONTACTNO`, `DEGREE`, `APPLICANTPHOTO`, `NATIONALID`) VALUES
-(2025027, 'Neil Oliver ', 'Regondola', 'Jerus', '116 Santol QC', 'Male', 'Single', '2002-08-09', 'Sampaloc Manila', 22, 'neilneil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'neiloliverxxx@gmail.com', '09478251234', 'College', 'photos/aboutneil.jpg', '');
+(2025027, 'Neil Oliver ', 'Regondola', 'Jerus', '116 Santol QC', 'Female', 'none', '2002-08-09', 'Sampaloc Manila', 22, 'neilneil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'neiloliverxxx@gmail.com', '09478251234', 'Bachelor of Science in Information Systems', 'photos/aboutneil.jpg', ''),
+(2025028, 'Momo', 'Ayase', '', 'Kamigoe City', 'Female', 'Single', '2003-01-07', 'Kamigoe City', 22, 'momoayase', '116e977a8f6c83414b5e9ed0e323f9bbe680cabd', 'momoayase@email.com', '09431123432', 'Bachelor of Arts and History', 'photos/image_2025-01-21_235905627.png', '');
 
 -- --------------------------------------------------------
 
@@ -68,6 +69,13 @@ CREATE TABLE `tblattachmentfile` (
   `FILE_LOCATION` varchar(255) NOT NULL,
   `USERATTACHMENTID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tblattachmentfile`
+--
+
+INSERT INTO `tblattachmentfile` (`ID`, `FILEID`, `JOBID`, `FILE_NAME`, `FILE_LOCATION`, `USERATTACHMENTID`) VALUES
+(17, '20256912547', 8, '2025027_resume', 'photos/27012025052847Resume.pdf', 2025027);
 
 -- --------------------------------------------------------
 
@@ -88,10 +96,10 @@ CREATE TABLE `tblautonumbers` (
 --
 
 INSERT INTO `tblautonumbers` (`AUTOID`, `AUTOSTART`, `AUTOEND`, `AUTOINC`, `AUTOKEY`) VALUES
-(1, '02983', 8, 1, 'userid'),
+(1, '02983', 9, 1, 'userid'),
 (2, '000', 79, 1, 'employeeid'),
-(3, '0', 28, 1, 'APPLICANT'),
-(4, '69125', 47, 1, 'FILEID');
+(3, '0', 29, 1, 'APPLICANT'),
+(4, '69125', 48, 1, 'FILEID');
 
 -- --------------------------------------------------------
 
@@ -220,12 +228,12 @@ CREATE TABLE `tbljob` (
 --
 
 INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALARIES`, `JOBSETTING`, `QUALIFICATION_WORKEXPERIENCE`, `JOBDESCRIPTION`, `PREFEREDSEX`, `JOBSTATUS`, `PUBLISHERID`, `DATEPOSTED`, `DATEUPDATED`) VALUES
-(4, 8, 'Technology', 'IT Support Specialist', 80000, '', 'At least 1 year of experience in IT support.', 'Provide technical support for hardware, software, and network-related issues.', 'Male/Female', 'Open', '029837', '2025-01-15 19:22:00', NULL),
-(5, 9, 'Technology', 'Cloud Consultant', 100000, '', 'Experience in cloud platforms (IBM Cloud, AWS, Azure).', 'Design and implement cloud solutions for clients using IBM Cloud technologies', 'Male/Female', 'Open', '029837', '2025-01-15 19:23:00', NULL),
-(6, 10, 'Sales', 'Key Account Manager', 55000, '', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-23 04:49:14'),
-(7, 11, 'Managerial', 'Project Manager', 65000, '', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Open', '029837', '2025-01-15 19:26:00', NULL),
-(8, 12, 'Managerial', 'Restaurant Manager', 30000, '', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Open', '029837', '2025-01-15 19:27:00', NULL),
-(9, 13, 'IT', 'Solutions Architect', 90000, '', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', '2025-01-26 20:52:22'),
+(4, 8, 'Technology', 'IT Support Specialist', 80000, 'On-Site', 'At least 1 year of experience in IT support.', 'Provide technical support for hardware, software, and network-related issues.', 'Male/Female', 'Open', '029837', '2025-01-15 19:22:00', '2025-01-27 05:23:34'),
+(5, 9, 'Technology', 'Cloud Consultant', 100000, 'On-Site', 'Experience in cloud platforms (IBM Cloud, AWS, Azure).', 'Design and implement cloud solutions for clients using IBM Cloud technologies', 'Male/Female', 'Open', '029837', '2025-01-15 19:23:00', '2025-01-27 05:24:03'),
+(6, 10, 'Sales', 'Key Account Manager', 55000, 'Hybrid', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-27 05:23:28'),
+(7, 11, 'Managerial', 'Project Manager', 65000, 'Hybrid', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Open', '029837', '2025-01-15 19:26:00', '2025-01-27 05:23:17'),
+(8, 12, 'Managerial', 'Restaurant Manager', 30000, 'On-Site', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Open', '029837', '2025-01-15 19:27:00', '2025-01-27 05:24:11'),
+(9, 13, 'IT', 'Solutions Architect', 90000, 'Work From Home', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', '2025-01-27 05:24:25'),
 (16, 14, 'Services', 'Customer Service Representative', 0, '', 'At least a high school diploma (College graduates are preferred). Excellent communication skills in English and Filipino. Strong problem-solving skills. Ability to work in a fast-paced environment. Previous customer service experience is an advantage but not required.', 'We are seeking a highly motivated and customer-oriented individual to join our growing team as a Customer Service Representative. The ideal candidate will provide excellent service to our clients, ensuring their inquiries and concerns are addressed promptly and professionally.', 'Male/Female', 'Closed', '029837', '2025-01-21 22:26:00', NULL),
 (34, 12, 'Managerial', 'Manager', 0, 'On-Site', '', '', 'Male', 'Open', '029837', '2025-01-26 20:52:00', NULL);
 
@@ -249,6 +257,13 @@ CREATE TABLE `tbljobregistration` (
   `DATETIMEAPPROVED` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `tbljobregistration`
+--
+
+INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `REMARKS`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`) VALUES
+(17, 12, 8, 2025027, 'Neil Oliver  Regondola', '2025-01-27', 'Pending', '20256912547', 1, 1, '2025-01-27 05:28:00');
+
 -- --------------------------------------------------------
 
 --
@@ -270,7 +285,14 @@ CREATE TABLE `tblnotification` (
 INSERT INTO `tblnotification` (`NOTIFICATIONID`, `APPLICANTID`, `JOBID`, `ISVIEWED`, `DATECREATED`) VALUES
 (170, 2025027, 5, 1, '2025-01-27 03:00:10'),
 (171, 2025027, 34, 0, '2025-01-27 03:52:00'),
-(172, 2025027, 9, 0, '2025-01-27 03:52:12');
+(172, 2025027, 9, 0, '2025-01-27 03:52:12'),
+(173, 2025027, 7, 0, '2025-01-27 05:22:19'),
+(174, 2025027, 7, 0, '2025-01-27 05:22:30'),
+(175, 2025027, 7, 0, '2025-01-27 05:23:17'),
+(176, 2025027, 6, 0, '2025-01-27 05:23:28'),
+(177, 2025027, 4, 0, '2025-01-27 05:23:34'),
+(178, 2025027, 5, 0, '2025-01-27 05:24:03'),
+(179, 2025027, 8, 0, '2025-01-27 05:24:11');
 
 -- --------------------------------------------------------
 
@@ -293,7 +315,8 @@ CREATE TABLE `tblusers` (
 
 INSERT INTO `tblusers` (`USERID`, `FULLNAME`, `USERNAME`, `PASS`, `ROLE`, `PICLOCATION`) VALUES
 ('00018', 'HireVantage', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'photos/zoro1.jpg'),
-('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'Administrator', 'photos/pic2.jpg');
+('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'Administrator', 'photos/pic2.jpg'),
+('029838', 'admin2', 'admin2', '315f166c5aca63a157f7d41007675cb44a948b33', 'Administrator', '');
 
 --
 -- Indexes for dumped tables
@@ -374,13 +397,13 @@ ALTER TABLE `tblusers`
 -- AUTO_INCREMENT for table `tblapplicants`
 --
 ALTER TABLE `tblapplicants`
-  MODIFY `APPLICANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025028;
+  MODIFY `APPLICANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025029;
 
 --
 -- AUTO_INCREMENT for table `tblattachmentfile`
 --
 ALTER TABLE `tblattachmentfile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tblautonumbers`
@@ -416,19 +439,19 @@ ALTER TABLE `tblfeedback`
 -- AUTO_INCREMENT for table `tbljob`
 --
 ALTER TABLE `tbljob`
-  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `JOBID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbljobregistration`
 --
 ALTER TABLE `tbljobregistration`
-  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tblnotification`
 --
 ALTER TABLE `tblnotification`
-  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
