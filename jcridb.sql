@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2025 at 01:33 AM
+-- Generation Time: Jan 29, 2025 at 05:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -75,7 +75,8 @@ CREATE TABLE `tblattachmentfile` (
 --
 
 INSERT INTO `tblattachmentfile` (`ID`, `FILEID`, `JOBID`, `FILE_NAME`, `FILE_LOCATION`, `USERATTACHMENTID`) VALUES
-(17, '20256912547', 8, '2025027_resume', 'photos/27012025052847Resume.pdf', 2025027);
+(17, '20256912547', 8, '2025027_resume', 'photos/27012025052847Resume.pdf', 2025027),
+(18, '20256912548', 8, '2025028_resume', 'photos/2901202502083127012025052847Resume.pdf', 2025028);
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,7 @@ INSERT INTO `tblautonumbers` (`AUTOID`, `AUTOSTART`, `AUTOEND`, `AUTOINC`, `AUTO
 (1, '02983', 9, 1, 'userid'),
 (2, '000', 79, 1, 'employeeid'),
 (3, '0', 29, 1, 'APPLICANT'),
-(4, '69125', 48, 1, 'FILEID');
+(4, '69125', 49, 1, 'FILEID');
 
 -- --------------------------------------------------------
 
@@ -198,7 +199,9 @@ CREATE TABLE `tblfeedback` (
   `FEEDBACKID` int(11) NOT NULL,
   `APPLICANTID` int(11) NOT NULL,
   `REGISTRATIONID` int(11) NOT NULL,
-  `FEEDBACK` text NOT NULL
+  `FEEDBACK` text NOT NULL,
+  `VIEW` int(11) NOT NULL,
+  `DATETIMESAVED` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -233,7 +236,7 @@ INSERT INTO `tbljob` (`JOBID`, `COMPANYID`, `CATEGORY`, `OCCUPATIONTITLE`, `SALA
 (6, 10, 'Sales', 'Key Account Manager', 55000, 'Hybrid', 'At least 2 years of experience in key account management', 'Manage and grow relationships with major clients.', 'Male/Female', 'Open', '029837', '2025-01-15 19:25:00', '2025-01-27 05:23:28'),
 (7, 11, 'Managerial', 'Project Manager', 65000, 'Hybrid', 'Proven experience in project management.', 'Lead and manage projects across various business units.', 'Male', 'Open', '029837', '2025-01-15 19:26:00', '2025-01-27 05:23:17'),
 (8, 12, 'Managerial', 'Restaurant Manager', 30000, 'On-Site', 'Experience in food and beverage or retail management', 'Oversee daily operations of the restaurant to ensure smooth service.', 'Male/Female', 'Open', '029837', '2025-01-15 19:27:00', '2025-01-27 05:24:11'),
-(9, 13, 'IT', 'Solutions Architect', 90000, 'Work From Home', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Closed', '029837', '2025-01-15 19:28:00', '2025-01-27 05:24:25'),
+(9, 13, 'IT', 'Solutions Architect', 90000, '', 'Extensive knowledge of Microsoft technologies.', 'Design and implement Microsoft-based solutions for enterprise clients', 'Male/Female', 'Open', '029837', '2025-01-15 19:28:00', '2025-01-29 03:16:14'),
 (16, 14, 'Services', 'Customer Service Representative', 0, '', 'At least a high school diploma (College graduates are preferred). Excellent communication skills in English and Filipino. Strong problem-solving skills. Ability to work in a fast-paced environment. Previous customer service experience is an advantage but not required.', 'We are seeking a highly motivated and customer-oriented individual to join our growing team as a Customer Service Representative. The ideal candidate will provide excellent service to our clients, ensuring their inquiries and concerns are addressed promptly and professionally.', 'Male/Female', 'Closed', '029837', '2025-01-21 22:26:00', NULL),
 (34, 12, 'Managerial', 'Manager', 0, 'On-Site', '', '', 'Male', 'Open', '029837', '2025-01-26 20:52:00', NULL);
 
@@ -250,19 +253,23 @@ CREATE TABLE `tbljobregistration` (
   `APPLICANTID` int(11) NOT NULL,
   `APPLICANT` varchar(90) NOT NULL,
   `REGISTRATIONDATE` date NOT NULL,
+  `STATUS` varchar(30) NOT NULL,
   `REMARKS` varchar(255) NOT NULL DEFAULT 'Pending',
+  `MODIFIEDBY` varchar(30) DEFAULT NULL,
   `FILEID` varchar(30) DEFAULT NULL,
   `PENDINGAPPLICATION` tinyint(1) NOT NULL DEFAULT 1,
   `HVIEW` tinyint(1) NOT NULL DEFAULT 1,
-  `DATETIMEAPPROVED` datetime NOT NULL
+  `DATETIMEAPPROVED` datetime NOT NULL,
+  `DATETIMEUPDATED` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbljobregistration`
 --
 
-INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `REMARKS`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`) VALUES
-(17, 12, 8, 2025027, 'Neil Oliver  Regondola', '2025-01-27', 'Pending', '20256912547', 1, 1, '2025-01-27 05:28:00');
+INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `STATUS`, `REMARKS`, `MODIFIEDBY`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`, `DATETIMEUPDATED`) VALUES
+(17, 12, 8, 2025027, 'Neil Oliver  Regondola', '2025-01-27', 'Pending', '', '00018', '20256912547', 0, 0, '2025-01-27 05:28:00', '2025-01-29 04:52:33'),
+(18, 12, 8, 2025028, 'Momo Ayase', '2025-01-29', 'Pending', '', '00018', '20256912548', 0, 0, '2025-01-29 02:08:00', '2025-01-29 04:21:34');
 
 -- --------------------------------------------------------
 
@@ -292,7 +299,9 @@ INSERT INTO `tblnotification` (`NOTIFICATIONID`, `APPLICANTID`, `JOBID`, `ISVIEW
 (176, 2025027, 6, 0, '2025-01-27 05:23:28'),
 (177, 2025027, 4, 0, '2025-01-27 05:23:34'),
 (178, 2025027, 5, 0, '2025-01-27 05:24:03'),
-(179, 2025027, 8, 0, '2025-01-27 05:24:11');
+(179, 2025027, 8, 0, '2025-01-27 05:24:11'),
+(180, 2025027, 9, 0, '2025-01-29 03:16:14'),
+(181, 2025028, 9, 0, '2025-01-29 03:16:14');
 
 -- --------------------------------------------------------
 
@@ -403,7 +412,7 @@ ALTER TABLE `tblapplicants`
 -- AUTO_INCREMENT for table `tblattachmentfile`
 --
 ALTER TABLE `tblattachmentfile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tblautonumbers`
@@ -433,7 +442,7 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `tblfeedback`
 --
 ALTER TABLE `tblfeedback`
-  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbljob`
@@ -445,13 +454,13 @@ ALTER TABLE `tbljob`
 -- AUTO_INCREMENT for table `tbljobregistration`
 --
 ALTER TABLE `tbljobregistration`
-  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tblnotification`
 --
 ALTER TABLE `tblnotification`
-  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `NOTIFICATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
