@@ -53,7 +53,11 @@ if (!isset($_GET['p'])) {
               <table class="table table-hover table-striped">
                 <tbody>
                     <?php 
-                        $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f WHERE c.`COMPANYID` = j.`COMPANYID` AND j.`REGISTRATIONID` = f.`REGISTRATIONID` AND `PENDINGAPPLICATION` = 0 AND j.`APPLICANTID` = '{$_SESSION['APPLICANTID']}' ORDER BY j.`DATETIMEAPPROVED` DESC";
+                        $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
+                        WHERE c.`COMPANYID` = j.`COMPANYID` 
+                        AND j.`REGISTRATIONID` = f.`REGISTRATIONID` 
+                        AND `PENDINGAPPLICATION` = 0 
+                        AND j.`APPLICANTID` = '{$_SESSION['APPLICANTID']}' ORDER BY f.`DATETIMESAVED` DESC";
                         $mydb->setQuery($sql);
                         $cur = $mydb->loadResultList();
                         
@@ -63,11 +67,11 @@ if (!isset($_GET['p'])) {
                             echo '</tr>';
                         } else {
                             foreach ($cur as $result) {
-                                $rowStyle = ($result->HVIEW == 0) ? 'font-weight: bold;' : '';
+                                $rowStyle = ($result->VIEW == 1) ? 'font-weight: bold;' : '';
                                 echo '<tr style="' . $rowStyle . '">';
                                 echo '<td><input type="checkbox"></td>';
-                                echo '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->REGISTRATIONID.'">'.$result->COMPANYNAME.'</a></td>';
-                                echo '<td class="mailbox-subject">'.$result->REMARKS.'</td>'; 
+                                echo '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->FEEDBACKID.'">'.$result->COMPANYNAME.'</a></td>';
+                                echo '<td class="mailbox-subject">'.$result->FEEDBACK.'</td>'; 
                                 echo '<td class="mailbox-date">'.$result->DATETIMEAPPROVED.'</td>';
                                 echo '</tr>';
                             }

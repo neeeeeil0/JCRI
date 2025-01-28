@@ -46,7 +46,7 @@
                     </select>
                 </th>
                 <th>Applied Date</th> 
-                <th>Remarks</th>
+                <th>Status</th>
                 <th width="10%" >Action</th> 
             </tr>	
             </thead> 

@@ -78,11 +78,11 @@
                   $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);
 
                   // Count unread job registration messages for the applicant
-                  $sql = "SELECT count(*) as 'COUNT' 
-                          FROM `tbljobregistration` 
-                          WHERE `PENDINGAPPLICATION` = 0 
-                          AND `HVIEW` = 0 
-                          AND `APPLICANTID` = '{$appl->APPLICANTID}'";
+                  $sql = "SELECT COUNT(*) as 'COUNT' FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
+                        WHERE c.`COMPANYID` = j.`COMPANYID` 
+                        AND j.`REGISTRATIONID` = f.`REGISTRATIONID`
+                        AND f.VIEW = 1
+                        AND j.`APPLICANTID` = '{$appl->APPLICANTID}'";
                   $mydb->setQuery($sql);
                   $showMsg = $mydb->loadSingleResult();
                   $msg = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;

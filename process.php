@@ -151,7 +151,8 @@ function doUpdate($jobid=0,$fileid=0) {
 			$jobreg->APPLICANT   = $appl->FNAME . ' ' . $appl->LNAME;
 			$jobreg->REGISTRATIONDATE = date('Y-m-d');
 			$jobreg->FILEID = date('Y').$fileid;
-			$jobreg->REMARKS = 'Pending';
+			$jobreg->STATUS = 'Pending';
+			$jobreg->REMARKS = '';
 			$jobreg->DATETIMEAPPROVED = date('Y-m-d H:i');
 			$jobreg->create();
 

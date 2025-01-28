@@ -3,7 +3,7 @@ require_once ("../../include/initialize.php");
 //ajax.php
 $mydb = new Database(); // Replace with your actual database connection class
 
-$column = array("j.REGISTRATIONID", "j.APPLICANT", "j2.OCCUPATIONTITLE", "c.COMPANYNAME", "j.REGISTRATIONDATE", "j.REMARKS", "Action");
+$column = array("j.REGISTRATIONID", "j.APPLICANT", "j2.OCCUPATIONTITLE", "c.COMPANYNAME", "j.REGISTRATIONDATE", "j.STATUS", "Action");
 
 $query = "
     SELECT *
@@ -35,7 +35,7 @@ if (!empty($_POST["search"]["value"])) {
         j2.OCCUPATIONTITLE LIKE '%$search%' OR
         c.COMPANYNAME LIKE '%$search%' OR
         j.REGISTRATIONDATE LIKE '%$search%' OR
-        j.REMARKS LIKE '%$search%'
+        j.STATUS LIKE '%$search%'
     )";
 }
 
@@ -75,7 +75,7 @@ if (!empty($_POST["search"]["value"])) {
         j.APPLICANT LIKE '%$search%' OR
         j2.OCCUPATIONTITLE LIKE '%$search%' OR
         c.COMPANYNAME LIKE '%$search%' OR
-        j.REMARKS LIKE '%$search%'
+        j.STATUS LIKE '%$search%'
     )";
 }
 $mydb->setQuery($filteredCountQuery);
@@ -101,7 +101,7 @@ foreach ($cur as $result) {
     $row[] = $result->OCCUPATIONTITLE;
     $row[] = $result->COMPANYNAME;
     $row[] = $result->REGISTRATIONDATE;
-    $row[] = $result->REMARKS;
+    $row[] = $result->STATUS;
     $row[] = '<a title="View" href="index.php?view=view&id=' . $result->REGISTRATIONID . '" class="btn btn-primary btn-xs">
                 <span class="fa fa-edit fw-fa"></span></a>
               <a title="Remove" href="controller.php?action=delete&id=' . $result->REGISTRATIONID . '" class="btn btn-danger btn-xs">

@@ -1,14 +1,17 @@
 <?php 
   $id = isset($_GET['id']) ? $_GET['id'] :0;
 
-$sql="UPDATE `tbljobregistration` SET HVIEW=1 WHERE `REGISTRATIONID`='{$id}'";
-$mydb->setQuery($sql);
-$mydb->executeQuery();
-
-
-$sql = "SELECT * FROM `tblcompany` c,`tbljobregistration` jr,  `tbljob` j  WHERE c.`COMPANYID`=jr.`COMPANYID` AND jr.`JOBID`=j.`JOBID` AND `REGISTRATIONID`='{$id}'";
+$sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` jr, `tblfeedback` f, `tbljob` j 
+          WHERE c.`COMPANYID` = j.`COMPANYID` 
+          AND jr.`REGISTRATIONID` = f.`REGISTRATIONID`
+          AND jr.`JOBID`=j.`JOBID`
+          AND f.`FEEDBACKID` = '{$id}'";
 $mydb->setQuery($sql);
 $res = $mydb->loadSingleResult();
+
+$sql="UPDATE `tblfeedback` SET VIEW=0 WHERE `FEEDBACKID`='{$res->FEEDBACKID}'";
+$mydb->setQuery($sql);
+$mydb->executeQuery();
 
 $applicant = new Applicants();
 $appl  = $applicant->single_applicant($_SESSION['APPLICANTID']);

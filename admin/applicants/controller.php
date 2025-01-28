@@ -122,7 +122,7 @@ switch ($action) {
 					$emp->TELNO				= $_POST['TELNO'];
 					$emp->CIVILSTATUS		= $_POST['CIVILSTATUS']; 
 					$emp->POSITION			= trim($_POST['POSITION']);
-					// $emp->DEPARTMENTID		= $_POST['DEPARTMENTID'];
+					// $emp->DEPARTMENTID	= $_POST['DEPARTMENTID'];
 					// $emp->DIVISIONID		= $_POST['DIVISIONID'];
 					$emp->EMP_EMAILADDRESS	= $_POST['EMP_EMAILADDRESS'];
 					$emp->EMPUSERNAME		= $_POST['EMPLOYEEID'];
@@ -299,37 +299,33 @@ global $mydb;
 		# code...
 		$id = $_POST['JOBREGID'];
 		$applicantid = $_POST['APPLICANTID'];
-
+		$modifiedby = $_SESSION['ADMIN_USERID'];
+		$status = $_POST['STATUS'];
 		$remarks = $_POST['REMARKS'];
-		$sql="UPDATE `tbljobregistration` SET `REMARKS`='{$remarks}',PENDINGAPPLICATION=0,HVIEW=0,DATETIMEAPPROVED=NOW() WHERE `REGISTRATIONID`='{$id}'";
+
+		$sql = "SELECT * FROM `tbljobregistration` WHERE `REGISTRATIONID`='{$id}'";
+		$mydb->setQuery($sql);
+		$res = $mydb->loadSingleResult();
+		$oldremarks = $res->REMARKS;
+
+		$sql="UPDATE `tbljobregistration` SET `STATUS`='{$status}',`REMARKS`='{$remarks}',`MODIFIEDBY`='{$modifiedby}',PENDINGAPPLICATION=0,HVIEW=0,DATETIMEUPDATED=NOW() WHERE `REGISTRATIONID`='{$id}'";
 		$mydb->setQuery($sql);
 		$cur = $mydb->executeQuery();
 
 		if ($cur) {
-			# code...
-			$sql = "SELECT * FROM `tblfeedback` WHERE `REGISTRATIONID`='{$id}'";
-			$mydb->setQuery($sql);
-			$res = $mydb->loadSingleResult();
-			if (isset($res)) {
-				# code...
-				$sql="UPDATE `tblfeedback` SET `FEEDBACK`='{$remarks}' WHERE `REGISTRATIONID`='{$id}'";
+
+			if(strcmp($oldremarks, $remarks) != 0) {
+				$sql="INSERT INTO `tblfeedback` (`APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`, `VIEW`) VALUES ('{$applicantid}','{$id}','{$remarks}', '1')";
 				$mydb->setQuery($sql);
 				$cur = $mydb->executeQuery();
-			}else{
-				$sql="INSERT INTO `tblfeedback` (`APPLICANTID`, `REGISTRATIONID`,`FEEDBACK`) VALUES ('{$applicantid}','{$id}','{$remarks}')";
-				$mydb->setQuery($sql);
-				$cur = $mydb->executeQuery(); 
-
 			}
 
-			message("Applicant is calling for an interview.", "success");
-			redirect("index.php?view=view&id=".$id); 
+			message("Applicant ID: $applicantid status is $status.", "success");
+			redirect("index.php"); 
 		}else{
-			message("cannot be sve.", "error");
+			message("cannot be save.", "error");
 			redirect("index.php?view=view&id=".$id); 
 		}
-
-
 	}
 }
 

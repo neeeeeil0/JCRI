@@ -93,6 +93,7 @@ global $mydb;
 		<p style="margin-left: 15px;">@ <?php echo $comp->COMPANYADDRESS ; ?></p>
 	</div>
 </div>
+
 <div class="col-sm-6 content-body" >
 	<p>Applicant Infomation</p> 
 	<h3> <?php echo $appl->LNAME. ', ' .$appl->FNAME . ' ' . $appl->MNAME;?></h3>
@@ -107,21 +108,45 @@ global $mydb;
 		<p>Educational Attainment : </p>
 		<p style="margin-left: 15px;"><?php echo $appl->DEGREE;?></p>
 	</div>
+</div>
 
-
-</div> 
 <div class="col-sm-12 content-footer">
 <p><i class="fa fa-paperclip"></i>  Attachment Files</p>
 	<div class="col-sm-12 slider">
 		 <h4>Download Resume: <a href="<?php echo web_root.'applicant/'.$attachmentfile->FILE_LOCATION; ?>"><?php echo $attachmentfile->FILE_NAME?></a></h4>
 	</div> 
-
-	<div class="col-sm-12">
-		<p>Feedback</p>
-		<textarea class="input-group" name="REMARKS"><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></textarea>
 	</div>
-	<div class="col-sm-12  submitbutton "> 
-		<button type="submit" name="submit" class="btn btn-primary">Send</button>
-	</div> 
+
+
+
+	
+<div class="col-sm-12 content-footer">
+	<p>Applicant Status</p>
+	<div class="form-group">
+		<label class="col-md-1 control-label" for=
+		"STATUS">Status:</label>
+		<div class="col-md-3 ">
+			<select class="form-control input-sm" id="STATUS" name="STATUS" required>
+				<?php
+					echo '<option SELECTED>'.$jobreg->STATUS.'</option>';
+				?>
+				<option>Pending</option>
+				<option>For Review</option>
+				<option>For Initial Screening</option>
+				<option>For Interview</option>
+				<option>For Assessment</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-12">
+			<label for="FEEDBACK">Feedback:</label>
+			<textarea class="input-group" name="REMARKS"><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></textarea>
+		</div>
+		<div class="col-sm-12  submitbutton "> 
+			<button type="submit" name="submit" class="btn btn-primary">Send</button>
+		</div>
+	</div>
 </div>
 </form>
