@@ -64,7 +64,13 @@ global $mydb;
 }
 </style>
 <form action="controller.php?action=approve" method="POST">
-<div class="col-sm-12 content-header" style="margin-bottom:20px"><h3><?php echo $job->OCCUPATIONTITLE; ?></h3></div>
+	<div class="col-sm-12 content-header" style="margin-bottom:20px">
+		<h3><?php echo $job->OCCUPATIONTITLE; ?></h3>
+		<p style="font-size: 14px; font-weight: normal; margin: 2px 0 0;">
+			&nbsp;<?php echo $comp->COMPANYNAME; ?>, <?php echo $comp->COMPANYADDRESS; ?>
+		</p>
+	</div>
+
 <div class="col-sm-12 content-body">
 	<input type="hidden" name="JOBREGID" value="<?php echo $jobreg->REGISTRATIONID;?>">
 
@@ -76,11 +82,7 @@ global $mydb;
             <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $job->PREFEREDSEX; ?></li>
         </ul>
 	</div> 
-	<div class="col-sm-6">
-        <p>Employeer : </p>
-		<p style="margin-left: 15px;"><?php echo $comp->COMPANYNAME ; ?></p> 
-		<p style="margin-left: 15px;">@ <?php echo $comp->COMPANYADDRESS ; ?></p>
-	</div>
+	
 	<div class="col-sm-12">
 		<p>Job Description : </p>   
 		<p style="margin-left: 15px;"><?php echo $job->JOBDESCRIPTION;?></p>

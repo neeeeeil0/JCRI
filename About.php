@@ -216,11 +216,11 @@
     <div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/aboutjohn.jpg" 
-             alt="John Veneracion" 
+             src="dist/img/aboutsheng.jpg" 
+             alt="Sharence Alas" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
-        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">John Veneracion</h4>
-        <span class="deg" style="color: #777; font-size: 1.3rem;">Researcher</span>
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Sharence Alas</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Tester</span>
     </div>
 
     <div class="team-member" 
@@ -233,14 +233,14 @@
         <span class="deg" style="color: #777; font-size: 1.3rem;">Analyst</span>
     </div>
 
-    <div class="team-member" 
+	<div class="team-member" 
          style="text-align: center; width: 180px;">
         <img class="img-responsive" 
-             src="dist/img/aboutsheng.jpg" 
-             alt="Sharence Alas" 
+             src="dist/img/aboutjohn.jpg" 
+             alt="John Veneracion" 
              style="width: 100%; height: auto; border-radius: 50%; margin-bottom: 10px;">
-        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">Sharence Alas</h4>
-        <span class="deg" style="color: #777; font-size: 1.3rem;">Tester</span>
+        <h4 style="font-size: 1.5rem; color: #333; margin-bottom: 5px;">John Veneracion</h4>
+        <span class="deg" style="color: #777; font-size: 1.3rem;">Researcher</span>
     </div>
 </div>
 		<br><br>				
