@@ -23,8 +23,9 @@ switch ($view) {
     } 
     break;  
   default :
-      $title="Home"; 
-    $content ='home.php';    
+    //$title="Home"; 
+    //$content ='home.php';
+    redirect('dashboard/');
 }
 require_once("theme/admin.php");
 ?>
