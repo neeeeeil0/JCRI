@@ -44,10 +44,10 @@ $singleuser = $user->single_user($USERID);
                             <p><strong>Username:</strong> <span style="font-weight: normal;"><?php echo $singleuser->USERNAME; ?></span></p>
                         </div>
                         <div style="margin-bottom: 15px;">
-                            <p><strong>Contact No.:</strong> <span style="font-weight: normal;">0912377123</span></p>
+                            <p><strong>Contact No.:</strong> <span style="font-weight: normal;"><?php echo $singleuser->CONTACT; ?></span></p>
                         </div>
                         <div style="margin-bottom: 15px;">
-                            <p><strong>Email:</strong> <span style="font-weight: normal;">Neil012@gmail.com</span></p>
+                            <p><strong>Email:</strong> <span style="font-weight: normal;"><?php echo $singleuser->EMAIL; ?></span></p>
                         </div>
                         <div style="margin-bottom: 20px;">
                             <p><strong>Role:</strong> <span style="font-weight: normal;"><?php echo $singleuser->ROLE; ?></span></p>
@@ -60,12 +60,6 @@ $singleuser = $user->single_user($USERID);
                         <form class="form-horizontal span6" action="controller.php?action=edit&view=" method="POST">
                             <input id="USERID" name="USERID" type="hidden" value="<?php echo $singleuser->USERID; ?>">
 
-                            <!-- Employee ID (Non-Editable) -->
-                            <div class="form-group">
-                                <label for="EMPLOYEEID" class="control-label">Employee ID:</label>
-                                <input class="form-control input-sm" id="EMPLOYEEID" name="EMPLOYEEID" type="text" value="JCRI202512312" readonly style="background-color: #e9ecef; font-size: 1.6rem;">
-                            </div>
-
                             <!-- Editable Fields -->
                             <div class="form-group">
                                 <label for="U_NAME" class="control-label">Name:</label>
@@ -74,25 +68,25 @@ $singleuser = $user->single_user($USERID);
 
                             <div class="form-group">
                                 <label for="U_USERNAME" class="control-label">Username:</label>
-                                <input class="form-control input-sm" id="U_USERNAME" name="U_USERNAME" type="text" value="<?php echo $singleuser->USERNAME; ?>" style="font-size: 1.6rem;">
+                                <input class="form-control input-sm" id="U_USERNAME" name="U_USERNAME" type="text" value="<?php echo $singleuser->USERNAME; ?>" style="font-size: 1.6rem;" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label for="CONTACTNO" class="control-label">Contact No.:</label>
-                                <input class="form-control input-sm" id="CONTACTNO" name="CONTACTNO" type="text" value="0912377123" style="font-size: 1.6rem;">
+                                <label for="U_CONTACT" class="control-label">Contact No.:</label>
+                                <input class="form-control input-sm" id="U_CONTACT" name="U_CONTACT" type="text" value="<?php echo $singleuser->CONTACT; ?>" style="font-size: 1.6rem;">
                             </div>
 
                             <div class="form-group">
-                                <label for="EMAIL" class="control-label">Email:</label>
-                                <input class="form-control input-sm" id="EMAIL" name="EMAIL" type="email" value="Neil012@gmail.com" style="font-size: 1.6rem;">
+                                <label for="U_EMAIL" class="control-label">Email:</label>
+                                <input class="form-control input-sm" id="U_EMAIL" name="U_EMAIL" type="email" value="<?php echo $singleuser->EMAIL; ?>" style="font-size: 1.6rem;">
                             </div>
 
                             <div class="form-group">
                                 <label for="U_PASS" class="control-label">Password:</label>
-                                <input class="form-control input-sm" id="U_PASS" name="U_PASS" type="password" required placeholder="Enter a new password" style="font-size: 1.6rem;">
+                                <input class="form-control input-sm" id="U_PASS" name="U_PASS" type="text" placeholder="Enter a new password (Optional)" style="font-size: 1.6rem;">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" style="display:none;">
                                 <label for="U_ROLE" class="control-label">Role:</label>
                                 <select class="form-control input-sm" id="U_ROLE" name="U_ROLE" style="font-size: 1.6rem;">
                                     <option value="Administrator" <?php echo ($singleuser->ROLE == 'Administrator') ? 'selected' : ''; ?>>Administrator</option>

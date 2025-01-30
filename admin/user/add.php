@@ -3,6 +3,11 @@
                           redirect(web_root."admin/index.php");
                          }
 
+                         if ($_SESSION["ADMIN_ROLE"] != 'Administrator'){
+                          message("You don't have an access on this page", "info");
+                          redirect("../../admin/index.php");
+                        }
+
                       $autonum = New Autonumber();
                       $res = $autonum->set_autonumber('userid');
 
@@ -15,15 +20,40 @@
 
  <form class="form-horizontal span6" action="controller.php?action=add" method="POST">
                     
-                         <input id="user_id" name="user_id"  type="hidden" value="<?php echo $res->AUTO; ?>">      
-                   <div class="form-group">
+                  <input id="user_id" name="user_id"  type="hidden" value="<?php echo $res->AUTO; ?>">    
+
+                  <div class="form-group">
                     <div class="col-md-8">
-                      <label class="col-md-4 control-label" for="U_NAME">Name:</label>
+                      <label class="col-md-4 control-label" for=
+                      "U_NAME">Full Name:</label>
 
                       <div class="col-md-8">
-                        <input name="deptid" type="hidden" value="">
                          <input class="form-control input-sm" id="U_NAME" name="U_NAME" placeholder=
-                            "User Fullname" type="text" value="">
+                            "Account Name" type="text" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "U_CONTACT">Contact No:</label>
+
+                      <div class="col-md-8">
+                         <input class="form-control input-sm" id="U_CONTACT" name="U_CONTACT" placeholder=
+                            "Account Contact No" type="text">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "U_EMAIL">Email:</label>
+
+                      <div class="col-md-8">
+                         <input class="form-control input-sm" id="U_EMAIL" name="U_EMAIL" placeholder=
+                            "Account Email" type="text">
                       </div>
                     </div>
                   </div>
@@ -34,9 +64,8 @@
                       "U_USERNAME">Username:</label>
 
                       <div class="col-md-8">
-                        <input name="deptid" type="hidden" value="">
                          <input class="form-control input-sm" id="U_USERNAME" name="U_USERNAME" placeholder=
-                            "Account Username" type="text" value="">
+                            "Account Username" type="text" required>
                       </div>
                     </div>
                   </div>
@@ -47,7 +76,6 @@
                       "U_PASS">Password:</label>
 
                       <div class="col-md-8">
-                        <input name="deptid" type="hidden" minlength="2" value="">
                          <input class="form-control input-sm" id="U_PASS" min="3" name="U_PASS" placeholder="Account Password" type="Password" value="" required>
                       </div>
                     </div>
