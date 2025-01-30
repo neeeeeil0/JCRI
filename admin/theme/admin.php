@@ -157,8 +157,8 @@
  
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu"> 
-        <li  class="<?php echo (currentpage() == 'index.php') ? "active" : false;?>" >
-          <a href="<?php echo web_root ;?>admin/">
+        <li  class="<?php echo (currentpage() == 'dashboard') ? "active" : false;?>" >
+          <a href="<?php echo web_root ;?>admin/dashboard">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>  
           </a> 
         </li> 
@@ -180,13 +180,13 @@
         <li class="<?php echo (currentpage() == 'applicants') ? "active" : false;?>" > 
           <a href="<?php echo web_root ;?>admin/applicants/">
             <i class="fa fa-users"></i> <span>Applicants</span> 
-            <span class="label label-primary pull-right">
-              <?php
+            <span id="applicants-count" class="label label-primary pull-right">
+              <?php 
                 $sql = "SELECT count(*) as 'APPL' FROM `tbljobregistration` WHERE `PENDINGAPPLICATION`=1";
                 $mydb->setQuery($sql);
                 $pending = $mydb->loadSingleResult();
                 echo $pending->APPL;
-              ?>
+              ?> 
             </span>
           </a>
         </li> 
@@ -197,11 +197,16 @@
         </li> 
         
         
-         
-         <li class="<?php echo (currentpage() == 'user') ? "active" : false;?>">
+        <?php
+          if($_SESSION["ADMIN_ROLE"] == 'Administrator'){ ?>
+
+        <li class="<?php echo (currentpage() == 'user') ? "active" : false;?>">
           <a href="<?php echo web_root; ?>admin/user/">
             <i class="fa fa-user"></i> <span>Manage Users</span> </a>
         </li>
+              
+        <?php  } ?>
+        
         
       </ul>
     </section>
@@ -278,6 +283,24 @@
       <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script> 
       <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>plugins/input-mask/jquery.inputmask.extensions.js"></script> 
 
+<script>
+  // Function to update the count using AJAX
+  function updateApplicantsCount() {
+      $.ajax({
+          url: '../theme/ajax.php', // Replace with the actual path to your AJAX handler
+          type: 'GET',
+          success: function(data) {
+              $('#applicants-count').html(data); 
+          }
+      });
+  }
+
+  // Initial call to update the count
+  updateApplicantsCount();
+
+  // Set an interval to update the count periodically (e.g., every 5 seconds)
+  setInterval(updateApplicantsCount, 1000); 
+</script>
 
 <script>
 $(function () {
@@ -326,7 +349,6 @@ $('.date_picker').datetimepicker({
   forceParse: 0 
 
 });
-
 
 </script>
 </html>
