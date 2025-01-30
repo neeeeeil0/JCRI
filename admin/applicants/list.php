@@ -12,7 +12,7 @@
                 
  
     <form class="wow fadeInDownaction" action="controller.php?action=delete" Method="POST">   		
-        <table id="applicants-list" class="table table-striped  table-hover table-responsive" style="font-size:14px;width:100%" cellspacing="0">
+        <table id="applicants-list" class="table table-striped table-bordered table-hover"  style="font-size:14px;width:100%;" cellspacing="0">
             <thead>
             <tr>
                 <th>Application ID</th>

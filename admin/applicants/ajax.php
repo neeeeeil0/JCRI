@@ -10,7 +10,7 @@ $query = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
-    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
+    LEFT JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -61,7 +61,7 @@ $filteredCountQuery = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
-    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
+    LEFT JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -90,7 +90,7 @@ $totalCountQuery = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
-    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
+    LEFT JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -106,7 +106,7 @@ foreach ($cur as $result) {
     $row[] = $result->OCCUPATIONTITLE;
     $row[] = $result->COMPANYNAME;
     $row[] = $result->REGISTRATIONDATE;
-    $row[] = $result->FULLNAME;
+    $row[] = $result->FULLNAME ?? "";
     $row[] = $result->STATUS;
     $row[] = '<a title="View" href="index.php?view=view&id=' . $result->REGISTRATIONID . '" class="btn btn-primary btn-xs">
                 <span class="fa fa-edit fw-fa"></span></a>
