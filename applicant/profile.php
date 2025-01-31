@@ -15,7 +15,7 @@
       cursor: pointer;
     }
   </style>
-<section id="inner-headline" style="background-color:#3e769b;">
+<section id="inner-headline" style="height: 100px;background-color:#3e769b;">
   <div class="container">
       <div class="row">
           <div class="col-lg-12">

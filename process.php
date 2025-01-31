@@ -222,12 +222,10 @@ function doLogin(){
     if ($res==true) { 
 
        	message("You are now successfully login!","success");
-       
+		redirect(web_root."applicant/");
        // $sql="INSERT INTO `tbllogs` (`USERID`,USERNAME, `LOGDATETIME`, `LOGROLE`, `LOGMODE`) 
        //    VALUES (".$_SESSION['USERID'].",'".$_SESSION['FULLNAME']."','".date('Y-m-d H:i:s')."','".$_SESSION['UROLE']."','Logged in')";
-       //    mysql_query($sql) or die(mysql_error()); 
-         redirect(web_root."applicant/");
-     
+       //    mysql_query($sql) or die(mysql_error());
     }else{
     	 echo "Account does not exist! Please contact Administrator."; 
     } 

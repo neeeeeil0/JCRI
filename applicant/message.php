@@ -22,7 +22,7 @@ if (!isset($_GET['p'])) {
 
               <div class="box-tools pull-right" style="margin-bottom: 5px;">
                 <div class="has-feedback">
-                  <input type="text" class="form-control input-sm" placeholder="Search Mail">
+                  <input id="searchMail" type="text" class="form-control input-sm" placeholder="Search Mail">
                   <span class="fa fa-search form-control-feedback" style="margin-top: -25px"></span>
                 </div>
               </div>
@@ -50,9 +50,9 @@ if (!isset($_GET['p'])) {
                 <!-- /.pull-right -->
               </div>
               <div class="table-responsive mailbox-messages">
-              <table class="table table-hover table-striped">
+              <table id="messages-list" class="table table-hover table-striped">
                 <tbody>
-                    <?php 
+                    <?php /*
                         $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
                         WHERE c.`COMPANYID` = j.`COMPANYID` 
                         AND j.`REGISTRATIONID` = f.`REGISTRATIONID` 
@@ -69,14 +69,15 @@ if (!isset($_GET['p'])) {
                             foreach ($cur as $result) {
                                 $rowStyle = ($result->VIEW == 1) ? 'font-weight: bold;' : '';
                                 echo '<tr style="' . $rowStyle . '">';
-                                echo '<td><input type="checkbox"></td>';
+                                //echo '<td><input type="checkbox"></td>';
                                 echo '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->FEEDBACKID.'">'.$result->COMPANYNAME.'</a></td>';
                                 echo '<td class="mailbox-subject">'.$result->FEEDBACK.'</td>'; 
                                 echo '<td class="mailbox-date">'.$result->DATETIMEAPPROVED.'</td>';
                                 echo '</tr>';
                             }
-                        }
-                    ?> 
+                        }*/
+                    ?>
+                    <td colspan="3" class="text-center">Processing...</td>
                 </tbody>
               </table>
 
@@ -121,3 +122,33 @@ if (!isset($_GET['p'])) {
  <?php }else{  
   require_once('readmessage.php');
  } ?>
+
+<script>
+$(document).ready(function(){
+    function loadMessages(query = '') {
+        $.ajax({
+            url: "<?php echo web_root;?>include/ajax.php",
+            method: "GET",
+            data: { query: query }, // Send search query
+            success: function(data) {
+                $("#messages-list tbody").html(data); // Update table content
+            }
+        });
+    }
+
+    // Load messages every 5 seconds
+    setInterval(function() {
+        let query = $("#searchMail").val();
+        loadMessages(query);
+    }, 1000);
+
+    // Load messages when typing in the search box
+    $("#searchMail").on("keyup", function() {
+        let query = $(this).val();
+        loadMessages(query);
+    });
+
+    // Initial load
+    loadMessages();
+});
+</script>
