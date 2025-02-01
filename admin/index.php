@@ -23,7 +23,7 @@ switch ($view) {
     } 
     break;  
   default :
-      $title="Home"; 
+    $title="Dashboard"; 
     $content ='home.php';    
 }
 require_once("theme/admin.php");
