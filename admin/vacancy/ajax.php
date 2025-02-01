@@ -8,8 +8,8 @@ $column = array("j.OCCUPATIONTITLE", "c.COMPANYNAME", "j.JOBSETTING", "u.FULLNAM
 $query = "
     SELECT j.*, c.COMPANYNAME, u.FULLNAME
     FROM tbljob j
-    JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
-    JOIN tblusers u ON j.PUBLISHERID = u.USERID
+    LEFT JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
+    LEFT JOIN tblusers u ON j.PUBLISHERID = u.USERID
     WHERE 1 = 1
 ";
 
@@ -56,8 +56,8 @@ $cur = $mydb->loadResultList();
 $filteredCountQuery = "
     SELECT COUNT(*) as total 
     FROM tbljob j
-    JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
-    JOIN tblusers u ON j.PUBLISHERID = u.USERID
+    LEFT JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
+    LEFT JOIN tblusers u ON j.PUBLISHERID = u.USERID
     WHERE 1 = 1
 ";
 //Fiter
@@ -83,8 +83,8 @@ $filteredCount = $mydb->loadSingleResult()->total;
 $totalCountQuery = "
     SELECT COUNT(*) as total 
     FROM tbljob j
-    JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
-    JOIN tblusers u ON j.PUBLISHERID = u.USERID
+    LEFT JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
+    LEFT JOIN tblusers u ON j.PUBLISHERID = u.USERID
 ";
 $mydb->setQuery($totalCountQuery);
 $totalCount = $mydb->loadSingleResult()->total;
