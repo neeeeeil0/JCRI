@@ -47,7 +47,18 @@
                 </th>
                 <th>Applied Date</th>
                 <th>Modified By:</th> 
-                <th>Status</th>
+                <th>
+                    <select name="status" id="status" style="border:none;width:100%;">
+                        <option value="">Status</option>
+                        <option>Pending</option>
+                        <option>For Review</option>
+                        <option>For Initial Screening</option>
+                        <option>For Interview</option>
+                        <option>For Assessment</option>
+                        <option>Hired</option>
+				        <option>Rejected</option>
+                    </select>
+                </th>
                 <th width="10%" >Action</th> 
             </tr>	
             </thead> 
@@ -89,7 +100,7 @@ $(document).ready(function () {
 
     var dataTable;
 
-    function load_data(is_company = '', job_title = '') {
+    function load_data(is_company = '', job_title = '', job_status = '') {
         dataTable = $('#applicants-list').DataTable({
             "processing": false,
             "serverSide": true,
@@ -99,12 +110,13 @@ $(document).ready(function () {
                 type: "POST",
                 data: {
                     is_company: is_company,
-                    job_title: job_title // Pass the selected job title
+                    job_title: job_title,
+                    job_status: job_status // Pass the selected job title
                 }
             },
             "columnDefs": [
                 {
-                    "targets": [2,3,7],
+                    "targets": [2,3,6,7],
                     "orderable": false,
                 },
             ],
@@ -121,11 +133,12 @@ $(document).ready(function () {
     load_data();
 
     // Handle dropdown changes
-    $('#jobtitle, #company').on('change', function () {
+    $('#jobtitle, #company, #status').on('change', function () {
         var job_title = $('#jobtitle').val();
         var company = $('#company').val();
+        var job_status = $('#status').val();
         dataTable.destroy(); // Destroy existing table instance
-        load_data(company, job_title); // Reload with new filters
+        load_data(company, job_title, job_status); // Reload with new filters
     });
 
     setInterval(function () {

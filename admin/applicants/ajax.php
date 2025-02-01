@@ -27,6 +27,12 @@ if (!empty($_POST["is_company"])) {
     $query .= " AND j.COMPANYID = $company_id";
 }
 
+// Company filter
+if (!empty($_POST["job_status"])) {
+    $status = $_POST["job_status"];
+    $query .= " AND j.STATUS = '$status'";
+}
+
 // Search filter
 if (!empty($_POST["search"]["value"])) {
     $search = htmlspecialchars($_POST["search"]["value"], ENT_QUOTES);
@@ -71,6 +77,10 @@ if (!empty($_POST["job_title"])) {
 if (!empty($_POST["is_company"])) {
     $filteredCountQuery .= " AND j.COMPANYID = $company_id";
 }
+if (!empty($_POST["job_status"])) {
+    $filteredCountQuery .= " AND j.STATUS = '$status'";
+}
+
 if (!empty($_POST["search"]["value"])) {
     $filteredCountQuery .= " AND (
         j.REGISTRATIONID LIKE '%$search%' OR

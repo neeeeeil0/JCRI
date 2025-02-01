@@ -128,13 +128,15 @@ global $mydb;
 		<div class="col-md-3 ">
 			<select class="form-control input-sm" id="STATUS" name="STATUS" required>
 				<?php
-					echo '<option SELECTED>'.$jobreg->STATUS.'</option>';
+					echo '<option SELECTED hidden>'.$jobreg->STATUS.'</option>';
 				?>
 				<option>Pending</option>
 				<option>For Review</option>
 				<option>For Initial Screening</option>
 				<option>For Interview</option>
 				<option>For Assessment</option>
+				<option style="background-color:green;color:white;">Hired</option>
+				<option style="background-color:red;color:white;">Rejected</option>
 			</select>
 		</div>
 	</div>
