@@ -6,7 +6,6 @@ global $mydb;
 	$jobreg = $jobregistration->single_jobregistration($red_id);
 	 // `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `REMARKS`, `FILEID`, `PENDINGAPPLICATION`
 
-
 	$applicant = new Applicants();
 	$appl = $applicant->single_applicant($jobreg->APPLICANTID);
  // `FNAME`, `LNAME`, `MNAME`, `ADDRESS`, `SEX`, `CIVILSTATUS`, `BIRTHDATE`, `BIRTHPLACE`, `AGE`, `USERNAME`, `PASS`, `EMAILADDRESS`,CONTACTNO
@@ -116,8 +115,6 @@ global $mydb;
 		 <h4>Download Resume: <a href="<?php echo web_root.'applicant/'.$attachmentfile->FILE_LOCATION; ?>"><?php echo $attachmentfile->FILE_NAME?></a></h4>
 	</div> 
 	</div>
-
-
 
 	
 <div class="col-sm-12 content-footer">
