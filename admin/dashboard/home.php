@@ -1,101 +1,191 @@
+<style>
+  .content-header small {
+    display: block;
+    color: #6c757d;
+    font-size: 18px;
+  }
 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
+  .content {
+    padding: 30px;
+  }
 
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3> 
-              <p>Bounce Rate</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 
-              <p>User Registrations</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+  /* Ensure all items fit in a row on larger screens */
+  .col-lg-3 {
+    flex: 1 1 calc(25% - 20px); /* Ensure 4 items fit per row */
+    max-width: calc(25% - 20px);
+  }
+
+  /* Card Styles */
+  .small-box {
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .small-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .small-box h3 {
+    font-size: 40px;
+    margin: 10px 0;
+  }
+
+  .small-box p {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .small-box .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+
+  /* Make the whole box clickable */
+  .small-box a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    text-decoration: none;
+  }
+
+  /* Background Color Variations */
+  .bg-aqua {
+    background: #17a2b8;
+  }
+
+  .bg-green {
+    background: #28a745;
+  }
+
+  .bg-yellow {
+    background: #ffc107;
+  }
+
+  .bg-red {
+    background: #dc3545;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1200px) {
+    .col-lg-3 {
+      flex: 1 1 calc(33.33% - 20px); /* 3 items per row on medium screens */
+      max-width: calc(33.33% - 20px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .col-lg-3 {
+      flex: 1 1 calc(50% - 20px); /* 2 items per row on small screens */
+      max-width: calc(50% - 20px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .col-lg-3 {
+      flex: 1 1 100%; /* 1 item per row on extra small screens */
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section class="content-header">
+  <h1>
+    Control Panel
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="small-box bg-aqua">
+        <a href="<?php echo web_root;?>/admin/company/"></a>
+        <div class="inner">
+          <h3>150</h3>
+          <p>Company</p>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3> 
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+        <div class="icon">
+          <i class="ion ion-business"></i>
         </div>
-        <!-- ./col -->
       </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="small-box bg-green">
+        <a href="<?php echo web_root;?>/admin/category/"></a>
+        <div class="inner">
+          <h3>53</h3>
+          <p>Classification</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-filing"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="small-box bg-yellow">
+        <a href="<?php echo web_root;?>/admin/vacancy/"></a>
+        <div class="inner">
+          <h3>44</h3>
+          <p>Vacancy</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-briefcase"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="small-box bg-red">
+        <a href="<?php echo web_root;?>/admin/applicants/"></a>
+        <div class="inner">
+          <h3>65</h3>
+          <p>Applicants</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-stalker"></i>
+        </div>
+      </div>
+    </div>
+  </div>
       <!-- /.row -->
-      <!-- Main row -->
+      <!-- Main row 
       <div class="row">
-        <!-- Left col -->
+        
         <section class="col-lg-7 connectedSortable">
-          <!-- Custom tabs (Charts with tabs)-->
+          
           <div class="nav-tabs-custom">
-            <!-- Tabs within a box -->
+            
             <ul class="nav nav-tabs pull-right">
               <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
               <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
               <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
             </ul>
             <div class="tab-content no-padding">
-              <!-- Morris chart - Sales -->
+              
               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
             </div>
           </div>
-          <!-- /.nav-tabs-custom -->
+       
 
-          <!-- Chat box -->
+      
           <div class="box box-success">
             <div class="box-header">
               <i class="fa fa-comments-o"></i>
@@ -111,7 +201,7 @@
               </div>
             </div>
             <div class="box-body chat" id="chat-box">
-              <!-- chat item -->
+              
               <div class="item">
                 <img src="dist/img/user4-128x128.jpg" alt="user image" class="online">
 
@@ -135,10 +225,9 @@
                     <button type="button" class="btn btn-primary btn-sm btn-flat">Open</button>
                   </div>
                 </div>
-                <!-- /.attachment -->
+                
               </div>
-              <!-- /.item -->
-              <!-- chat item -->
+              
               <div class="item">
                 <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline">
 
@@ -152,8 +241,7 @@
                   best themes on the market
                 </p>
               </div>
-              <!-- /.item -->
-              <!-- chat item -->
+              
               <div class="item">
                 <img src="dist/img/user2-160x160.jpg" alt="user image" class="offline">
 
@@ -167,9 +255,9 @@
                   best themes on the market
                 </p>
               </div>
-              <!-- /.item -->
+              
             </div>
-            <!-- /.chat -->
+           
             <div class="box-footer">
               <div class="input-group">
                 <input class="form-control" placeholder="Type message...">
@@ -180,9 +268,7 @@
               </div>
             </div>
           </div>
-          <!-- /.box (chat box) -->
-
-          <!-- TO DO List -->
+         
           <div class="box box-primary">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
@@ -199,22 +285,22 @@
                 </ul>
               </div>
             </div>
-            <!-- /.box-header -->
+          
             <div class="box-body">
               <ul class="todo-list">
                 <li>
-                  <!-- drag handle -->
+                
                       <span class="handle">
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
-                  <!-- checkbox -->
+                
                   <input type="checkbox" value="" name="">
-                  <!-- todo text -->
+                 
                   <span class="text">Design a nice theme</span>
-                  <!-- Emphasis label -->
+                  
                   <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                  <!-- General tools such as edit or delete-->
+                 
                   <div class="tools">
                     <i class="fa fa-edit"></i>
                     <i class="fa fa-trash-o"></i>
@@ -287,25 +373,24 @@
                 </li>
               </ul>
             </div>
-            <!-- /.box-body -->
+           
             <div class="box-footer clearfix no-border">
               <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
             </div>
           </div>
-          <!-- /.box -->
+       
 
-          <!-- quick email widget -->
           <div class="box box-info">
             <div class="box-header">
               <i class="fa fa-envelope"></i>
 
               <h3 class="box-title">Quick Email</h3>
-              <!-- tools box -->
+           
               <div class="pull-right box-tools">
                 <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
                   <i class="fa fa-times"></i></button>
               </div>
-              <!-- /. tools -->
+          
             </div>
             <div class="box-body">
               <form action="#" method="post">
@@ -327,21 +412,19 @@
           </div>
 
         </section>
-        <!-- /.Left col -->
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        
         <section class="col-lg-5 connectedSortable">
 
-          <!-- Map box -->
           <div class="box box-solid bg-light-blue-gradient">
             <div class="box-header">
-              <!-- tools box -->
+        
               <div class="pull-right box-tools">
                 <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range">
                   <i class="fa fa-calendar"></i></button>
                 <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
                   <i class="fa fa-minus"></i></button>
               </div>
-              <!-- /. tools -->
+           
 
               <i class="fa fa-map-marker"></i>
 
@@ -352,31 +435,29 @@
             <div class="box-body">
               <div id="world-map" style="height: 250px; width: 100%;"></div>
             </div>
-            <!-- /.box-body-->
+  
             <div class="box-footer no-border">
               <div class="row">
                 <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                   <div id="sparkline-1"></div>
                   <div class="knob-label">Visitors</div>
                 </div>
-                <!-- ./col -->
+             
                 <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                   <div id="sparkline-2"></div>
                   <div class="knob-label">Online</div>
                 </div>
-                <!-- ./col -->
+  
                 <div class="col-xs-4 text-center">
                   <div id="sparkline-3"></div>
                   <div class="knob-label">Exists</div>
                 </div>
-                <!-- ./col -->
+                
               </div>
-              <!-- /.row -->
+              
             </div>
           </div>
-          <!-- /.box -->
-
-          <!-- solid sales graph -->
+          
           <div class="box box-solid bg-teal-gradient">
             <div class="box-header">
               <i class="fa fa-th"></i>
@@ -393,7 +474,7 @@
             <div class="box-body border-radius-none">
               <div class="chart" id="line-chart" style="height: 250px;"></div>
             </div>
-            <!-- /.box-body -->
+   
             <div class="box-footer no-border">
               <div class="row">
                 <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
@@ -401,35 +482,33 @@
 
                   <div class="knob-label">Mail-Orders</div>
                 </div>
-                <!-- ./col -->
+         
                 <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                   <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
 
                   <div class="knob-label">Online</div>
                 </div>
-                <!-- ./col -->
+               
                 <div class="col-xs-4 text-center">
                   <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
 
                   <div class="knob-label">In-Store</div>
                 </div>
-                <!-- ./col -->
+             
               </div>
-              <!-- /.row -->
+          
             </div>
-            <!-- /.box-footer -->
+         
           </div>
-          <!-- /.box -->
-
-          <!-- Calendar -->
+         
           <div class="box box-solid bg-green-gradient">
             <div class="box-header">
               <i class="fa fa-calendar"></i>
 
               <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
+           
               <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
+            
                 <div class="btn-group">
                   <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bars"></i></button>
@@ -445,18 +524,18 @@
                 <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
                 </button>
               </div>
-              <!-- /. tools -->
+            
             </div>
-            <!-- /.box-header -->
+        
             <div class="box-body no-padding">
-              <!--The calendar -->
+       
               <div id="calendar" style="width: 100%"></div>
             </div>
-            <!-- /.box-body -->
+       
             <div class="box-footer text-black">
               <div class="row">
                 <div class="col-sm-6">
-                  <!-- Progress bars -->
+                
                   <div class="clearfix">
                     <span class="pull-left">Task #1</span>
                     <small class="pull-right">90%</small>
@@ -473,7 +552,7 @@
                     <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
                   </div>
                 </div>
-                <!-- /.col -->
+          
                 <div class="col-sm-6">
                   <div class="clearfix">
                     <span class="pull-left">Task #3</span>
@@ -491,18 +570,18 @@
                     <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
                   </div>
                 </div>
-                <!-- /.col -->
+                
               </div>
-              <!-- /.row -->
+              
             </div>
           </div>
-          <!-- /.box -->
+          
 
         </section>
-        <!-- right col -->
+      -->
       </div>
-      <!-- /.row (main row) -->
+      
 
     </section>
-    <!-- /.content -->
+
   
