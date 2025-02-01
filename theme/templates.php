@@ -95,14 +95,14 @@
                   <p class="pull-right login">
                       <a title="View Notification(s)" href="<?php echo web_root ?>applicant/index.php?view=notification">
                           <i class="fa fa-bell-o"></i> 
-                          <span class="label label-success"><?php echo $notif ?></span>
+                          <span id="notifCount" class="label label-success">0<?php //echo $notif ?></span>
                       </a> | 
                       <a title="View Message(s)" href="<?php echo web_root ?>applicant/index.php?view=message">
                           <i class="fa fa-envelope-o"></i> 
-                          <span id="messageCount" class="label label-success">0</span>
+                          <span id="messageCount" class="label label-success">0<?php //echo $showMsg ?></span>
                       </a> | 
                       <a title="View Profile" href="<?php echo web_root ?>applicant/"> 
-                          <i class="fa fa-user"></i><?php echo 'Hi, '.$appl->FNAME . ' ' . $appl->LNAME?>
+                          <i class="fa fa-user"></i><?php echo ' Hi, '.$appl->FNAME . ' ' . $appl->LNAME?>
                       </a> | 
                       <a href="' . web_root . 'logout.php">  
                           <i class="fa fa-sign-out"></i>Logout
@@ -334,25 +334,47 @@
 <script src="<?php echo web_root; ?>plugins/home-plugins/js/custom.js"></script> 
 <!-- <script src="<?php echo web_root; ?>plugins/paralax/paralax.js"></script>  -->
 
+<!-- Unread Messages -->
+<a title="View Message(s)" href="<?php echo web_root; ?>applicant/index.php?view=message">
+    <i class="fa fa-envelope-o"></i>
+    <span id="messageCount" class="label label-success"><?php echo $msg; ?></span>
+</a>
+
+<!-- Unread Notifications -->
+<a title="View Notification(s)" href="<?php echo web_root; ?>applicant/index.php?view=notification">
+    <i class="fa fa-bell-o"></i>
+    <span id="notifCount" class="label label-success"><?php echo $notif; ?></span>
+</a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
 $(document).ready(function(){
-    function updateMessageCount() {
+    function updateCounts() {
         $.ajax({
             url: "<?php echo web_root; ?>include/ajax.php",
             method: "GET",
             data: { fetchType: "count" },
             dataType: "json",
             success: function(response) {
-                if (response.count !== undefined) {
-                    $("#messageCount").text(response.count);
+                if (response.messages !== undefined) {
+                    $("#messageCount").text(response.messages); // Update messages count
+                }
+                if (response.notifications !== undefined) {
+                    $("#notifCount").text(response.notifications); // Update notifications count
                 }
             }
         });
     }
-    setInterval(updateMessageCount, 1000);
-    updateMessageCount();
+
+    // Update counts every 5 seconds
+    setInterval(updateCounts, 1000);
+
+    // Initial fetch on page load
+    updateCounts();
 });
 </script>
+
 
  <script type="text/javascript">
    
