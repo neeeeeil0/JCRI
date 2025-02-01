@@ -104,7 +104,7 @@
                       <a title="View Profile" href="<?php echo web_root ?>applicant/"> 
                           <i class="fa fa-user"></i><?php echo ' Hi, '.$appl->FNAME . ' ' . $appl->LNAME?>
                       </a> | 
-                      <a href="' . web_root . 'logout.php">  
+                      <a href="<?php echo web_root ?>logout.php">  
                           <i class="fa fa-sign-out"></i>Logout
                       </a>
                   </p>
