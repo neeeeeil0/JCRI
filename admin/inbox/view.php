@@ -63,7 +63,7 @@ global $mydb;
     <div class="content-body">
         <p><strong>Sender:</strong> <?php echo $res->FULLNAME;?></p>
         <p><strong>Email:</strong> <?php echo $res->EMAIL;?></p>
-        <p><strong>Date and Time:</strong> <?php echo $res->DATETIME;?></p>
+        <p><strong>Date and Time:</strong> <?php echo date("M. j, Y, g:ia", strtotime($res->DATETIME));?></p>
         <div class="message-content"><?php echo $res->MESSAGE;?></div>
     </div>
     <div class="content-footer">

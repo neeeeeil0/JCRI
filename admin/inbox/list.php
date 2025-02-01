@@ -15,7 +15,7 @@
 			
 				<thead>
 					<tr>
-						<th>Fullname</th> 
+						<th>Full Name</th> 
 						<th>Email</th> 
 						<th>Message</th>
 						<th>Date</th>

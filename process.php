@@ -5,6 +5,10 @@ switch ($action) {
 	case 'submitapplication' :
 	doSubmitApplication();
 	break;
+
+	case 'sendmail' :
+	doSendMail();
+	break; 
   
 	case 'register' :
 	doRegister();
@@ -69,7 +73,24 @@ function doSubmitApplication() {
 	$autonum = New Autonumber();
 	$autonum->auto_update('FILEID');
 }
-	
+
+function doSendMail() {
+	if (isset($_POST['submit'])) {  
+		global $mydb;
+
+		$inbox = new Messages();
+		$inbox->FULLNAME = $_POST['fullname'];
+		$inbox->EMAIL = $_POST['email'];
+		$inbox->MESSAGE = $_POST['message'];
+		$inbox->VIEW = 1;
+		$inbox->DATETIME = date('Y-m-d H:i:s');
+		$inbox->create();
+
+		message("Your message has been sent.","success");
+		redirect("index.php?q=success");
+	}
+}
+
 function doInsert($jobid=0,$fileid=0) {
 	if (isset($_POST['submit'])) {  
 	global $mydb; 

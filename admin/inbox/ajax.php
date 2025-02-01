@@ -3,7 +3,7 @@ require_once("../../include/initialize.php");
 
 $mydb = new Database(); // Replace with your actual database connection class
 
-$columns = array("FULLNAME", "EMAIL", "MESSAGE", "DATETIME");
+$columns = array("FULLNAME", "EMAIL", "DATETIME");
 
 // Base query
 $query = "
@@ -29,7 +29,7 @@ if (!empty($_POST["order"])) {
     $dir = in_array($_POST['order']['0']['dir'], ['asc', 'desc']) ? $_POST['order']['0']['dir'] : 'asc';
     $query .= " ORDER BY " . $columns[$columnIndex] . " " . $dir;
 } else {
-    $query .= " ORDER BY FULLNAME ASC";
+    $query .= " ORDER BY DATETIME DESC";
 }
 
 // Pagination
@@ -75,8 +75,8 @@ foreach ($cur as $result) {
     $row = [];
     $row[] = $result->FULLNAME;
     $row[] = $result->EMAIL;
-    $row[] = $result->MESSAGE;
-    $row[] = $result->DATETIME;
+    $row[] = strlen($result->MESSAGE) > 20 ? substr($result->MESSAGE, 0, 50) . '...' : $result->MESSAGE; 
+    $row[] = date("M. j, Y, g:ia", strtotime($result->DATETIME));
     $row['VIEW'] = $result->VIEW;
     $row[] = '<a title="View" href="index.php?view=view&id='.$result->INBOXID.'" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
               <a title="Delete" href="controller.php?action=delete&id='.$result->INBOXID.'" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a>';
