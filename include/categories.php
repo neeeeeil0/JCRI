@@ -11,6 +11,7 @@ class Category {
 	function listofcategory(){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname);
+		$cur = $mydb->executeQuery();
 		return $cur;
 	}
 	function find_category($id="",$name=""){
