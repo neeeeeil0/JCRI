@@ -119,7 +119,7 @@
       <div class="small-box bg-aqua">
         <a href="<?php echo web_root;?>/admin/company/"></a>
         <div class="inner">
-          <h3>150</h3>
+          <h3 id="company-count">150</h3>
           <p>Company</p>
         </div>
         <div class="icon">
@@ -131,7 +131,7 @@
       <div class="small-box bg-green">
         <a href="<?php echo web_root;?>/admin/category/"></a>
         <div class="inner">
-          <h3>53</h3>
+          <h3 id="category-count">53</h3>
           <p>Classification</p>
         </div>
         <div class="icon">
@@ -143,7 +143,7 @@
       <div class="small-box bg-yellow">
         <a href="<?php echo web_root;?>/admin/vacancy/"></a>
         <div class="inner">
-          <h3>44</h3>
+          <h3 id="vacancy-count">44</h3>
           <p>Vacancy</p>
         </div>
         <div class="icon">
@@ -155,7 +155,7 @@
       <div class="small-box bg-red">
         <a href="<?php echo web_root;?>/admin/applicants/"></a>
         <div class="inner">
-          <h3>65</h3>
+          <h3 id="applicant-count">65</h3>
           <p>Applicants</p>
         </div>
         <div class="icon">
@@ -163,6 +163,20 @@
         </div>
       </div>
     </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="small-box bg-purple">
+        <a href="<?php echo web_root;?>/admin/inbox/"></a>
+        <div class="inner">
+          <h3 id="inbox-count">65</h3>
+          <p>Inbox</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-stalker"></i>
+        </div>
+      </div>
+    </div>
+
   </div>
       <!-- /.row -->
       <!-- Main row 
@@ -578,10 +592,33 @@
           
 
         </section>
-      -->
-      </div>
       
+      </div>-->
+      
+</section>
+<script>
+    // Function to update the count using AJAX
+    function updateApplicantsCount() {
+      $.ajax({
+          url: 'ajax.php', // Replace with the actual path to your AJAX handler
+          type: 'GET',
+          dataType: 'json', // Expect JSON response
+          success: function(data) {
+              $('#company-count').html(data.company);
+              $('#category-count').html(data.category);
+              $('#vacancy-count').html(data.vacancy);
+              $('#applicant-count').html(data.applicant);
+              //$('#employee-count').html(data.applicant);
+              $('#inbox-count').html(data.inbox);
+          }
+      });
+  }
 
-    </section>
+  // Initial call to update the count
+  updateApplicantsCount();
+
+  // Set an interval to update the count periodically (e.g., every 5 seconds)
+  setInterval(updateApplicantsCount, 1000); 
+</script>
 
   
