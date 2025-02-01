@@ -11,39 +11,58 @@
 </div>
 	<form action="controller.php?action=delete" Method="POST">  	
 		<div class="table-responsive">					
-			<table id="company-list" class="table table-striped table-bordered table-hover"  style="font-size:14px" cellspacing="0">
+			<table id="inbox-list" class="table table-striped table-bordered table-hover"  style="font-size:14px" cellspacing="0">
 			
 				<thead>
 					<tr>
-						<th>Company Name</th> 
-						<th>Address</th> 
-						<th>Contact No.</th> 
+						<th>Fullname</th> 
+						<th>Email</th> 
+						<th>Message</th>
+						<th>Date</th>
 							<th width="10%" align="center">Action</th>
 					</tr>	
 				</thead> 
 				<tbody>
-					<?php
-					/* 
-						$mydb->setQuery("SELECT * FROM `tblcompany`");
-						$cur = $mydb->loadResultList(); 
-						foreach ($cur as $result) {
-						echo '<tr>';
-						// echo '<td width="5%" align="center"></td>';
-						// echo '<td>
-						//      <input type="checkbox" name="selector[]" id="selector[]" value="'.$result->CATEGORYID. '"/>
-						// 		' . $result->CATEGORIES.'</a></td>';
-							echo '<td>' . $result->COMPANYNAME.'</td>';
-							echo '<td>' . $result->COMPANYADDRESS.'</td>';
-							echo '<td>' . $result->COMPANYCONTACTNO.'</td>';
-						echo '<td align="center"><a title="Edit" href="index.php?view=edit&id='.$result->COMPANYID.'" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
-								<a title="Delete" href="controller.php?action=delete&id='.$result->COMPANYID.'" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
-						// echo '<td></td>';
-						echo '</tr>';
-						
-					} */
-					?>
+					
 				</tbody>
 			</table>
 		</div>
 	</form>
 
+	<script type="text/javascript">
+$(document).ready(function () {
+
+    var dataTable;
+
+    function load_data() {
+        dataTable = $('#inbox-list').DataTable({
+            "processing": false,
+            "serverSide": true,
+            "order": [],
+            "ajax": {
+                url: "ajax.php",
+                type: "POST",
+            },
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "orderable": false,
+                },
+            ],
+			"createdRow": function (row, data, dataIndex) {
+                if (data['VIEW'] === true || data['VIEW'] == 1) { // Check for pending applications
+                    $(row).css("font-weight", "bold"); // Apply bold styling
+                }
+            },
+            "destroy": true // Ensure the table can be refreshed without errors
+        });
+    }
+
+    // Initialize DataTable
+    load_data();
+
+    setInterval(function () {
+        dataTable.ajax.reload(null, false); // Reload the table without resetting the paging
+    }, 1000);
+});
+</script>

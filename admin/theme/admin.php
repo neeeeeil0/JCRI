@@ -198,6 +198,14 @@
         <li class="<?php echo (currentpage() == 'inbox') ? "active" : false;?>" >
           <a href="<?php echo web_root ;?>admin/inbox/">
             <i class="fa fa-inbox"></i></i> <span>Inbox</span> 
+            <span id="messages-count" class="label label-primary pull-right">
+              <?php 
+                $sql = "SELECT count(*) as 'INBOX' FROM `tblinbox` WHERE `VIEW`=1";
+                $mydb->setQuery($sql);
+                $newmsgs = $mydb->loadSingleResult();
+                echo $newmsgs->INBOX;
+              ?> 
+            </span>
           </a>
         </li> 
         
@@ -291,10 +299,12 @@
   // Function to update the count using AJAX
   function updateApplicantsCount() {
       $.ajax({
-          url: '../theme/ajax.php', // Replace with the actual path to your AJAX handler
+          url: 'ajax.php', // Replace with the actual path to your AJAX handler
           type: 'GET',
+          dataType: 'json', // Expect JSON response
           success: function(data) {
-              $('#applicants-count').html(data); 
+              $('#applicants-count').html(data.applicants);
+              $('#messages-count').html(data.inbox);
           }
       });
   }
