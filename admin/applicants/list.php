@@ -45,7 +45,8 @@
                           ?>
                     </select>
                 </th>
-                <th>Applied Date</th> 
+                <th>Applied Date</th>
+                <th>Modified By:</th> 
                 <th>Status</th>
                 <th width="10%" >Action</th> 
             </tr>	
@@ -103,7 +104,7 @@ $(document).ready(function () {
             },
             "columnDefs": [
                 {
-                    "targets": [2,3,6],
+                    "targets": [2,3,7],
                     "orderable": false,
                 },
             ],

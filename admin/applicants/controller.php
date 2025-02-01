@@ -320,7 +320,7 @@ global $mydb;
 				$cur = $mydb->executeQuery();
 			}
 
-			message("Applicant ID: $applicantid status is $status.", "success");
+			message("Applicant ID: $applicantid changed status to $status.", "success");
 			redirect("index.php"); 
 		}else{
 			message("cannot be save.", "error");

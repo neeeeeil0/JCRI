@@ -3,13 +3,14 @@ require_once ("../../include/initialize.php");
 //ajax.php
 $mydb = new Database(); // Replace with your actual database connection class
 
-$column = array("j.REGISTRATIONID", "j.APPLICANT", "j2.OCCUPATIONTITLE", "c.COMPANYNAME", "j.REGISTRATIONDATE", "j.STATUS", "Action");
+$column = array("j.REGISTRATIONID", "j.APPLICANT", "j2.OCCUPATIONTITLE", "c.COMPANYNAME", "j.REGISTRATIONDATE", "u.FULLNAME", "j.STATUS", "Action");
 
 $query = "
     SELECT *
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
+    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -34,7 +35,7 @@ if (!empty($_POST["search"]["value"])) {
         j.APPLICANT LIKE '%$search%' OR
         j2.OCCUPATIONTITLE LIKE '%$search%' OR
         c.COMPANYNAME LIKE '%$search%' OR
-        j.REGISTRATIONDATE LIKE '%$search%' OR
+        u.FULLNAME LIKE '%$search%' OR
         j.STATUS LIKE '%$search%'
     )";
 }
@@ -60,6 +61,7 @@ $filteredCountQuery = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
+    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -75,6 +77,7 @@ if (!empty($_POST["search"]["value"])) {
         j.APPLICANT LIKE '%$search%' OR
         j2.OCCUPATIONTITLE LIKE '%$search%' OR
         c.COMPANYNAME LIKE '%$search%' OR
+        u.FULLNAME LIKE '%$search%' OR
         j.STATUS LIKE '%$search%'
     )";
 }
@@ -87,7 +90,9 @@ $totalCountQuery = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
+    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
+    WHERE 1 = 1
 ";
 $mydb->setQuery($totalCountQuery);
 $totalCount = $mydb->loadSingleResult()->total;
@@ -101,6 +106,7 @@ foreach ($cur as $result) {
     $row[] = $result->OCCUPATIONTITLE;
     $row[] = $result->COMPANYNAME;
     $row[] = $result->REGISTRATIONDATE;
+    $row[] = $result->FULLNAME;
     $row[] = $result->STATUS;
     $row[] = '<a title="View" href="index.php?view=view&id=' . $result->REGISTRATIONID . '" class="btn btn-primary btn-xs">
                 <span class="fa fa-edit fw-fa"></span></a>
