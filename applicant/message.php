@@ -89,22 +89,21 @@ if (!isset($_GET['p'])) {
             <div class="box-footer no-padding">
               <div class="mailbox-controls">
                 <!-- Check all button -->
-                <!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
-                </button>
-                <div class="btn-group">
+                <!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> </button>-->
+                <!--<div class="btn-group">
                   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                 <!--  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
-                </div>
+                   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> 
+                </div>-->
                 <!-- /.btn-group -->
                 <a href="index.php?view=message" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
-                <div class="pull-right">
+                <div id="pagination-container" class="pull-right">
                   1-50/200
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
                   </div>
-                  <!-- /.btn-group -->
+                   <!--/.btn-group -->
                 </div>
                 <!-- /.pull-right -->
               </div>
@@ -125,30 +124,69 @@ if (!isset($_GET['p'])) {
 
 <script>
 $(document).ready(function(){
-    function loadMessages(query = '') {
+    let currentPage = 1;
+
+    function loadMessages(query = '', page = 1) {
         $.ajax({
             url: "<?php echo web_root;?>include/ajax.php",
             method: "GET",
-            data: { query: query }, // Send search query
-            success: function(data) {
-                $("#messages-list tbody").html(data); // Update table content
+            data: { query: query, page: page },
+            dataType: "json",
+            success: function(response) {
+                $("#messages-list tbody").html(response.messages); // Update table
+                $("#pagination-container").html(response.pagination); // Update pagination
+                currentPage = page;
             }
         });
     }
 
-    // Load messages every 5 seconds
+    // Load messages every second
     setInterval(function() {
         let query = $("#searchMail").val();
-        loadMessages(query);
+        loadMessages(query, currentPage);
     }, 1000);
 
     // Load messages when typing in the search box
     $("#searchMail").on("keyup", function() {
         let query = $(this).val();
-        loadMessages(query);
+        loadMessages(query, 1); // Reset to page 1 when searching
+    });
+
+    // Pagination click event
+    $(document).on("click", ".prev-page, .next-page", function() {
+        let page = $(this).data("page");
+        let query = $("#searchMail").val();
+        loadMessages(query, page);
     });
 
     // Initial load
     loadMessages();
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    function updateCounts() {
+        $.ajax({
+            url: "<?php echo web_root; ?>include/ajax.php",
+            method: "GET",
+            data: { fetchType: "count" },
+            dataType: "json",
+            success: function(response) {
+                if (response.messages !== undefined) {
+                    $("#messageCount").text(response.messages); // Update messages count
+                }
+                if (response.notifications !== undefined) {
+                    $("#notifCount").text(response.notifications); // Update notifications count
+                }
+            }
+        });
+    }
+
+    // Update counts every 5 seconds
+    setInterval(updateCounts, 1000);
+
+    // Initial fetch on page load
+    updateCounts();
 });
 </script>
