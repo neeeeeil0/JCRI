@@ -599,7 +599,7 @@
     // Function to update the count using AJAX
     function updateApplicantsCount() {
       $.ajax({
-          url: 'ajax.php', // Replace with the actual path to your AJAX handler
+          url: '<?php echo web_root?>/admin/<?php echo web_root?>/admin/dashboard/ajax.php', // Replace with the actual path to your AJAX handler
           type: 'GET',
           dataType: 'json', // Expect JSON response
           success: function(data) {

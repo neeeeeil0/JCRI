@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2025 at 05:09 AM
+-- Generation Time: Feb 02, 2025 at 08:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -200,9 +200,40 @@ CREATE TABLE `tblfeedback` (
   `APPLICANTID` int(11) NOT NULL,
   `REGISTRATIONID` int(11) NOT NULL,
   `FEEDBACK` text NOT NULL,
+  `SENDERID` int(11) NOT NULL,
   `VIEW` int(11) NOT NULL,
   `DATETIMESAVED` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tblfeedback`
+--
+
+INSERT INTO `tblfeedback` (`FEEDBACKID`, `APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`, `SENDERID`, `VIEW`, `DATETIMESAVED`) VALUES
+(26, 2025028, 18, 'Testing Feedback for Review', 0, 0, '2025-02-03 03:33:54'),
+(27, 2025028, 18, 'Testing Feedback for Review.', 18, 1, '2025-02-03 03:37:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblinbox`
+--
+
+CREATE TABLE `tblinbox` (
+  `INBOXID` int(11) NOT NULL,
+  `FULLNAME` varchar(50) NOT NULL,
+  `EMAIL` varchar(50) NOT NULL,
+  `MESSAGE` varchar(500) NOT NULL,
+  `VIEW` int(11) NOT NULL,
+  `DATETIME` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblinbox`
+--
+
+INSERT INTO `tblinbox` (`INBOXID`, `FULLNAME`, `EMAIL`, `MESSAGE`, `VIEW`, `DATETIME`) VALUES
+(1, 'Oliver Regondollars', 'oliveoil@gmail.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2025-02-02 20:33:11');
 
 -- --------------------------------------------------------
 
@@ -268,8 +299,8 @@ CREATE TABLE `tbljobregistration` (
 --
 
 INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `STATUS`, `REMARKS`, `MODIFIEDBY`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`, `DATETIMEUPDATED`) VALUES
-(17, 12, 8, 2025027, 'Neil Oliver  Regondola', '2025-01-27', 'Pending', '', '00018', '20256912547', 0, 0, '2025-01-27 05:28:00', '2025-01-29 04:52:33'),
-(18, 12, 8, 2025028, 'Momo Ayase', '2025-01-29', 'Pending', '', '00018', '20256912548', 0, 0, '2025-01-29 02:08:00', '2025-01-29 04:21:34');
+(17, 12, 8, 2025027, 'Neil Oliver  Regondola', '2025-01-27', 'Pending', '', '00018', '20256912547', 1, 0, '2025-01-27 05:28:00', '2025-01-29 04:52:33'),
+(18, 12, 8, 2025028, 'Momo Ayase', '2025-01-29', 'For Review', 'Testing Feedback for Review.', '00018', '20256912548', 0, 0, '2025-01-29 02:08:00', '2025-02-03 03:37:43');
 
 -- --------------------------------------------------------
 
@@ -314,7 +345,10 @@ CREATE TABLE `tblusers` (
   `FULLNAME` varchar(40) NOT NULL,
   `USERNAME` varchar(90) NOT NULL,
   `PASS` varchar(90) NOT NULL,
+  `CONTACT` varchar(30) NOT NULL,
+  `EMAIL` varchar(50) NOT NULL,
   `ROLE` varchar(30) NOT NULL,
+  `DELETEABLE` int(11) NOT NULL,
   `PICLOCATION` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -322,10 +356,10 @@ CREATE TABLE `tblusers` (
 -- Dumping data for table `tblusers`
 --
 
-INSERT INTO `tblusers` (`USERID`, `FULLNAME`, `USERNAME`, `PASS`, `ROLE`, `PICLOCATION`) VALUES
-('00018', 'HireVantage', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'photos/zoro1.jpg'),
-('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', 'Administrator', 'photos/pic2.jpg'),
-('029838', 'admin2', 'admin2', '315f166c5aca63a157f7d41007675cb44a948b33', 'Administrator', '');
+INSERT INTO `tblusers` (`USERID`, `FULLNAME`, `USERNAME`, `PASS`, `CONTACT`, `EMAIL`, `ROLE`, `DELETEABLE`, `PICLOCATION`) VALUES
+('00018', 'HireVantage', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0', 'Administrator', 0, 'photos/zoro1.jpg'),
+('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', '', '0', 'Administrator', 1, 'photos/pic2.jpg'),
+('029838', 'admin2', 'admin2', '315f166c5aca63a157f7d41007675cb44a948b33', '', '0', 'Administrator', 1, '');
 
 --
 -- Indexes for dumped tables
@@ -373,6 +407,12 @@ ALTER TABLE `tblemployees`
 --
 ALTER TABLE `tblfeedback`
   ADD PRIMARY KEY (`FEEDBACKID`);
+
+--
+-- Indexes for table `tblinbox`
+--
+ALTER TABLE `tblinbox`
+  ADD PRIMARY KEY (`INBOXID`);
 
 --
 -- Indexes for table `tbljob`
@@ -442,7 +482,13 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `tblfeedback`
 --
 ALTER TABLE `tblfeedback`
-  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `tblinbox`
+--
+ALTER TABLE `tblinbox`
+  MODIFY `INBOXID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbljob`

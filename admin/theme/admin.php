@@ -180,12 +180,12 @@
         <li class="<?php echo (currentpage() == 'applicants') ? "active" : false;?>" > 
           <a href="<?php echo web_root ;?>admin/applicants/">
             <i class="fa fa-users"></i> <span>Applicants</span> 
-            <span id="applicants-count" class="label label-primary pull-right">
-              <?php 
+            <span id="applicants-count" class="label label-primary pull-right">0
+              <?php /*
                 $sql = "SELECT count(*) as 'APPL' FROM `tbljobregistration` WHERE `PENDINGAPPLICATION`=1";
                 $mydb->setQuery($sql);
                 $pending = $mydb->loadSingleResult();
-                echo $pending->APPL;
+                echo $pending->APPL; */
               ?> 
             </span>
           </a>
@@ -198,12 +198,12 @@
         <li class="<?php echo (currentpage() == 'inbox') ? "active" : false;?>" >
           <a href="<?php echo web_root ;?>admin/inbox/">
             <i class="fa fa-inbox"></i></i> <span>Inbox</span> 
-            <span id="messages-count" class="label label-primary pull-right">
-              <?php 
+            <span id="messages-count" class="label label-primary pull-right">0
+              <?php /*
                 $sql = "SELECT count(*) as 'INBOX' FROM `tblinbox` WHERE `VIEW`=1";
                 $mydb->setQuery($sql);
                 $newmsgs = $mydb->loadSingleResult();
-                echo $newmsgs->INBOX;
+                echo $newmsgs->INBOX; */
               ?> 
             </span>
           </a>
@@ -299,7 +299,7 @@
   // Function to update the count using AJAX
   function updateApplicantsCount() {
       $.ajax({
-          url: 'ajax.php', // Replace with the actual path to your AJAX handler
+          url: '<?php echo web_root?>/admin/theme/ajax.php', // Replace with the actual path to your AJAX handler
           type: 'GET',
           dataType: 'json', // Expect JSON response
           success: function(data) {

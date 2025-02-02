@@ -315,7 +315,7 @@ global $mydb;
 		if ($cur) {
 
 			if(strcmp($oldremarks, $remarks) != 0) {
-				$sql="INSERT INTO `tblfeedback` (`APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`, `VIEW`) VALUES ('{$applicantid}','{$id}','{$remarks}', '1')";
+				$sql="INSERT INTO `tblfeedback` (`APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`, `SENDERID`, `VIEW`) VALUES ('{$applicantid}','{$id}','{$remarks}', '{$modifiedby}','1')";
 				$mydb->setQuery($sql);
 				$cur = $mydb->executeQuery();
 			}

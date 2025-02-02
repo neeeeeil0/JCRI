@@ -40,7 +40,7 @@ $(document).ready(function () {
             "serverSide": true,
             "order": [],
             "ajax": {
-                url: "ajax.php",
+                url: "<?php echo web_root?>/admin/inbox/ajax.php",
                 type: "POST",
             },
             "columnDefs": [

@@ -106,7 +106,7 @@ $(document).ready(function () {
             "serverSide": true,
             "order": [],
             "ajax": {
-                url: "ajax.php",
+                url: "<?php echo web_root?>/admin/applicants/ajax.php",
                 type: "POST",
                 data: {
                     is_company: is_company,

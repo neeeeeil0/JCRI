@@ -68,7 +68,6 @@ $searchQuery = isset($_GET['query']) ? $_GET['query'] : "";
 $sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
         WHERE c.`COMPANYID` = j.`COMPANYID` 
         AND j.`REGISTRATIONID` = f.`REGISTRATIONID` 
-        AND `PENDINGAPPLICATION` = 0 
         AND j.`APPLICANTID` = '$applicantID'";
 
 // If search query is provided
@@ -85,7 +84,6 @@ $messages = $mydb->loadResultList();
 $totalQuery = "SELECT COUNT(*) as total FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
               WHERE c.`COMPANYID` = j.`COMPANYID` 
               AND j.`REGISTRATIONID` = f.`REGISTRATIONID` 
-              AND `PENDINGAPPLICATION` = 0 
               AND j.`APPLICANTID` = '$applicantID'";
 if (!empty($searchQuery)) {
     $totalQuery .= " AND (c.COMPANYNAME LIKE '%$searchQuery%' OR f.FEEDBACK LIKE '%$searchQuery%')";
