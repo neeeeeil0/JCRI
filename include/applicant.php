@@ -48,7 +48,7 @@ class Applicants {
 	}
 	function applicantAuthentication($U_USERNAME,$h_pass){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM `tblapplicants` WHERE `USERNAME`='".$U_USERNAME."' AND `PASS`='".$h_pass."'");
+		$mydb->setQuery("SELECT * FROM `tblapplicants` WHERE (`USERNAME`='".$U_USERNAME."' OR `EMAILADDRESS`='".$U_USERNAME."') AND `PASS`='".$h_pass."'");
 		$cur = $mydb->executeQuery();
 		if($cur==false){
 			die(mysql_error());
