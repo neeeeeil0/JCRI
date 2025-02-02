@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2025 at 08:39 PM
+-- Generation Time: Feb 02, 2025 at 09:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -76,7 +76,8 @@ CREATE TABLE `tblattachmentfile` (
 
 INSERT INTO `tblattachmentfile` (`ID`, `FILEID`, `JOBID`, `FILE_NAME`, `FILE_LOCATION`, `USERATTACHMENTID`) VALUES
 (17, '20256912547', 8, '2025027_resume', 'photos/27012025052847Resume.pdf', 2025027),
-(18, '20256912548', 8, '2025028_resume', 'photos/2901202502083127012025052847Resume.pdf', 2025028);
+(18, '20256912548', 8, '2025028_resume', 'photos/2901202502083127012025052847Resume.pdf', 2025028),
+(19, '20256912549', 9, '2025028_resume', 'photos/02022025090433Resume.pdf', 2025028);
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,7 @@ INSERT INTO `tblautonumbers` (`AUTOID`, `AUTOSTART`, `AUTOEND`, `AUTOINC`, `AUTO
 (1, '02983', 9, 1, 'userid'),
 (2, '000', 79, 1, 'employeeid'),
 (3, '0', 29, 1, 'APPLICANT'),
-(4, '69125', 49, 1, 'FILEID');
+(4, '69125', 50, 1, 'FILEID');
 
 -- --------------------------------------------------------
 
@@ -200,7 +201,7 @@ CREATE TABLE `tblfeedback` (
   `APPLICANTID` int(11) NOT NULL,
   `REGISTRATIONID` int(11) NOT NULL,
   `FEEDBACK` text NOT NULL,
-  `SENDERID` int(11) NOT NULL,
+  `SENDERID` varchar(50) NOT NULL,
   `VIEW` int(11) NOT NULL,
   `DATETIMESAVED` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -210,8 +211,10 @@ CREATE TABLE `tblfeedback` (
 --
 
 INSERT INTO `tblfeedback` (`FEEDBACKID`, `APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`, `SENDERID`, `VIEW`, `DATETIMESAVED`) VALUES
-(26, 2025028, 18, 'Testing Feedback for Review', 0, 0, '2025-02-03 03:33:54'),
-(27, 2025028, 18, 'Testing Feedback for Review.', 18, 1, '2025-02-03 03:37:43');
+(26, 2025028, 18, 'Testing Feedback for Review', '00018', 0, '2025-02-03 03:33:54'),
+(27, 2025028, 18, 'Testing Feedback for Review.', '00018', 1, '2025-02-03 03:37:43'),
+(28, 2025028, 18, 'Testing Feedback for Review', '00018', 1, '2025-02-03 03:52:48'),
+(29, 2025028, 19, 'Applicant for review', '029837', 0, '2025-02-03 04:19:06');
 
 -- --------------------------------------------------------
 
@@ -300,7 +303,8 @@ CREATE TABLE `tbljobregistration` (
 
 INSERT INTO `tbljobregistration` (`REGISTRATIONID`, `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `STATUS`, `REMARKS`, `MODIFIEDBY`, `FILEID`, `PENDINGAPPLICATION`, `HVIEW`, `DATETIMEAPPROVED`, `DATETIMEUPDATED`) VALUES
 (17, 12, 8, 2025027, 'Neil Oliver  Regondola', '2025-01-27', 'Pending', '', '00018', '20256912547', 1, 0, '2025-01-27 05:28:00', '2025-01-29 04:52:33'),
-(18, 12, 8, 2025028, 'Momo Ayase', '2025-01-29', 'For Review', 'Testing Feedback for Review.', '00018', '20256912548', 0, 0, '2025-01-29 02:08:00', '2025-02-03 03:37:43');
+(18, 12, 8, 2025028, 'Momo Ayase', '2025-01-29', 'For Review', 'Testing Feedback for Review', '00018', '20256912548', 0, 0, '2025-01-29 02:08:00', '2025-02-03 03:52:48'),
+(19, 13, 9, 2025028, 'Momo Ayase', '2025-02-02', 'For Review', 'Applicant for review', '029837', '20256912549', 0, 0, '2025-02-02 21:04:00', '2025-02-03 04:19:06');
 
 -- --------------------------------------------------------
 
@@ -358,7 +362,7 @@ CREATE TABLE `tblusers` (
 
 INSERT INTO `tblusers` (`USERID`, `FULLNAME`, `USERNAME`, `PASS`, `CONTACT`, `EMAIL`, `ROLE`, `DELETEABLE`, `PICLOCATION`) VALUES
 ('00018', 'HireVantage', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0', 'Administrator', 0, 'photos/zoro1.jpg'),
-('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', '', '0', 'Administrator', 1, 'photos/pic2.jpg'),
+('029837', 'Neil Oliver', 'Neil', '32932454372d21c1e59aec1b1168b91fa0dea5a6', '', '0', 'Staff', 1, 'photos/pic2.jpg'),
 ('029838', 'admin2', 'admin2', '315f166c5aca63a157f7d41007675cb44a948b33', '', '0', 'Administrator', 1, '');
 
 --
@@ -452,7 +456,7 @@ ALTER TABLE `tblapplicants`
 -- AUTO_INCREMENT for table `tblattachmentfile`
 --
 ALTER TABLE `tblattachmentfile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tblautonumbers`
@@ -482,7 +486,7 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `tblfeedback`
 --
 ALTER TABLE `tblfeedback`
-  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `FEEDBACKID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tblinbox`
@@ -500,7 +504,7 @@ ALTER TABLE `tbljob`
 -- AUTO_INCREMENT for table `tbljobregistration`
 --
 ALTER TABLE `tbljobregistration`
-  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `REGISTRATIONID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tblnotification`
