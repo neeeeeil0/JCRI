@@ -334,18 +334,6 @@
 <script src="<?php echo web_root; ?>plugins/home-plugins/js/custom.js"></script> 
 <!-- <script src="<?php echo web_root; ?>plugins/paralax/paralax.js"></script>  -->
 
-<!-- Unread Messages -->
-<a title="View Message(s)" href="<?php echo web_root; ?>applicant/index.php?view=message">
-    <i class="fa fa-envelope-o"></i>
-    <span id="messageCount" class="label label-success"><?php echo $msg; ?></span>
-</a>
-
-<!-- Unread Notifications -->
-<a title="View Notification(s)" href="<?php echo web_root; ?>applicant/index.php?view=notification">
-    <i class="fa fa-bell-o"></i>
-    <span id="notifCount" class="label label-success"><?php echo $notif; ?></span>
-</a>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>

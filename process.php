@@ -231,25 +231,26 @@ function doRegister(){
 
 
 function doLogin(){
+	if (isset($_POST['btnLogin'])) { 
+		$email = trim($_POST['user_email']);
+		$upass  = trim($_POST['user_pass']);
+		$h_upass = sha1($upass);
 	
-	$email = trim($_POST['USERNAME']);
-	$upass  = trim($_POST['PASS']);
-	$h_upass = sha1($upass);
- 
-  //it creates a new objects of member
-    $applicant = new Applicants();
-    //make use of the static function, and we passed to parameters
-    $res = $applicant->applicantAuthentication($email, $h_upass);
-    if ($res==true) { 
+	//it creates a new objects of member
+		$applicant = new Applicants();
+		//make use of the static function, and we passed to parameters
+		$res = $applicant->applicantAuthentication($email, $h_upass);
+		if ($res==true) { 
 
-       	message("You are now successfully login!","success");
-		redirect(web_root."applicant/");
-       // $sql="INSERT INTO `tbllogs` (`USERID`,USERNAME, `LOGDATETIME`, `LOGROLE`, `LOGMODE`) 
-       //    VALUES (".$_SESSION['USERID'].",'".$_SESSION['FULLNAME']."','".date('Y-m-d H:i:s')."','".$_SESSION['UROLE']."','Logged in')";
-       //    mysql_query($sql) or die(mysql_error());
-    }else{
-    	 echo "Account does not exist! Please contact Administrator."; 
-    } 
+			message("You are now successfully login!","success");
+			redirect(web_root."applicant/");
+		// $sql="INSERT INTO `tbllogs` (`USERID`,USERNAME, `LOGDATETIME`, `LOGROLE`, `LOGMODE`) 
+		//    VALUES (".$_SESSION['USERID'].",'".$_SESSION['FULLNAME']."','".date('Y-m-d H:i:s')."','".$_SESSION['UROLE']."','Logged in')";
+		//    mysql_query($sql) or die(mysql_error());
+		}else{
+			echo "Invalid Credentials!"; 
+		}
+	}
 }
  
 function UploadImage($jobid=0){
