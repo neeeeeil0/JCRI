@@ -115,7 +115,7 @@ foreach ($cur as $result) {
     $row[] = $result->APPLICANT;
     $row[] = $result->OCCUPATIONTITLE;
     $row[] = $result->COMPANYNAME;
-    $row[] = $result->REGISTRATIONDATE;
+    $row[] = date("M. j, Y, g:ia", strtotime($result->REGISTRATIONDATE));
     $row[] = $result->FULLNAME ?? "";
     $row[] = $result->STATUS;
     $row[] = '<a title="View" href="index.php?view=view&id=' . $result->REGISTRATIONID . '" class="btn btn-primary btn-xs">

@@ -5,7 +5,6 @@
     font-size: 18px;
   }
 
-
   .content {
     padding: 30px;
   }

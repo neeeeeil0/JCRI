@@ -103,7 +103,7 @@ if (!empty($messages)) {
         $output .= '<tr style="' . $rowStyle . '">';
         $output .= '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->FEEDBACKID.'">'.$result->COMPANYNAME.'</a></td>';
         $output .= '<td class="mailbox-subject">'.$result->FEEDBACK.'</td>';
-        $output .= '<td class="mailbox-date">'.$result->DATETIMEAPPROVED.'</td>';
+        $output .= '<td class="mailbox-date">'.date("M. j, Y, g:ia", strtotime($result->DATETIMESAVED)).'</td>';
         $output .= '</tr>';
     }
 } else {
