@@ -65,10 +65,11 @@ $start = ($page - 1) * $limit;
 $searchQuery = isset($_GET['query']) ? $_GET['query'] : "";
 
 // Base SQL query
-$sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
-        WHERE c.`COMPANYID` = j.`COMPANYID` 
-        AND j.`REGISTRATIONID` = f.`REGISTRATIONID` 
-        AND j.`APPLICANTID` = '$applicantID'";
+$sql = "SELECT * FROM `tblcompany` c, `tbljobregistration` jr, `tblfeedback` f, `tbljob` j
+        WHERE c.`COMPANYID` = jr.`COMPANYID` 
+        AND jr.`REGISTRATIONID` = f.`REGISTRATIONID`
+        AND jr.`JOBID` = j.`JOBID` 
+        AND jr.`APPLICANTID` = '$applicantID'";
 
 // If search query is provided
 if (!empty($searchQuery)) {
@@ -81,10 +82,11 @@ $mydb->setQuery($sql);
 $messages = $mydb->loadResultList();
 
 // Get total message count for pagination
-$totalQuery = "SELECT COUNT(*) as total FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
-              WHERE c.`COMPANYID` = j.`COMPANYID` 
-              AND j.`REGISTRATIONID` = f.`REGISTRATIONID` 
-              AND j.`APPLICANTID` = '$applicantID'";
+$totalQuery = "SELECT COUNT(*) as total FROM `tblcompany` c, `tbljobregistration` jr, `tblfeedback` f, `tbljob` j
+        WHERE c.`COMPANYID` = jr.`COMPANYID` 
+        AND jr.`REGISTRATIONID` = f.`REGISTRATIONID`
+        AND jr.`JOBID` = j.`JOBID` 
+        AND jr.`APPLICANTID` = '$applicantID'";
 if (!empty($searchQuery)) {
     $totalQuery .= " AND (c.COMPANYNAME LIKE '%$searchQuery%' OR f.FEEDBACK LIKE '%$searchQuery%')";
 }
@@ -99,7 +101,7 @@ if (!empty($messages)) {
     foreach ($messages as $result) {
         $rowStyle = ($result->VIEW == 1) ? 'font-weight: bold;' : '';
         $output .= '<tr style="' . $rowStyle . '">';
-        $output .= '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->FEEDBACKID.'">'.$result->COMPANYNAME.'</a></td>';
+        $output .= '<td class="mailbox-name"><a href="index.php?view=message&p=readmessage&id='.$result->FEEDBACKID.'">'.$result->OCCUPATIONTITLE.'</a></td>';
         $output .= '<td class="mailbox-subject">'.$result->FEEDBACK.'</td>';
         $output .= '<td class="mailbox-date">'.date("M. j, Y, g:ia", strtotime($result->DATETIMESAVED)).'</td>';
         $output .= '</tr>';
