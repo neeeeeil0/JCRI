@@ -189,12 +189,17 @@
               ?> 
             </span>
           </a>
-        </li> 
+        </li> <!--
         <li class="<?php echo (currentpage() == 'employee') ? "active" : false;?>" >
           <a href="<?php echo web_root ;?>admin/employee/">
             <i class="fa fa-users"></i> <span>Employees</span> 
           </a>
-        </li> 
+        </li>-->
+        <li class="<?php echo (currentpage() == 'acceptedapplicants') ? "active" : false;?>" >
+          <a href="<?php echo web_root ;?>admin/acceptedapplicants/">
+            <i class="fa fa-users"></i> <span>Hired Applicants</span> 
+          </a>
+        </li>
         <li class="<?php echo (currentpage() == 'inbox') ? "active" : false;?>" >
           <a href="<?php echo web_root ;?>admin/inbox/">
             <i class="fa fa-inbox"></i></i> <span>Inbox</span> 

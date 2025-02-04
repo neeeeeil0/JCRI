@@ -36,10 +36,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'fetchApplicants') {
 
 
 switch ($action) {
-	case 'add' :
-	doInsert();
-	break;
-	
 	case 'edit' :
 	doEdit();
 	break; 
@@ -60,94 +56,9 @@ switch ($action) {
 	case 'approve' :
 	doApproved();
 	break;
-
-	case 'checkid' :
-	Check_StudentID();
-	break;
 	
 
 	}
-   
-	function doInsert(){
-		global $mydb;
-		if(isset($_POST['save'])){
-
-
-		if ( $_POST['FNAME'] == "" OR $_POST['LNAME'] == ""
-			OR $_POST['MNAME'] == ""  OR $_POST['ADDRESS'] == "" 
-			OR $_POST['TELNO'] == "") {
-			$messageStats = false;
-			message("All fields are required!","error");
-			redirect('index.php?view=add');
-		}else{	
-
-			$birthdate =  $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
-
-			$age = date_diff(date_create($birthdate),date_create('today'))->y;
-
-			if ($age < 20){
-			message("Invalid age. 20 years old and above is allowed.", "error");
-			redirect("index.php?view=add");
-
-			}else{
-			 
-
-
-				$sql = "SELECT * FROM tblemployees WHERE EMPLOYEEID='" .$_POST['EMPLOYEEID']. "'";
-				$mydb->setQuery($sql);
-				$cur = $mydb->executeQuery();
-				$maxrow = $mydb->num_rows($cur);
-
-
-				// $res = mysqli_query($sql) or die(mysql_error());
-				// $maxrow = mysql_num_rows($res);
-				if ($maxrow > 0) { 
-					# code... 
-					message("Employee ID already in use!", "error");
-					redirect("index.php?view=add");
-				}else{
-
-					@$datehired = date_format(date_create($_POST['DATEHIRED']),'Y-m-d');
-
-					$emp = New Employee(); 
-					$emp->EMPLOYEEID 		= $_POST['EMPLOYEEID'];
-					$emp->FNAME				= $_POST['FNAME']; 
-					$emp->LNAME				= $_POST['LNAME'];
-					$emp->MNAME 	   		= $_POST['MNAME'];
-					$emp->ADDRESS			= $_POST['ADDRESS'];  
-					$emp->BIRTHDATE	 		= $birthdate;
-					$emp->BIRTHPLACE		= $_POST['BIRTHPLACE'];  
-					$emp->AGE			    = $age;
-					$emp->SEX 				= $_POST['optionsRadios']; 
-					$emp->TELNO				= $_POST['TELNO'];
-					$emp->CIVILSTATUS		= $_POST['CIVILSTATUS']; 
-					$emp->POSITION			= trim($_POST['POSITION']);
-					// $emp->DEPARTMENTID	= $_POST['DEPARTMENTID'];
-					// $emp->DIVISIONID		= $_POST['DIVISIONID'];
-					$emp->EMP_EMAILADDRESS	= $_POST['EMP_EMAILADDRESS'];
-					$emp->EMPUSERNAME		= $_POST['EMPLOYEEID'];
-					$emp->EMPPASSWORD		= sha1($_POST['EMPLOYEEID']);
-					$emp->DATEHIRED			=  @$datehired;
-					$emp->COMPANYID			= $_POST['COMPANYID'];
-					$emp->create(); 
-
-
-				 
-							
-						$autonum = New Autonumber(); 
-						$autonum->auto_update('employeeid');
-
-					message("New employee created successfully!", "success");
-					redirect("index.php");
-
-				}
-				
-			}
-		 }
-		}
-
-	}
-
 	function doEdit(){
 	if(isset($_POST['save'])){
 
@@ -283,12 +194,10 @@ switch ($action) {
 		 	
 					 
 
-						$stud = New Student();
-						$stud->StudPhoto	= $location;
-						$stud->studupdate($_POST['StudentID']);
-						redirect("index.php?view=view&id=". $_POST['StudentID']);
-						 
-							
+						//$stud = New Student();
+						//$stud->StudPhoto	= $location;
+						//$stud->studupdate($_POST['StudentID']);
+						//redirect("index.php?view=view&id=". $_POST['StudentID']);
 					}
 			}
 			 
@@ -296,38 +205,85 @@ switch ($action) {
 function doApproved(){
 global $mydb;
 	if (isset($_POST['submit'])) {
-		# code...
 		$id = $_POST['JOBREGID'];
 		$applicantid = $_POST['APPLICANTID'];
 		$modifiedby = $_SESSION['ADMIN_USERID'];
 		$status = $_POST['STATUS'];
 		$remarks = $_POST['REMARKS'];
 
-		$sql = "SELECT * FROM `tbljobregistration` WHERE `REGISTRATIONID`='{$id}'";
+		//For checking remarks or feedback
+		$sql = "SELECT * 
+				FROM tbljobregistration jr
+				JOIN tbljob j ON jr.JOBID = j.JOBID
+				WHERE jr.REGISTRATIONID = $id";
 		$mydb->setQuery($sql);
 		$res = $mydb->loadSingleResult();
 		$oldremarks = $res->REMARKS;
 
-		$sql="UPDATE `tbljobregistration` SET `STATUS`='{$status}',`REMARKS`='{$remarks}',`MODIFIEDBY`='{$modifiedby}',PENDINGAPPLICATION=0,HVIEW=0,DATETIMEUPDATED=NOW() WHERE `REGISTRATIONID`='{$id}'";
-		$mydb->setQuery($sql);
-		$cur = $mydb->executeQuery();
+		// For Checking if already exist in accepted applicants
+		$accepted = new AcceptedApplicants();
+		// Check if Registration ID already exists in Accepted Applicants
+		$check1 = "SELECT * FROM tblacceptedapplicants WHERE REGISTRATIONID = $id";
+		$mydb->setQuery($check1);
+		$checkjobregid = $mydb->loadSingleResult();
+		// Check if Applicant ID already exists in Accepted Applicants
+		$check2 = "SELECT * FROM tblacceptedapplicants WHERE APPLICANTID = $applicantid";
+		$mydb->setQuery($check2);
+		$checkapplicantid = $mydb->loadSingleResult();
 
+		if ($status != "Accepted"){
+			if (!$checkjobregid && !$checkapplicantid) {
+				$sql="UPDATE `tbljobregistration` 
+						SET `STATUS`='{$status}',`REMARKS`='{$remarks}',`MODIFIEDBY`='{$modifiedby}',PENDINGAPPLICATION=0,HVIEW=0,DATETIMEUPDATED=NOW() 
+						WHERE `REGISTRATIONID`='{$id}'";
+				$mydb->setQuery($sql);
+				$cur = $mydb->executeQuery();
+			} else {
+				message("Cannot update: STATUS cannot be changed. $applicantid is already hired", "error");
+				redirect("index.php?view=view&id=".$id);
+			}
+		} else if ($status == "Accepted"){
+			if (!$checkjobregid && !$checkapplicantid) {
+				//Sets all the other applied job to REJECTED, pendingapplication to 0
+				$sql="UPDATE `tbljobregistration` 
+						SET STATUS='Rejected',PENDINGAPPLICATION=0,HVIEW=0,DATETIMEUPDATED=NOW()
+						WHERE `APPLICANTID`='{$applicantid}'";
+				$mydb->setQuery($sql);
+				$cur = $mydb->executeQuery();
+
+				$accepted->REGISTRATIONID 		= $res->REGISTRATIONID;
+				$accepted->APPLICANTID	 		= $res->APPLICANTID;
+				$accepted->DEPLOYEDCOMPANYID 	= $res->COMPANYID;
+				$accepted->JOBTITLE 			= $res->OCCUPATIONTITLE;
+				$accepted->HIREDDATE 			= date('Y-m-d H:i:s');
+				$accepted->create();
+
+				// Update Status and Remarks
+				$sql="UPDATE `tbljobregistration` SET `STATUS`='{$status}',`REMARKS`='{$remarks}',`MODIFIEDBY`='{$modifiedby}',PENDINGAPPLICATION=0,HVIEW=0,DATETIMEUPDATED=NOW() WHERE `REGISTRATIONID`='{$id}'";
+				$mydb->setQuery($sql);
+				$cur = $mydb->executeQuery();
+			} else {		
+				// Update only the Remarks field
+				$sql = "UPDATE `tbljobregistration` 
+						SET `REMARKS`='{$remarks}', `MODIFIEDBY`='{$modifiedby}', DATETIMEUPDATED=NOW() 
+						WHERE `REGISTRATIONID`='{$id}'";
+				$mydb->setQuery($sql);
+				$cur = $mydb->executeQuery();
+			}
+		}
+
+		// For New Feedback
 		if ($cur) {
-
 			if(strcmp($oldremarks, $remarks) != 0) {
 				$sql="INSERT INTO `tblfeedback` (`APPLICANTID`, `REGISTRATIONID`, `FEEDBACK`, `SENDERID`, `VIEW`) VALUES ('{$applicantid}','{$id}','{$remarks}', '{$modifiedby}','1')";
 				$mydb->setQuery($sql);
 				$cur = $mydb->executeQuery();
-			}
 
-			message("Applicant ID: $applicantid changed status to $status.", "success");
-			redirect("index.php"); 
-		}else{
-			message("cannot be save.", "error");
-			redirect("index.php?view=view&id=".$id); 
+				message("Applicant ID: $applicantid has been updated.", "success");
+			}
 		}
+		redirect("index.php"); 
 	}
 }
-
  
 ?>

@@ -4,6 +4,7 @@
      }
 
 ?> 
+
 	<div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">List of Applicant's   </h1>
@@ -12,7 +13,7 @@
                 
  
     <form class="wow fadeInDownaction" action="controller.php?action=delete" Method="POST">   		
-        <table id="applicants-list" class="table table-striped table-bordered table-hover"  style="font-size:14px;width:100%;" cellspacing="0">
+        <table id="applicants-list" class="table table-striped table-bordered table-hover" style="font-size:14px;width: 100%;"cellspacing="0">
             <thead>
             <tr>
                 <th>Application ID</th>
@@ -55,7 +56,7 @@
                         <option>For Initial Screening</option>
                         <option>For Interview</option>
                         <option>For Assessment</option>
-                        <option>Hired</option>
+                        <option>Accepted</option>
 				        <option>Rejected</option>
                     </select>
                 </th>
@@ -123,6 +124,14 @@ $(document).ready(function () {
             "createdRow": function (row, data, dataIndex) {
                 if (data['PENDINGAPPLICATION'] === true || data['PENDINGAPPLICATION'] == 1) { // Check for pending applications
                     $(row).css("font-weight", "bold"); // Apply bold styling
+                }
+
+                if (data['APPLICANTSTATUS'] === "Accepted") {
+                    $(row).css("color", "green");
+                    $(row).css("font-weight", "bold");
+                } else if (data['APPLICANTSTATUS'] === "Rejected") {
+                    $(row).css("color", "red");
+                    $(row).css("font-weight", "bold");
                 }
             },
             "destroy": true // Ensure the table can be refreshed without errors

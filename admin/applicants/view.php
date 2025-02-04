@@ -132,7 +132,7 @@ global $mydb;
 				<option>For Initial Screening</option>
 				<option>For Interview</option>
 				<option>For Assessment</option>
-				<option style="background-color:green;color:white;">Hired</option>
+				<option style="background-color:green;color:white;">Accepted</option>
 				<option style="background-color:red;color:white;">Rejected</option>
 			</select>
 		</div>

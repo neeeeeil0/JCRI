@@ -1,6 +1,5 @@
 <?php
 require_once ("../../include/initialize.php");
-//ajax.php
 $mydb = new Database(); // Replace with your actual database connection class
 
 $column = array("j.REGISTRATIONID", "j.APPLICANT", "j2.OCCUPATIONTITLE", "c.COMPANYNAME", "j.REGISTRATIONDATE", "u.FULLNAME", "j.STATUS", "Action");
@@ -50,7 +49,13 @@ if (!empty($_POST["search"]["value"])) {
 if (!empty($_POST["order"])) {
     $query .= " ORDER BY " . $column[$_POST['order']['0']['column']] . " " . $_POST['order']['0']['dir'];
 } else {
-    $query .= " ORDER BY j.REGISTRATIONID DESC";
+    $query .= " ORDER BY 
+                CASE 
+                    WHEN j.STATUS = 'Rejected' THEN 2
+                    WHEN j.STATUS = 'Accepted' THEN 1
+                    ELSE 0
+                END, 
+                j.REGISTRATIONID DESC";
 }
 
 // Pagination
@@ -122,7 +127,8 @@ foreach ($cur as $result) {
                 <span class="fa fa-edit fw-fa"></span></a>
               <a title="Remove" href="controller.php?action=delete&id=' . $result->REGISTRATIONID . '" class="btn btn-danger btn-xs">
                 <span class="fa fa-trash-o fw-fa"></span></a>';
-    $row['PENDINGAPPLICATION'] = $result->PENDINGAPPLICATION; 
+    $row['PENDINGAPPLICATION'] = $result->PENDINGAPPLICATION;
+    $row['APPLICANTSTATUS'] = $result->STATUS;
     $data[] = $row;
 }
 
