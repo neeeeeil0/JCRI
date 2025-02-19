@@ -6,7 +6,6 @@ global $mydb;
 	$jobreg = $jobregistration->single_jobregistration($red_id);
 	 // `COMPANYID`, `JOBID`, `APPLICANTID`, `APPLICANT`, `REGISTRATIONDATE`, `REMARKS`, `FILEID`, `PENDINGAPPLICATION`
 
-
 	$applicant = new Applicants();
 	$appl = $applicant->single_applicant($jobreg->APPLICANTID);
  // `FNAME`, `LNAME`, `MNAME`, `ADDRESS`, `SEX`, `CIVILSTATUS`, `BIRTHDATE`, `BIRTHPLACE`, `AGE`, `USERNAME`, `PASS`, `EMAILADDRESS`,CONTACTNO
@@ -117,8 +116,6 @@ global $mydb;
 	</div> 
 	</div>
 
-
-
 	
 <div class="col-sm-12 content-footer">
 	<p>Applicant Status</p>
@@ -128,13 +125,15 @@ global $mydb;
 		<div class="col-md-3 ">
 			<select class="form-control input-sm" id="STATUS" name="STATUS" required>
 				<?php
-					echo '<option SELECTED>'.$jobreg->STATUS.'</option>';
+					echo '<option SELECTED hidden>'.$jobreg->STATUS.'</option>';
 				?>
 				<option>Pending</option>
 				<option>For Review</option>
 				<option>For Initial Screening</option>
 				<option>For Interview</option>
 				<option>For Assessment</option>
+				<option style="background-color:green;color:white;">Accepted</option>
+				<option style="background-color:red;color:white;">Rejected</option>
 			</select>
 		</div>
 	</div>

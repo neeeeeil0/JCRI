@@ -38,9 +38,12 @@ switch ($action) {
 			$user = New User();
 			$user->USERID 			= $_POST['user_id'];
 			$user->FULLNAME 		= $_POST['U_NAME'];
+			$user->CONTACT			= $_POST['U_CONTACT'];
+			$user->EMAIL			= $_POST['U_EMAIL'];
 			$user->USERNAME			= $_POST['U_USERNAME'];
-			$user->PASS				=sha1($_POST['U_PASS']);
-			$user->ROLE				=  $_POST['U_ROLE'];
+			$user->PASS				= sha1($_POST['U_PASS']);
+			$user->ROLE				= $_POST['U_ROLE'];
+			$user->DELETEABLE		= 1;
 			$user->create();
 
 						$autonum = New Autonumber(); 
@@ -55,26 +58,47 @@ switch ($action) {
 	}
 
 	function doEdit(){
-	if(isset($_POST['save'])){
-
+		if(isset($_POST['save'])){
 
 			$user = New User(); 
 			$user->FULLNAME 		= $_POST['U_NAME'];
 			$user->USERNAME			= $_POST['U_USERNAME'];
-			$user->PASS				=sha1($_POST['U_PASS']);
+			$user->CONTACT			= $_POST['U_CONTACT'];
+			$user->EMAIL			= $_POST['U_EMAIL'];
+			if (!empty($_POST['U_PASS'])){
+				$user->PASS			= sha1($_POST['U_PASS']);
+			}
 			$user->ROLE				= $_POST['U_ROLE'];
-			$user->update($_POST['USERID']);
 
-			
+			//check user role if admin or staff
+			//only Admin can modify other users.	
+			$id = 	$_SESSION['ADMIN_USERID'];
+			$mydb = new Database();
+			$sql = "SELECT * FROM tblusers WHERE USERID = $id";
+			$mydb->setQuery($sql);
+			$res = $mydb->loadSingleResult();	
+			if($_SESSION['ADMIN_ROLE'] != 'Administrator'){ //If it is not admin
+				if($_POST['USERID'] == $res->USERID){ //If it is just editing its own profile
+					$user->update($_POST['USERID']);
 
+					
+					message("Profile has been updated!", "success");
+					redirect("index.php?view=view");
+				} else {
+					message("You can't modify this user. Please contact administrator.","info");
+					redirect("index.php");
+				}
+			} else { //if it is admin
+				
+				$user->update($_POST['USERID']);
 
-			if (isset($_GET['view'])) {
-				# code...
-				  message("Profile has been updated!", "success");
-				redirect("index.php?view=view");
-			}else{ 
-				message("[". $_POST['U_NAME'] ."] has been updated!", "success");
-				redirect("index.php");
+				if (isset($_GET['view'])) {
+					message("Profile has been updated!", "success");
+					redirect("index.php?view=view");
+				}else{ 
+					message("[". $_POST['U_NAME'] ."] has been updated!", "success");
+					redirect("index.php");
+				}
 			}
 		}
 	}
@@ -103,21 +127,21 @@ switch ($action) {
  				$res = $mydb->loadSingleResult();
 
 				if ($_SESSION['ADMIN_ROLE'] != 'Administrator'){
-					message("Only Administrator Can Delete!","info");
+					message("You can't modify this user. Please contact administrator.","info");
 				}else{
 					if($res->DELETEABLE == true){
 						$user = New User();
 						$user->delete($id);
 						message("User has been deleted!","info");
 						
+					} else {
+						message("You can't delete this user. Please contact main administrator.","info");
 					}
 				}
 				redirect('index.php');
 			
 		// }
 		// }
-
-		
 	}
 
 	function doupdateimage(){

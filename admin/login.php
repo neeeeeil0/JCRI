@@ -106,7 +106,7 @@ if(isset($_POST['btnLogin'])){
         unset( $_SESSION['ROLE'] );
         unset($_SESSION['PICLOCATION']);
 
-         redirect(web_root."admin/index.php");
+        redirect(web_root."admin/index.php");
       // } 
     }else{
       message("Account does not exist! Please contact Administrator.", "error");

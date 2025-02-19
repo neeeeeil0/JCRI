@@ -5,6 +5,10 @@ switch ($action) {
 	case 'submitapplication' :
 	doSubmitApplication();
 	break;
+
+	case 'sendmail' :
+	doSendMail();
+	break; 
   
 	case 'register' :
 	doRegister();
@@ -69,7 +73,24 @@ function doSubmitApplication() {
 	$autonum = New Autonumber();
 	$autonum->auto_update('FILEID');
 }
-	
+
+function doSendMail() {
+	if (isset($_POST['submit'])) {  
+		global $mydb;
+
+		$inbox = new Messages();
+		$inbox->FULLNAME = $_POST['fullname'];
+		$inbox->EMAIL = $_POST['email'];
+		$inbox->MESSAGE = $_POST['message'];
+		$inbox->VIEW = 1;
+		$inbox->DATETIME = date('Y-m-d H:i:s');
+		$inbox->create();
+
+		message("Your message has been sent.","success");
+		redirect("index.php?q=success");
+	}
+}
+
 function doInsert($jobid=0,$fileid=0) {
 	if (isset($_POST['submit'])) {  
 	global $mydb; 
@@ -210,27 +231,26 @@ function doRegister(){
 
 
 function doLogin(){
+	if (isset($_POST['btnLogin'])) { 
+		$email = trim($_POST['user_email']);
+		$upass  = trim($_POST['user_pass']);
+		$h_upass = sha1($upass);
 	
-	$email = trim($_POST['USERNAME']);
-	$upass  = trim($_POST['PASS']);
-	$h_upass = sha1($upass);
- 
-  //it creates a new objects of member
-    $applicant = new Applicants();
-    //make use of the static function, and we passed to parameters
-    $res = $applicant->applicantAuthentication($email, $h_upass);
-    if ($res==true) { 
+	//it creates a new objects of member
+		$applicant = new Applicants();
+		//make use of the static function, and we passed to parameters
+		$res = $applicant->applicantAuthentication($email, $h_upass);
+		if ($res==true) { 
 
-       	message("You are now successfully login!","success");
-       
-       // $sql="INSERT INTO `tbllogs` (`USERID`,USERNAME, `LOGDATETIME`, `LOGROLE`, `LOGMODE`) 
-       //    VALUES (".$_SESSION['USERID'].",'".$_SESSION['FULLNAME']."','".date('Y-m-d H:i:s')."','".$_SESSION['UROLE']."','Logged in')";
-       //    mysql_query($sql) or die(mysql_error()); 
-         redirect(web_root."applicant/");
-     
-    }else{
-    	 echo "Account does not exist! Please contact Administrator."; 
-    } 
+			message("You are now successfully login!","success");
+			redirect(web_root."applicant/");
+		// $sql="INSERT INTO `tbllogs` (`USERID`,USERNAME, `LOGDATETIME`, `LOGROLE`, `LOGMODE`) 
+		//    VALUES (".$_SESSION['USERID'].",'".$_SESSION['FULLNAME']."','".date('Y-m-d H:i:s')."','".$_SESSION['UROLE']."','Logged in')";
+		//    mysql_query($sql) or die(mysql_error());
+		}else{
+			echo "Invalid Credentials!"; 
+		}
+	}
 }
  
 function UploadImage($jobid=0){

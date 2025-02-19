@@ -19,11 +19,6 @@
 <!-- datetime picker CSS -->
 <link href="<?php echo web_root; ?>plugins/datepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 <link href="<?php echo web_root; ?>plugins/datepicker/datepicker3.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="<?php echo web_root;?>plugins/dataTables/jquery.dataTables.min.css">  
-
-<link rel="stylesheet" href="<?php echo web_root;?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-<script src="<?php echo web_root; ?>plugins/jQuery/jQuery-3.7.1.min.js"></script>
  
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -82,7 +77,7 @@
                   $applicant = new Applicants();
                   $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);
 
-                  // Count unread messages for the applicant
+                  // Count unread job registration messages for the applicant
                   $sql = "SELECT COUNT(*) as 'COUNT' FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
                         WHERE c.`COMPANYID` = j.`COMPANYID` 
                         AND j.`REGISTRATIONID` = f.`REGISTRATIONID`
@@ -90,26 +85,26 @@
                         AND j.`APPLICANTID` = '{$appl->APPLICANTID}'";
                   $mydb->setQuery($sql);
                   $showMsg = $mydb->loadSingleResult();
-                  $msg = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?>
+                  $msg = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
 
-                  <p class="pull-right login">
-                      <a title="View Notification(s)" href="<?php echo web_root ?>applicant/index.php?view=notification">
-                          <i class="fa fa-bell-o"></i> 
-                          <span id="notifCount" class="label label-success">0<?php //echo $notif ?></span>
-                      </a> | 
-                      <a title="View Message(s)" href="<?php echo web_root ?>applicant/index.php?view=message">
-                          <i class="fa fa-envelope-o"></i> 
-                          <span id="messageCount" class="label label-success">0<?php //echo $showMsg ?></span>
-                      </a> | 
-                      <a title="View Profile" href="<?php echo web_root ?>applicant/"> 
-                          <i class="fa fa-user"></i><?php echo ' Hi, '.$appl->FNAME . ' ' . $appl->LNAME?>
-                      </a> | 
-                      <a href="<?php echo web_root ?>logout.php">  
-                          <i class="fa fa-sign-out"></i>Logout
-                      </a>
-                  </p>
+                  // Display the notification and message counts
+                  echo '<p class="pull-right login">
+                          <a title="View Notification(s)" href="' . web_root . 'applicant/index.php?view=notification">
+                              <i class="fa fa-bell-o"></i> 
+                              <span class="label label-success">' . $notif . '</span>
+                          </a> | 
+                          <a title="View Message(s)" href="' . web_root . 'applicant/index.php?view=message">
+                              <i class="fa fa-envelope-o"></i> 
+                              <span class="label label-success">' . $msg . '</span>
+                          </a> | 
+                          <a title="View Profile" href="' . web_root . 'applicant/"> 
+                              <i class="fa fa-user"></i> Hi, ' . $appl->FNAME . ' ' . $appl->LNAME . '
+                          </a> | 
+                          <a href="' . web_root . 'logout.php">  
+                              <i class="fa fa-sign-out"></i>Logout
+                          </a>
+                      </p>';
 
-                  <?php
                   } else { ?>
                   <p class="pull-right login">
                       <a data-target="#myModal" data-toggle="modal" href=""> 
@@ -189,7 +184,7 @@
             </div>
         </div>
   </header>
- 
+  <!-- end header -->  
 
   <?php
     if (!isset($_SESSION['APPLICANTID'])) { 
@@ -333,36 +328,6 @@
 <script src="<?php echo web_root; ?>plugins/home-plugins/js/animate.js"></script>
 <script src="<?php echo web_root; ?>plugins/home-plugins/js/custom.js"></script> 
 <!-- <script src="<?php echo web_root; ?>plugins/paralax/paralax.js"></script>  -->
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-$(document).ready(function(){
-    function updateCounts() {
-        $.ajax({
-            url: "<?php echo web_root; ?>include/ajax.php",
-            method: "GET",
-            data: { fetchType: "count" },
-            dataType: "json",
-            success: function(response) {
-                if (response.messages !== undefined) {
-                    $("#messageCount").text(response.messages); // Update messages count
-                }
-                if (response.notifications !== undefined) {
-                    $("#notifCount").text(response.notifications); // Update notifications count
-                }
-            }
-        });
-    }
-
-    // Update counts every 5 seconds
-    setInterval(updateCounts, 1000);
-
-    // Initial fetch on page load
-    updateCounts();
-});
-</script>
-
 
  <script type="text/javascript">
    

@@ -1,29 +1,35 @@
 <?php
 require_once(LIB_PATH.DS.'database.php');
-class Company {
-	protected static  $tblname = "tblcompany";
+class Messages {
+	protected static  $tblname = "tblinbox";
 
 	function dbfields () {
 		global $mydb;
 		return $mydb->getfieldsononetable(self::$tblname);
 
 	}
-	function listofcompany(){
+	function listofmessage(){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname);
-		$cur = $mydb->loadSingleResult();
+        $cur = $mydb->executeQuery();
 		return $cur;
 	}
+	function find_message($id="",$name=""){
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
+			WHERE INBOXID = {$id} OR CATEGORY = '{$name}'");
+		$cur = $mydb->executeQuery();
+		$row_count = $mydb->num_rows($cur);
+		return $row_count;
+	}
 	 
-	 
-	function single_company($id=""){
+	function single_message($id=""){
 			global $mydb;
-			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where COMPANYID= '{$id}' LIMIT 1");
+			$mydb->setQuery(sql: "SELECT * FROM ".self::$tblname." 
+				Where INBOXID= '{$id}' LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
- 
 	/*---Instantiation of Object dynamically---*/
 	static function instantiate($record) {
 		$object = new self;
@@ -105,7 +111,7 @@ class Company {
 		}
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE COMPANYID=". $id;
+		$sql .= " WHERE INBOXID=". $id;
 	  $mydb->setQuery($sql);
 	 	if(!$mydb->executeQuery()) return false; 	
 		
@@ -114,7 +120,7 @@ class Company {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE COMPANYID=". $id;
+		  $sql .= " WHERE INBOXID=". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  

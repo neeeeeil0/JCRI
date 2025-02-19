@@ -1,12 +1,13 @@
 <?php
 require_once("../../include/initialize.php");
- if (!isset($_SESSION['ADMIN_USERID'])){
+//checkAdmin();
+  	 if (!isset($_SESSION['ADMIN_USERID'])){
       redirect(web_root."admin/index.php");
-	}
+     }
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
- $title="Users"; 
- $header=$view; 
+$header=$view;
+$title="Dashboard";
 switch ($view) {
 	case 'list' :
 		$content    = 'list.php';		
@@ -24,7 +25,7 @@ switch ($view) {
 		break;
 
 	default :
-		$content    = 'list.php';		
+		$content    = 'home.php';		
 }
 require_once ("../theme/admin.php");
 ?>

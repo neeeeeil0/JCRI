@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body" style="padding-top: 0;">
                 <p style="color: #d9534f; text-align: center; margin-bottom: 20px;"></p>
-                <form action="" method="post">
+                <form action="process.php?action=login" method="post">
                     <div class="form-group" style="margin-bottom: 25px;">
                         <input type="text" class="form-control" placeholder="Username" name="user_email" id="user_email" style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; width: 100%; font-size: 16px;">
                     </div>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12" style="text-align: center;">
-                            <button type="submit" name="btnLogin" id="btnlogin" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff; padding: 12px 25px; border-radius: 5px; width: 100%; display: inline-block; font-size: 16px; font-weight: 500; transition: background-color 0.3s ease;">Login</button>
+                            <button type="" name="btnLogin" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff; padding: 12px 25px; border-radius: 5px; width: 100%; display: inline-block; font-size: 16px; font-weight: 500; transition: background-color 0.3s ease;">Login</button>
                         </div>
                     </div>
                 </form>

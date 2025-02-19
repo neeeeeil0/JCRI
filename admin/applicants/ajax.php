@@ -1,6 +1,5 @@
 <?php
 require_once ("../../include/initialize.php");
-//ajax.php
 $mydb = new Database(); // Replace with your actual database connection class
 
 $column = array("j.REGISTRATIONID", "j.APPLICANT", "j2.OCCUPATIONTITLE", "c.COMPANYNAME", "j.REGISTRATIONDATE", "u.FULLNAME", "j.STATUS", "Action");
@@ -10,7 +9,7 @@ $query = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
-    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
+    LEFT JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -25,6 +24,12 @@ if (!empty($_POST["job_title"])) {
 if (!empty($_POST["is_company"])) {
     $company_id = intval($_POST["is_company"]);
     $query .= " AND j.COMPANYID = $company_id";
+}
+
+// Company filter
+if (!empty($_POST["job_status"])) {
+    $status = $_POST["job_status"];
+    $query .= " AND j.STATUS = '$status'";
 }
 
 // Search filter
@@ -44,7 +49,13 @@ if (!empty($_POST["search"]["value"])) {
 if (!empty($_POST["order"])) {
     $query .= " ORDER BY " . $column[$_POST['order']['0']['column']] . " " . $_POST['order']['0']['dir'];
 } else {
-    $query .= " ORDER BY j.REGISTRATIONID DESC";
+    $query .= " ORDER BY 
+                CASE 
+                    WHEN j.STATUS = 'Rejected' THEN 2
+                    WHEN j.STATUS = 'Accepted' THEN 1
+                    ELSE 0
+                END, 
+                j.REGISTRATIONID DESC";
 }
 
 // Pagination
@@ -61,7 +72,7 @@ $filteredCountQuery = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
-    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
+    LEFT JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -71,6 +82,10 @@ if (!empty($_POST["job_title"])) {
 if (!empty($_POST["is_company"])) {
     $filteredCountQuery .= " AND j.COMPANYID = $company_id";
 }
+if (!empty($_POST["job_status"])) {
+    $filteredCountQuery .= " AND j.STATUS = '$status'";
+}
+
 if (!empty($_POST["search"]["value"])) {
     $filteredCountQuery .= " AND (
         j.REGISTRATIONID LIKE '%$search%' OR
@@ -90,7 +105,7 @@ $totalCountQuery = "
     FROM tblcompany c
     JOIN tbljobregistration j ON c.COMPANYID = j.COMPANYID
     JOIN tbljob j2 ON j.JOBID = j2.JOBID
-    JOIN tblusers u ON j.MODIFIEDBY = u.USERID
+    LEFT JOIN tblusers u ON j.MODIFIEDBY = u.USERID
     JOIN tblapplicants a ON j.APPLICANTID = a.APPLICANTID
     WHERE 1 = 1
 ";
@@ -105,14 +120,15 @@ foreach ($cur as $result) {
     $row[] = $result->APPLICANT;
     $row[] = $result->OCCUPATIONTITLE;
     $row[] = $result->COMPANYNAME;
-    $row[] = $result->REGISTRATIONDATE;
-    $row[] = $result->FULLNAME;
+    $row[] = date("M. j, Y, g:ia", strtotime($result->REGISTRATIONDATE));
+    $row[] = $result->FULLNAME ?? "";
     $row[] = $result->STATUS;
     $row[] = '<a title="View" href="index.php?view=view&id=' . $result->REGISTRATIONID . '" class="btn btn-primary btn-xs">
                 <span class="fa fa-edit fw-fa"></span></a>
               <a title="Remove" href="controller.php?action=delete&id=' . $result->REGISTRATIONID . '" class="btn btn-danger btn-xs">
                 <span class="fa fa-trash-o fw-fa"></span></a>';
-    $row['PENDINGAPPLICATION'] = $result->PENDINGAPPLICATION; 
+    $row['PENDINGAPPLICATION'] = $result->PENDINGAPPLICATION;
+    $row['APPLICANTSTATUS'] = $result->STATUS;
     $data[] = $row;
 }
 

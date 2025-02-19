@@ -15,7 +15,7 @@
       cursor: pointer;
     }
   </style>
-<section id="inner-headline" style="background-color:#3e769b;">
+<section id="inner-headline" style="height: 100px;background-color:#3e769b;">
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
@@ -60,7 +60,7 @@
                 </li>
                 <li class="<?php echo ($view=='message') ? 'active': '';?>">
                   <a href="<?php echo web_root.'applicant/index.php?view=message'; ?>"><i class="fa fa-envelope-o"></i> &nbsp;Messages
-                  <span class="label label-success pull-right"><?php echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a>
+                  <span id="msgCount" class="label label-success pull-right">0<?php //echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a>
                 </li>
               <!--      <li class="<?php echo ($view=='notification') ? 'active': '';?>"><a href="<?php echo web_root.'applicant/index.php?view=notification'; ?>"><i class="fa fa-bell-o"></i> Notification
                   <span class="label label-success pull-right"><?php echo $notif; ?></span></a></li> -->
@@ -187,3 +187,27 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
+
+                    <script>
+$(document).ready(function(){
+    function updateCounts() {
+        $.ajax({
+            url: "<?php echo web_root; ?>include/ajax.php",
+            method: "GET",
+            data: { fetchType: "count" },
+            dataType: "json",
+            success: function(response) {
+                if (response.messages !== undefined) {
+                    $("#msgCount").text(response.messages); // Update messages count
+                }
+            }
+        });
+    }
+
+    // Update counts every 5 seconds
+    setInterval(updateCounts, 1000);
+
+    // Initial fetch on page load
+    updateCounts();
+});
+</script>
