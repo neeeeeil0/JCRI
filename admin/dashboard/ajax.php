@@ -27,11 +27,11 @@ $mydb->setQuery($sqlApplicants);
 $appl = $mydb->loadSingleResult();
 $applicantsCount = $appl->APPL;
 
-// Count messages inbox
-$sqlInbox = "SELECT count(*) as 'INBOX' FROM `tblinbox`"; // Adjust condition as needed
-$mydb->setQuery($sqlInbox);
-$inbox = $mydb->loadSingleResult();
-$inboxCount = $inbox->INBOX;
+// Count accepted applicants
+$sqlAcceptedApplicants = "SELECT count(*) as 'ACCEPTED' FROM `tblacceptedapplicants`"; // Adjust condition as needed
+$mydb->setQuery($sqlAcceptedApplicants);
+$acceptedApplicants = $mydb->loadSingleResult();
+$acceptedCount = $acceptedApplicants->ACCEPTED;
 
 // Return counts as JSON
 echo json_encode([
@@ -39,6 +39,6 @@ echo json_encode([
     "category" => $categoryCount,
     "vacancy" => $vacancyCount,
     "applicant" => $applicantsCount,
-    "inbox" => $inboxCount
+    "hired" => $acceptedCount
 ]);
 ?>

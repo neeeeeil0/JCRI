@@ -4,7 +4,7 @@
      }
 
 	 if ($_SESSION["ADMIN_ROLE"] != 'Administrator'){
-		message("You don't have an access on this page", "info");
+		
 		redirect("../../admin/index.php");
 	}
 ?> 
