@@ -1,5 +1,7 @@
 <?php
 require_once("include/initialize.php");
+
+
 define("ABSPATH", __DIR__);
 $content='home.php';
 $view = (isset($_GET['q']) && $_GET['q'] != '') ? $_GET['q'] : '';

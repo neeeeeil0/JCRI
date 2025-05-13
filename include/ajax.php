@@ -7,12 +7,14 @@ $searchQuery = isset($_GET['query']) ? trim($_GET['query']) : '';
 $fetchType = isset($_GET['fetchType']) ? $_GET['fetchType'] : 'messages'; // Default: Fetch messages
 
 if ($fetchType === 'notifications') {
-    // Fetch latest notifications
-    $sql = "SELECT n.*, j.OCCUPATIONTITLE, j.JOBDESCRIPTION, j.DATEPOSTED, c.COMPANYNAME
+    // Fetch latest notifications with gender matching
+    $sql = "SELECT n.*, j.OCCUPATIONTITLE, j.JOBDESCRIPTION, j.DATEPOSTED, j.PREFEREDSEX, c.COMPANYNAME, a.SEX as APPLICANT_SEX
             FROM tblnotification n
             JOIN tbljob j ON n.JOBID = j.JOBID
             JOIN tblcompany c ON j.COMPANYID = c.COMPANYID
+            JOIN tblapplicants a ON n.APPLICANTID = a.APPLICANTID
             WHERE n.APPLICANTID = $applicantID
+            AND (j.PREFEREDSEX = a.SEX OR j.PREFEREDSEX = 'Male/Female')
             ORDER BY n.DATECREATED DESC LIMIT 10";
 
     $mydb->setQuery($sql);
@@ -25,15 +27,16 @@ if ($fetchType === 'notifications') {
             "NOTIFICATIONID" => $result->NOTIFICATIONID,
             "OCCUPATIONTITLE" => $result->OCCUPATIONTITLE,
             "JOBDESCRIPTION" => $result->JOBDESCRIPTION,
+            "PREFEREDSEX" => $result->PREFEREDSEX,
             "DATECREATED" => $result->DATECREATED,
-            "ISVIEWED" => $result->ISVIEWED
+            "ISVIEWED" => $result->ISVIEWED,
+            "USER_GENDER" => $result->APPLICANT_SEX
         ];
     }
 
     echo json_encode(["notifications" => $notifications]);
     exit;
 }
-
 if ($fetchType === 'count') {
     // Fetch unread message count
     $sqlMsg = "SELECT COUNT(*) as 'COUNT' FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 

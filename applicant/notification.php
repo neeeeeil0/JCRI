@@ -134,6 +134,7 @@ $(document).ready(function(){
         data: { fetchType: "notifications" },
         dataType: "json",
         success: function(response) {
+            // LOGIC
             if (response.notifications) {
                 let tableContent = "";
                 let unread = "";

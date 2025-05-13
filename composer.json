@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "psr-4": {
+      "JCRI\\": "./"
+    }
+  },
+  "config": {
+    "disable-tls": true
+  },
+  "require": {
+    "symfony/mailer": "^7.2",
+    "symfony/azure-mailer": "^7.2"
+  }
+}

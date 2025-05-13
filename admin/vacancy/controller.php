@@ -1,9 +1,14 @@
-
 <?php
+
 require_once ("../../include/initialize.php");
- 	 if (!isset($_SESSION['ADMIN_USERID'])){
-      redirect(web_root."admin/index.php");
-     }
+use JCRI\services\SendNotification;
+
+
+
+
+if (!isset($_SESSION['ADMIN_USERID'])){
+	redirect(web_root."admin/index.php");
+}
 
 
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
@@ -20,8 +25,6 @@ switch ($action) {
 	case 'delete' :
 	doDelete();
 	break;
-
- 
 	}
    
 	function doInsert(){
@@ -44,11 +47,9 @@ switch ($action) {
 				$job->REQ_NO_EMPLOYEES					= $_POST['REQ_NO_EMPLOYEES'];
 				$job->SALARIES							= $_POST['SALARIES'];
 				$job->JOBSETTING						= $_POST['JOBSETTING'];
-				//$job->DURATION_EMPLOYEMENT			= $_POST['DURATION_EMPLOYEMENT'];
 				$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
 				$job->JOBDESCRIPTION					= $_POST['JOBDESCRIPTION'];
 				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
-				//$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
 				$job->DATEPOSTED						= date('Y-m-d H:i:s');
 				$job->PUBLISHERID 						= $publisher;
 				$job->JOBSTATUS							= $_POST['JOBSTATUS'];
@@ -56,21 +57,53 @@ switch ($action) {
 
 				$jobID = $mydb->insert_id();
 
-            	// Insert notifications for all applicants
-				if ($_POST['JOBSTATUS'] == 'Open' ) {
-					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
-							SELECT APPLICANTID, $jobID, 0, NOW()
-							FROM tblapplicants";
-					$mydb->setQuery($sql);
-					$mydb->executeQuery();
+				$sql = "SELECT j.*, c.COMPANYNAME, c.COMPANYADDRESS 
+						FROM tbljob AS j 
+						INNER JOIN tblcompany AS c ON j.COMPANYID = c.COMPANYID 
+						WHERE j.JOBID = $jobID";
+				$mydb->setQuery($sql);
+				$jobInfo = $mydb->loadSingleResult();
+
+				$jobData = [
+					'id' => $jobID,
+					'title' => $job->OCCUPATIONTITLE,
+					'company' => $jobInfo->COMPANYNAME,
+					'location' => $jobInfo->COMPANYADDRESS,
+					'datePosted' => date('M d, Y', strtotime($job->DATEPOSTED)),
+					'setting' => $job->JOBSETTING,
+					'salary' => $job->SALARIES,
+					'sex' => $job->PREFEREDSEX,
+					'experience' => $job->QUALIFICATION_WORKEXPERIENCE,
+					'description' => $job->JOBDESCRIPTION
+				];
+
+				$notification = new SendNotification();
+				$sexFilter = "";
+				if ($job->PREFEREDSEX == 'Male') {
+					$sexFilter = "WHERE SEX = 'Male'";
+				} elseif ($job->PREFEREDSEX == 'Female') {
+					$sexFilter = "WHERE SEX = 'Female'";
 				}
 
+				$sql = "SELECT * FROM tblapplicants $sexFilter";
+				$mydb->setQuery($sql);
+				$applicants = $mydb->loadResultList() ?? [];
+
+				// Send email notifications to each applicant
+				if ($applicants.length > 0){
+					foreach ($applicants as $applicant) {
+						// Check if the applicant has an email
+						if (!empty($applicant->EMAILADDRESS)) {
+							$notification->sendTemplatedEmail($applicant->EMAILADDRESS, $jobData);
+						}
+					}
+				}
+			
 				message("New Job Vacancy created successfully!", "success");
 				redirect("index.php");
 				
 			}
 		}
-
 	}
 
 	function doEdit(){

@@ -2,6 +2,7 @@
   if (!isset($_GET['p'])) {
     $applicant = new Applicants();
     $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);
+    $string_object_appl = json_encode($appl);
   ?>
   <style type="text/css">
     .form-group {
@@ -66,25 +67,23 @@
 
               <div class="form-group">
                 <div class="col-md-11">
-                  <label class="col-md-4 control-label" for=
-                  "Gender">Sex:</label>
+                  <label class="col-md-4 control-label" for="Gender">Sex:</label>
 
                   <div class="col-md-8">
-                   <div class="col-lg-5">
+                    <div class="col-lg-5">
                       <div class="radio">
-                        <label><input checked id="optionsRadios1" checked="True" name="optionsRadios" type="radio" value="Female">Female</label>
+                        <label><input id="optionsRadios1" name="optionsRadios" type="radio" value="Female" <?php echo ($appl->SEX == 'Female') ? 'checked="checked"' : ''; ?>>Female</label>
                       </div>
                     </div>
 
                     <div class="col-lg-4">
                       <div class="radio">
-                        <label><input id="optionsRadios2"   name="optionsRadios" type="radio" value="Male"> Male</label>
+                        <label><input id="optionsRadios2" name="optionsRadios" type="radio" value="Male" <?php echo ($appl->SEX == 'Male') ? 'checked="checked"' : ''; ?>> Male</label>
                       </div>
-                    </div> 
-                   
+                    </div>
                   </div>
                 </div>
-              </div> 
+              </div>
 
                <div class="form-group">
                 <div class="col-md-11">
@@ -180,4 +179,7 @@
            
           </div>  
  </form>
+ 
  <?php } ?>
+
+ 

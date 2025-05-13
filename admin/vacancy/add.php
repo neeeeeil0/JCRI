@@ -66,7 +66,7 @@ if (!isset($_SESSION['ADMIN_USERID'])) {
     <div class="col-md-8">
       <label class="col-md-4 control-label" for="SALARIES">Salary Range:</label>
       <div class="col-md-8">
-        <input class="form-control input-sm" type="number" id="SALARIES" name="SALARIES" placeholder="Enter the salary in USD" min="0" step="500">
+        <input class="form-control input-sm" type="number" id="SALARIES" name="SALARIES" placeholder="Enter the salary in PHP" min="0">
       </div>
     </div>
   </div>
