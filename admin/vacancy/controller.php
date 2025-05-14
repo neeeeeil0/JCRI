@@ -44,7 +44,7 @@ switch ($action) {
 				$job->COMPANYID							= $_POST['COMPANYID']; 
 				$job->CATEGORY							= $_POST['CATEGORY']; 
 				$job->OCCUPATIONTITLE					= $_POST['OCCUPATIONTITLE'];
-				$job->REQ_NO_EMPLOYEES					= $_POST['REQ_NO_EMPLOYEES'];
+				// $job->REQ_NO_EMPLOYEES					= $_POST['REQ_NO_EMPLOYEES'];
 				$job->SALARIES							= $_POST['SALARIES'];
 				$job->JOBSETTING						= $_POST['JOBSETTING'];
 				$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
@@ -85,12 +85,10 @@ switch ($action) {
 					$sexFilter = "WHERE SEX = 'Female'";
 				}
 
-				$sql = "SELECT * FROM tblapplicants $sexFilter";
+				$sql = "SELECT * FROM tblapplicants WHERE SEX = 'Male'";
 				$mydb->setQuery($sql);
 				$applicants = $mydb->loadResultList() ?? [];
-
-				// Send email notifications to each applicant
-				if ($applicants.length > 0){
+				if ($applicants !== null && count($applicants) > 0){
 					foreach ($applicants as $applicant) {
 						// Check if the applicant has an email
 						if (!empty($applicant->EMAILADDRESS)) {
