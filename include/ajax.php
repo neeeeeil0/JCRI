@@ -38,20 +38,27 @@ if ($fetchType === 'notifications') {
     exit;
 }
 if ($fetchType === 'count') {
-    // Fetch unread message count
-    $sqlMsg = "SELECT COUNT(*) as 'COUNT' FROM `tblcompany` c, `tbljobregistration` j, `tblfeedback` f 
-               WHERE c.`COMPANYID` = j.`COMPANYID` 
-               AND j.`REGISTRATIONID` = f.`REGISTRATIONID`
-               AND f.VIEW = 1
-               AND j.`APPLICANTID` = '{$applicantID}'";
+    // Fetch unread message count with gender matching
+    $sqlMsg = "SELECT COUNT(*) as 'COUNT'
+               FROM `tblcompany` c
+               JOIN `tbljob` jb ON c.`COMPANYID` = jb.`COMPANYID`
+               JOIN `tbljobregistration` jr ON jb.`JOBID` = jr.`JOBID`
+               JOIN `tblfeedback` f ON jr.`REGISTRATIONID` = f.`REGISTRATIONID`
+               JOIN `tblapplicants` a ON jr.`APPLICANTID` = a.`APPLICANTID`
+               WHERE f.VIEW = 1
+               AND jr.`APPLICANTID` = '{$applicantID}'
+               AND (jb.PREFEREDSEX = a.SEX OR jb.PREFEREDSEX = 'Male/Female')";
 
     $mydb->setQuery($sqlMsg);
     $showMsg = $mydb->loadSingleResult();
     $msgCount = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
 
-    // Fetch unread notification count
-    $sqlNotif = "SELECT COUNT(*) as 'COUNTNOTIF' FROM `tblnotification` 
-                 WHERE APPLICANTID = '{$applicantID}' AND ISVIEWED = 0";
+    // Fetch unread notification count (Original query - no change needed here, but adding applicant gender to tblnotification)
+    $sqlNotif = "SELECT COUNT(*) as 'COUNTNOTIF' FROM `tblnotification` n
+                 JOIN tblapplicants a ON n.APPLICANTID = a.APPLICANTID
+                 JOIN tbljob j ON n.JOBID = j.JOBID
+                 WHERE n.APPLICANTID = '{$applicantID}' AND n.ISVIEWED = 0
+                 AND (j.PREFEREDSEX = a.SEX OR j.PREFEREDSEX = 'Male/Female')";
 
     $mydb->setQuery($sqlNotif);
     $showNotif = $mydb->loadSingleResult();

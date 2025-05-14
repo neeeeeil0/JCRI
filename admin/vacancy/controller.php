@@ -56,11 +56,16 @@ switch ($action) {
 				$job->create();
 
 				$jobID = $mydb->insert_id();
-				
-				if ($_POST['JOBSTATUS'] == 'Open' ) {
-					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
-							SELECT APPLICANTID, $jobID, 0, NOW()
-							FROM tblapplicants";
+
+				if ($_POST['JOBSTATUS'] == 'Open') {
+					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED) ";
+					$sql .= "SELECT APPLICANTID, $jobID, 0, NOW() ";
+					$sql .= "FROM tblapplicants ";
+					if($_POST['PREFEREDSEX'] == 'Male') {
+						$sql .= "WHERE SEX = 'Male'";
+					} elseif ($_POST['PREFEREDSEX'] == 'Female') {
+						$sql .= "WHERE SEX = 'Female'";
+					}
 					$mydb->setQuery($sql);
 					$mydb->executeQuery();
 				}
