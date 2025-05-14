@@ -85,7 +85,7 @@ switch ($action) {
 					$sexFilter = "WHERE SEX = 'Female'";
 				}
 
-				$sql = "SELECT * FROM tblapplicants WHERE SEX = 'Male'";
+				$sql = "SELECT * FROM tblapplicants $sexFilter";
 				$mydb->setQuery($sql);
 				$applicants = $mydb->loadResultList() ?? [];
 				if ($applicants !== null && count($applicants) > 0){
