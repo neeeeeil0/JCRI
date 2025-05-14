@@ -56,6 +56,14 @@ switch ($action) {
 				$job->create();
 
 				$jobID = $mydb->insert_id();
+				
+				if ($_POST['JOBSTATUS'] == 'Open' ) {
+					$sql = "INSERT INTO tblnotification (APPLICANTID, JOBID, ISVIEWED, DATECREATED)
+							SELECT APPLICANTID, $jobID, 0, NOW()
+							FROM tblapplicants";
+					$mydb->setQuery($sql);
+					$mydb->executeQuery();
+				}
 
 				$sql = "SELECT j.*, c.COMPANYNAME, c.COMPANYADDRESS 
 						FROM tbljob AS j 
@@ -85,7 +93,7 @@ switch ($action) {
 					$sexFilter = "WHERE SEX = 'Female'";
 				}
 
-				$sql = "SELECT * FROM tblapplicants WHERE SEX = 'Male'";
+				$sql = "SELECT * FROM tblapplicants $sexFilter";
 				$mydb->setQuery($sql);
 				$applicants = $mydb->loadResultList() ?? [];
 				if ($applicants !== null && count($applicants) > 0){
