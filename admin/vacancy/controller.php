@@ -44,7 +44,7 @@ switch ($action) {
 				$job->COMPANYID							= $_POST['COMPANYID']; 
 				$job->CATEGORY							= $_POST['CATEGORY']; 
 				$job->OCCUPATIONTITLE					= $_POST['OCCUPATIONTITLE'];
-				$job->REQ_NO_EMPLOYEES					= $_POST['REQ_NO_EMPLOYEES'];
+				//$job->REQ_NO_EMPLOYEES					= $_POST['REQ_NO_EMPLOYEES'];
 				$job->SALARIES							= $_POST['SALARIES'];
 				$job->JOBSETTING						= $_POST['JOBSETTING'];
 				$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
