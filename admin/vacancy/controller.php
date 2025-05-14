@@ -85,12 +85,10 @@ switch ($action) {
 					$sexFilter = "WHERE SEX = 'Female'";
 				}
 
-				$sql = "SELECT * FROM tblapplicants $sexFilter";
+				$sql = "SELECT * FROM tblapplicants WHERE SEX = 'Male'";
 				$mydb->setQuery($sql);
 				$applicants = $mydb->loadResultList() ?? [];
-
-				// Send email notifications to each applicant
-				if ($applicants.length > 0){
+				if ($applicants !== null && count($applicants) > 0){
 					foreach ($applicants as $applicant) {
 						// Check if the applicant has an email
 						if (!empty($applicant->EMAILADDRESS)) {
